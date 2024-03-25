@@ -5774,3 +5774,1165 @@ jsonschema.exceptions.ValidationError: '10000' does not match 'unlimited'
 2024-03-25 15:33:41,007 - freqtrade.worker - INFO - Bot heartbeat. PID=1, version='2024.2', state='RUNNING'
 2024-03-25 15:34:41,010 - freqtrade.worker - INFO - Bot heartbeat. PID=1, version='2024.2', state='RUNNING'
 2024-03-25 15:35:46,001 - freqtrade.worker - INFO - Bot heartbeat. PID=1, version='2024.2', state='RUNNING'
+2024-03-25 20:06:38,445 - freqtrade.loggers - INFO - Verbosity set to 0
+2024-03-25 20:06:38,446 - freqtrade.configuration.configuration - INFO - Runmode set to dry_run.
+2024-03-25 20:06:38,446 - freqtrade.configuration.configuration - INFO - Parameter --db-url detected ...
+2024-03-25 20:06:38,447 - freqtrade.configuration.configuration - INFO - Dry run is enabled
+2024-03-25 20:06:38,447 - freqtrade.configuration.configuration - INFO - Using DB: "sqlite:////freqtrade/user_data/tradesv3.sqlite"
+2024-03-25 20:06:38,447 - freqtrade.configuration.configuration - INFO - Using max_open_trades: 100 ...
+2024-03-25 20:06:38,477 - freqtrade.configuration.configuration - INFO - Using user-data directory: /freqtrade/user_data ...
+2024-03-25 20:06:38,479 - freqtrade.configuration.configuration - INFO - Using data directory: /freqtrade/user_data/data/binance ...
+2024-03-25 20:06:38,480 - freqtrade.exchange.check_exchange - INFO - Checking exchange...
+2024-03-25 20:06:38,489 - freqtrade.exchange.check_exchange - INFO - Exchange "binance" is officially supported by the Freqtrade development team.
+2024-03-25 20:06:38,489 - freqtrade.configuration.configuration - INFO - Using pairlist from configuration.
+2024-03-25 20:06:38,514 - freqtrade.resolvers.iresolver - INFO - Using resolved strategy SampleStrategy from '/freqtrade/user_data/strategies/sample_strategy.py'...
+2024-03-25 20:06:38,515 - freqtrade.strategy.hyper - INFO - Found no parameter file.
+2024-03-25 20:06:38,516 - freqtrade.resolvers.strategy_resolver - INFO - Override strategy 'stake_currency' with value in config file: USDT.
+2024-03-25 20:06:38,517 - freqtrade.resolvers.strategy_resolver - INFO - Override strategy 'stake_amount' with value in config file: unlimited.
+2024-03-25 20:06:38,517 - freqtrade.resolvers.strategy_resolver - INFO - Override strategy 'unfilledtimeout' with value in config file: {'entry': 10, 'exit': 10, 'exit_timeout_count': 0, 'unit': 'minutes'}.
+2024-03-25 20:06:38,518 - freqtrade.resolvers.strategy_resolver - INFO - Override strategy 'max_open_trades' with value in config file: 100.
+2024-03-25 20:06:38,518 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using minimal_roi: {'60': 0.01, '30': 0.02, '0': 0.04}
+2024-03-25 20:06:38,519 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using timeframe: 5m
+2024-03-25 20:06:38,519 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using stoploss: -0.1
+2024-03-25 20:06:38,520 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using trailing_stop: False
+2024-03-25 20:06:38,520 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using trailing_stop_positive_offset: 0.0
+2024-03-25 20:06:38,521 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using trailing_only_offset_is_reached: False
+2024-03-25 20:06:38,521 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using use_custom_stoploss: False
+2024-03-25 20:06:38,521 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using process_only_new_candles: True
+2024-03-25 20:06:38,522 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using order_types: {'entry': 'limit', 'exit': 'limit', 'stoploss': 'market', 'stoploss_on_exchange': False}
+2024-03-25 20:06:38,522 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using order_time_in_force: {'entry': 'GTC', 'exit': 'GTC'}
+2024-03-25 20:06:38,523 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using stake_currency: USDT
+2024-03-25 20:06:38,523 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using stake_amount: unlimited
+2024-03-25 20:06:38,524 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using protections: []
+2024-03-25 20:06:38,524 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using startup_candle_count: 200
+2024-03-25 20:06:38,524 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using unfilledtimeout: {'entry': 10, 'exit': 10, 'exit_timeout_count': 0, 'unit': 'minutes'}
+2024-03-25 20:06:38,525 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using use_exit_signal: True
+2024-03-25 20:06:38,525 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using exit_profit_only: False
+2024-03-25 20:06:38,526 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using ignore_roi_if_entry_signal: False
+2024-03-25 20:06:38,526 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using exit_profit_offset: 0.0
+2024-03-25 20:06:38,527 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using disable_dataframe_checks: False
+2024-03-25 20:06:38,527 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using ignore_buying_expired_candle_after: 0
+2024-03-25 20:06:38,527 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using position_adjustment_enable: False
+2024-03-25 20:06:38,528 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using max_entry_position_adjustment: -1
+2024-03-25 20:06:38,528 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using max_open_trades: 100
+2024-03-25 20:06:38,529 - freqtrade.configuration.config_validation - INFO - Validating configuration ...
+2024-03-25 20:06:38,531 - freqtrade.exchange.exchange - INFO - Instance is running with dry_run enabled
+2024-03-25 20:06:38,532 - freqtrade.exchange.exchange - INFO - Using CCXT 4.2.51
+2024-03-25 20:06:38,548 - freqtrade.exchange.exchange - INFO - Using Exchange "Binance"
+2024-03-25 20:06:45,029 - freqtrade.resolvers.exchange_resolver - INFO - Using resolved exchange 'Binance'...
+2024-03-25 20:06:45,041 - freqtrade.commands.trade_commands - ERROR - (sqlite3.OperationalError) disk I/O error
+[SQL: SELECT name FROM sqlite_master WHERE type='table' AND name NOT LIKE 'sqlite~_%' ESCAPE '~' ORDER BY name]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2024-03-25 20:06:45,042 - freqtrade.commands.trade_commands - ERROR - Fatal exception!
+Traceback (most recent call last):
+  File "/home/ftuser/.local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1960, in _exec_single_context
+    self.dialect.do_execute(
+  File "/home/ftuser/.local/lib/python3.11/site-packages/sqlalchemy/engine/default.py", line 924, in do_execute
+    cursor.execute(statement, parameters)
+sqlite3.OperationalError: disk I/O error
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/freqtrade/freqtrade/commands/trade_commands.py", line 24, in start_trading
+    worker = Worker(args)
+             ^^^^^^^^^^^^
+  File "/freqtrade/freqtrade/worker.py", line 37, in __init__
+    self._init(False)
+  File "/freqtrade/freqtrade/worker.py", line 53, in _init
+    self.freqtrade = FreqtradeBot(self._config)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/freqtrade/freqtrade/freqtradebot.py", line 79, in __init__
+    init_db(self.config['db_url'])
+  File "/freqtrade/freqtrade/persistence/models.py", line 82, in init_db
+    previous_tables = inspect(engine).get_table_names()
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ftuser/.local/lib/python3.11/site-packages/sqlalchemy/engine/reflection.py", line 396, in get_table_names
+    return self.dialect.get_table_names(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<string>", line 2, in get_table_names
+  File "/home/ftuser/.local/lib/python3.11/site-packages/sqlalchemy/engine/reflection.py", line 97, in cache
+    ret = fn(self, con, *args, **kw)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ftuser/.local/lib/python3.11/site-packages/sqlalchemy/dialects/sqlite/base.py", line 2118, in get_table_names
+    names = connection.exec_driver_sql(query).scalars().all()
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ftuser/.local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1769, in exec_driver_sql
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ftuser/.local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1839, in _execute_context
+    return self._exec_single_context(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ftuser/.local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1979, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/home/ftuser/.local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 2335, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/home/ftuser/.local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1960, in _exec_single_context
+    self.dialect.do_execute(
+  File "/home/ftuser/.local/lib/python3.11/site-packages/sqlalchemy/engine/default.py", line 924, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) disk I/O error
+[SQL: SELECT name FROM sqlite_master WHERE type='table' AND name NOT LIKE 'sqlite~_%' ESCAPE '~' ORDER BY name]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2024-03-25 20:06:48,671 - freqtrade.loggers - INFO - Verbosity set to 0
+2024-03-25 20:06:48,672 - freqtrade.configuration.configuration - INFO - Runmode set to dry_run.
+2024-03-25 20:06:48,673 - freqtrade.configuration.configuration - INFO - Parameter --db-url detected ...
+2024-03-25 20:06:48,673 - freqtrade.configuration.configuration - INFO - Dry run is enabled
+2024-03-25 20:06:48,674 - freqtrade.configuration.configuration - INFO - Using DB: "sqlite:////freqtrade/user_data/tradesv3.sqlite"
+2024-03-25 20:06:48,674 - freqtrade.configuration.configuration - INFO - Using max_open_trades: 100 ...
+2024-03-25 20:06:48,703 - freqtrade.configuration.configuration - INFO - Using user-data directory: /freqtrade/user_data ...
+2024-03-25 20:06:48,704 - freqtrade.configuration.configuration - INFO - Using data directory: /freqtrade/user_data/data/binance ...
+2024-03-25 20:06:48,705 - freqtrade.exchange.check_exchange - INFO - Checking exchange...
+2024-03-25 20:06:48,714 - freqtrade.exchange.check_exchange - INFO - Exchange "binance" is officially supported by the Freqtrade development team.
+2024-03-25 20:06:48,715 - freqtrade.configuration.configuration - INFO - Using pairlist from configuration.
+2024-03-25 20:06:48,740 - freqtrade.resolvers.iresolver - INFO - Using resolved strategy SampleStrategy from '/freqtrade/user_data/strategies/sample_strategy.py'...
+2024-03-25 20:06:48,741 - freqtrade.strategy.hyper - INFO - Found no parameter file.
+2024-03-25 20:06:48,742 - freqtrade.resolvers.strategy_resolver - INFO - Override strategy 'stake_currency' with value in config file: USDT.
+2024-03-25 20:06:48,742 - freqtrade.resolvers.strategy_resolver - INFO - Override strategy 'stake_amount' with value in config file: unlimited.
+2024-03-25 20:06:48,743 - freqtrade.resolvers.strategy_resolver - INFO - Override strategy 'unfilledtimeout' with value in config file: {'entry': 10, 'exit': 10, 'exit_timeout_count': 0, 'unit': 'minutes'}.
+2024-03-25 20:06:48,743 - freqtrade.resolvers.strategy_resolver - INFO - Override strategy 'max_open_trades' with value in config file: 100.
+2024-03-25 20:06:48,743 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using minimal_roi: {'60': 0.01, '30': 0.02, '0': 0.04}
+2024-03-25 20:06:48,744 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using timeframe: 5m
+2024-03-25 20:06:48,744 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using stoploss: -0.1
+2024-03-25 20:06:48,744 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using trailing_stop: False
+2024-03-25 20:06:48,745 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using trailing_stop_positive_offset: 0.0
+2024-03-25 20:06:48,745 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using trailing_only_offset_is_reached: False
+2024-03-25 20:06:48,745 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using use_custom_stoploss: False
+2024-03-25 20:06:48,746 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using process_only_new_candles: True
+2024-03-25 20:06:48,746 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using order_types: {'entry': 'limit', 'exit': 'limit', 'stoploss': 'market', 'stoploss_on_exchange': False}
+2024-03-25 20:06:48,746 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using order_time_in_force: {'entry': 'GTC', 'exit': 'GTC'}
+2024-03-25 20:06:48,747 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using stake_currency: USDT
+2024-03-25 20:06:48,747 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using stake_amount: unlimited
+2024-03-25 20:06:48,747 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using protections: []
+2024-03-25 20:06:48,748 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using startup_candle_count: 200
+2024-03-25 20:06:48,748 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using unfilledtimeout: {'entry': 10, 'exit': 10, 'exit_timeout_count': 0, 'unit': 'minutes'}
+2024-03-25 20:06:48,749 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using use_exit_signal: True
+2024-03-25 20:06:48,749 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using exit_profit_only: False
+2024-03-25 20:06:48,750 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using ignore_roi_if_entry_signal: False
+2024-03-25 20:06:48,750 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using exit_profit_offset: 0.0
+2024-03-25 20:06:48,751 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using disable_dataframe_checks: False
+2024-03-25 20:06:48,751 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using ignore_buying_expired_candle_after: 0
+2024-03-25 20:06:48,751 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using position_adjustment_enable: False
+2024-03-25 20:06:48,752 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using max_entry_position_adjustment: -1
+2024-03-25 20:06:48,752 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using max_open_trades: 100
+2024-03-25 20:06:48,752 - freqtrade.configuration.config_validation - INFO - Validating configuration ...
+2024-03-25 20:06:48,755 - freqtrade.exchange.exchange - INFO - Instance is running with dry_run enabled
+2024-03-25 20:06:48,756 - freqtrade.exchange.exchange - INFO - Using CCXT 4.2.51
+2024-03-25 20:06:48,771 - freqtrade.exchange.exchange - INFO - Using Exchange "Binance"
+2024-03-25 20:06:55,244 - freqtrade.resolvers.exchange_resolver - INFO - Using resolved exchange 'Binance'...
+2024-03-25 20:06:55,257 - freqtrade.commands.trade_commands - ERROR - (sqlite3.OperationalError) disk I/O error
+[SQL: SELECT name FROM sqlite_master WHERE type='table' AND name NOT LIKE 'sqlite~_%' ESCAPE '~' ORDER BY name]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2024-03-25 20:06:55,257 - freqtrade.commands.trade_commands - ERROR - Fatal exception!
+Traceback (most recent call last):
+  File "/home/ftuser/.local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1960, in _exec_single_context
+    self.dialect.do_execute(
+  File "/home/ftuser/.local/lib/python3.11/site-packages/sqlalchemy/engine/default.py", line 924, in do_execute
+    cursor.execute(statement, parameters)
+sqlite3.OperationalError: disk I/O error
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/freqtrade/freqtrade/commands/trade_commands.py", line 24, in start_trading
+    worker = Worker(args)
+             ^^^^^^^^^^^^
+  File "/freqtrade/freqtrade/worker.py", line 37, in __init__
+    self._init(False)
+  File "/freqtrade/freqtrade/worker.py", line 53, in _init
+    self.freqtrade = FreqtradeBot(self._config)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/freqtrade/freqtrade/freqtradebot.py", line 79, in __init__
+    init_db(self.config['db_url'])
+  File "/freqtrade/freqtrade/persistence/models.py", line 82, in init_db
+    previous_tables = inspect(engine).get_table_names()
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ftuser/.local/lib/python3.11/site-packages/sqlalchemy/engine/reflection.py", line 396, in get_table_names
+    return self.dialect.get_table_names(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<string>", line 2, in get_table_names
+  File "/home/ftuser/.local/lib/python3.11/site-packages/sqlalchemy/engine/reflection.py", line 97, in cache
+    ret = fn(self, con, *args, **kw)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ftuser/.local/lib/python3.11/site-packages/sqlalchemy/dialects/sqlite/base.py", line 2118, in get_table_names
+    names = connection.exec_driver_sql(query).scalars().all()
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ftuser/.local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1769, in exec_driver_sql
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ftuser/.local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1839, in _execute_context
+    return self._exec_single_context(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ftuser/.local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1979, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/home/ftuser/.local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 2335, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/home/ftuser/.local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1960, in _exec_single_context
+    self.dialect.do_execute(
+  File "/home/ftuser/.local/lib/python3.11/site-packages/sqlalchemy/engine/default.py", line 924, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) disk I/O error
+[SQL: SELECT name FROM sqlite_master WHERE type='table' AND name NOT LIKE 'sqlite~_%' ESCAPE '~' ORDER BY name]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2024-03-25 20:06:58,716 - freqtrade.loggers - INFO - Verbosity set to 0
+2024-03-25 20:06:58,716 - freqtrade.configuration.configuration - INFO - Runmode set to dry_run.
+2024-03-25 20:06:58,717 - freqtrade.configuration.configuration - INFO - Parameter --db-url detected ...
+2024-03-25 20:06:58,717 - freqtrade.configuration.configuration - INFO - Dry run is enabled
+2024-03-25 20:06:58,718 - freqtrade.configuration.configuration - INFO - Using DB: "sqlite:////freqtrade/user_data/tradesv3.sqlite"
+2024-03-25 20:06:58,718 - freqtrade.configuration.configuration - INFO - Using max_open_trades: 100 ...
+2024-03-25 20:06:58,747 - freqtrade.configuration.configuration - INFO - Using user-data directory: /freqtrade/user_data ...
+2024-03-25 20:06:58,748 - freqtrade.configuration.configuration - INFO - Using data directory: /freqtrade/user_data/data/binance ...
+2024-03-25 20:06:58,749 - freqtrade.exchange.check_exchange - INFO - Checking exchange...
+2024-03-25 20:06:58,757 - freqtrade.exchange.check_exchange - INFO - Exchange "binance" is officially supported by the Freqtrade development team.
+2024-03-25 20:06:58,758 - freqtrade.configuration.configuration - INFO - Using pairlist from configuration.
+2024-03-25 20:06:58,781 - freqtrade.resolvers.iresolver - INFO - Using resolved strategy SampleStrategy from '/freqtrade/user_data/strategies/sample_strategy.py'...
+2024-03-25 20:06:58,782 - freqtrade.strategy.hyper - INFO - Found no parameter file.
+2024-03-25 20:06:58,783 - freqtrade.resolvers.strategy_resolver - INFO - Override strategy 'stake_currency' with value in config file: USDT.
+2024-03-25 20:06:58,783 - freqtrade.resolvers.strategy_resolver - INFO - Override strategy 'stake_amount' with value in config file: unlimited.
+2024-03-25 20:06:58,784 - freqtrade.resolvers.strategy_resolver - INFO - Override strategy 'unfilledtimeout' with value in config file: {'entry': 10, 'exit': 10, 'exit_timeout_count': 0, 'unit': 'minutes'}.
+2024-03-25 20:06:58,784 - freqtrade.resolvers.strategy_resolver - INFO - Override strategy 'max_open_trades' with value in config file: 100.
+2024-03-25 20:06:58,785 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using minimal_roi: {'60': 0.01, '30': 0.02, '0': 0.04}
+2024-03-25 20:06:58,785 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using timeframe: 5m
+2024-03-25 20:06:58,786 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using stoploss: -0.1
+2024-03-25 20:06:58,786 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using trailing_stop: False
+2024-03-25 20:06:58,786 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using trailing_stop_positive_offset: 0.0
+2024-03-25 20:06:58,787 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using trailing_only_offset_is_reached: False
+2024-03-25 20:06:58,787 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using use_custom_stoploss: False
+2024-03-25 20:06:58,788 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using process_only_new_candles: True
+2024-03-25 20:06:58,788 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using order_types: {'entry': 'limit', 'exit': 'limit', 'stoploss': 'market', 'stoploss_on_exchange': False}
+2024-03-25 20:06:58,788 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using order_time_in_force: {'entry': 'GTC', 'exit': 'GTC'}
+2024-03-25 20:06:58,789 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using stake_currency: USDT
+2024-03-25 20:06:58,789 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using stake_amount: unlimited
+2024-03-25 20:06:58,790 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using protections: []
+2024-03-25 20:06:58,790 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using startup_candle_count: 200
+2024-03-25 20:06:58,790 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using unfilledtimeout: {'entry': 10, 'exit': 10, 'exit_timeout_count': 0, 'unit': 'minutes'}
+2024-03-25 20:06:58,791 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using use_exit_signal: True
+2024-03-25 20:06:58,791 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using exit_profit_only: False
+2024-03-25 20:06:58,792 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using ignore_roi_if_entry_signal: False
+2024-03-25 20:06:58,792 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using exit_profit_offset: 0.0
+2024-03-25 20:06:58,793 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using disable_dataframe_checks: False
+2024-03-25 20:06:58,793 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using ignore_buying_expired_candle_after: 0
+2024-03-25 20:06:58,793 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using position_adjustment_enable: False
+2024-03-25 20:06:58,794 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using max_entry_position_adjustment: -1
+2024-03-25 20:06:58,794 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using max_open_trades: 100
+2024-03-25 20:06:58,795 - freqtrade.configuration.config_validation - INFO - Validating configuration ...
+2024-03-25 20:06:58,797 - freqtrade.exchange.exchange - INFO - Instance is running with dry_run enabled
+2024-03-25 20:06:58,798 - freqtrade.exchange.exchange - INFO - Using CCXT 4.2.51
+2024-03-25 20:06:58,813 - freqtrade.exchange.exchange - INFO - Using Exchange "Binance"
+2024-03-25 20:07:04,975 - freqtrade.resolvers.exchange_resolver - INFO - Using resolved exchange 'Binance'...
+2024-03-25 20:07:04,988 - freqtrade.commands.trade_commands - ERROR - (sqlite3.OperationalError) disk I/O error
+[SQL: SELECT name FROM sqlite_master WHERE type='table' AND name NOT LIKE 'sqlite~_%' ESCAPE '~' ORDER BY name]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2024-03-25 20:07:04,988 - freqtrade.commands.trade_commands - ERROR - Fatal exception!
+Traceback (most recent call last):
+  File "/home/ftuser/.local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1960, in _exec_single_context
+    self.dialect.do_execute(
+  File "/home/ftuser/.local/lib/python3.11/site-packages/sqlalchemy/engine/default.py", line 924, in do_execute
+    cursor.execute(statement, parameters)
+sqlite3.OperationalError: disk I/O error
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/freqtrade/freqtrade/commands/trade_commands.py", line 24, in start_trading
+    worker = Worker(args)
+             ^^^^^^^^^^^^
+  File "/freqtrade/freqtrade/worker.py", line 37, in __init__
+    self._init(False)
+  File "/freqtrade/freqtrade/worker.py", line 53, in _init
+    self.freqtrade = FreqtradeBot(self._config)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/freqtrade/freqtrade/freqtradebot.py", line 79, in __init__
+    init_db(self.config['db_url'])
+  File "/freqtrade/freqtrade/persistence/models.py", line 82, in init_db
+    previous_tables = inspect(engine).get_table_names()
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ftuser/.local/lib/python3.11/site-packages/sqlalchemy/engine/reflection.py", line 396, in get_table_names
+    return self.dialect.get_table_names(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<string>", line 2, in get_table_names
+  File "/home/ftuser/.local/lib/python3.11/site-packages/sqlalchemy/engine/reflection.py", line 97, in cache
+    ret = fn(self, con, *args, **kw)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ftuser/.local/lib/python3.11/site-packages/sqlalchemy/dialects/sqlite/base.py", line 2118, in get_table_names
+    names = connection.exec_driver_sql(query).scalars().all()
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ftuser/.local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1769, in exec_driver_sql
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ftuser/.local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1839, in _execute_context
+    return self._exec_single_context(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ftuser/.local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1979, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/home/ftuser/.local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 2335, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/home/ftuser/.local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1960, in _exec_single_context
+    self.dialect.do_execute(
+  File "/home/ftuser/.local/lib/python3.11/site-packages/sqlalchemy/engine/default.py", line 924, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) disk I/O error
+[SQL: SELECT name FROM sqlite_master WHERE type='table' AND name NOT LIKE 'sqlite~_%' ESCAPE '~' ORDER BY name]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2024-03-25 20:07:08,662 - freqtrade.loggers - INFO - Verbosity set to 0
+2024-03-25 20:07:08,663 - freqtrade.configuration.configuration - INFO - Runmode set to dry_run.
+2024-03-25 20:07:08,663 - freqtrade.configuration.configuration - INFO - Parameter --db-url detected ...
+2024-03-25 20:07:08,663 - freqtrade.configuration.configuration - INFO - Dry run is enabled
+2024-03-25 20:07:08,664 - freqtrade.configuration.configuration - INFO - Using DB: "sqlite:////freqtrade/user_data/tradesv3.sqlite"
+2024-03-25 20:07:08,664 - freqtrade.configuration.configuration - INFO - Using max_open_trades: 100 ...
+2024-03-25 20:07:08,694 - freqtrade.configuration.configuration - INFO - Using user-data directory: /freqtrade/user_data ...
+2024-03-25 20:07:08,695 - freqtrade.configuration.configuration - INFO - Using data directory: /freqtrade/user_data/data/binance ...
+2024-03-25 20:07:08,696 - freqtrade.exchange.check_exchange - INFO - Checking exchange...
+2024-03-25 20:07:08,705 - freqtrade.exchange.check_exchange - INFO - Exchange "binance" is officially supported by the Freqtrade development team.
+2024-03-25 20:07:08,705 - freqtrade.configuration.configuration - INFO - Using pairlist from configuration.
+2024-03-25 20:07:08,728 - freqtrade.resolvers.iresolver - INFO - Using resolved strategy SampleStrategy from '/freqtrade/user_data/strategies/sample_strategy.py'...
+2024-03-25 20:07:08,729 - freqtrade.strategy.hyper - INFO - Found no parameter file.
+2024-03-25 20:07:08,730 - freqtrade.resolvers.strategy_resolver - INFO - Override strategy 'stake_currency' with value in config file: USDT.
+2024-03-25 20:07:08,730 - freqtrade.resolvers.strategy_resolver - INFO - Override strategy 'stake_amount' with value in config file: unlimited.
+2024-03-25 20:07:08,731 - freqtrade.resolvers.strategy_resolver - INFO - Override strategy 'unfilledtimeout' with value in config file: {'entry': 10, 'exit': 10, 'exit_timeout_count': 0, 'unit': 'minutes'}.
+2024-03-25 20:07:08,731 - freqtrade.resolvers.strategy_resolver - INFO - Override strategy 'max_open_trades' with value in config file: 100.
+2024-03-25 20:07:08,732 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using minimal_roi: {'60': 0.01, '30': 0.02, '0': 0.04}
+2024-03-25 20:07:08,732 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using timeframe: 5m
+2024-03-25 20:07:08,733 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using stoploss: -0.1
+2024-03-25 20:07:08,733 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using trailing_stop: False
+2024-03-25 20:07:08,734 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using trailing_stop_positive_offset: 0.0
+2024-03-25 20:07:08,734 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using trailing_only_offset_is_reached: False
+2024-03-25 20:07:08,734 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using use_custom_stoploss: False
+2024-03-25 20:07:08,735 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using process_only_new_candles: True
+2024-03-25 20:07:08,735 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using order_types: {'entry': 'limit', 'exit': 'limit', 'stoploss': 'market', 'stoploss_on_exchange': False}
+2024-03-25 20:07:08,736 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using order_time_in_force: {'entry': 'GTC', 'exit': 'GTC'}
+2024-03-25 20:07:08,736 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using stake_currency: USDT
+2024-03-25 20:07:08,736 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using stake_amount: unlimited
+2024-03-25 20:07:08,737 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using protections: []
+2024-03-25 20:07:08,737 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using startup_candle_count: 200
+2024-03-25 20:07:08,738 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using unfilledtimeout: {'entry': 10, 'exit': 10, 'exit_timeout_count': 0, 'unit': 'minutes'}
+2024-03-25 20:07:08,738 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using use_exit_signal: True
+2024-03-25 20:07:08,738 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using exit_profit_only: False
+2024-03-25 20:07:08,739 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using ignore_roi_if_entry_signal: False
+2024-03-25 20:07:08,739 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using exit_profit_offset: 0.0
+2024-03-25 20:07:08,740 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using disable_dataframe_checks: False
+2024-03-25 20:07:08,740 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using ignore_buying_expired_candle_after: 0
+2024-03-25 20:07:08,740 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using position_adjustment_enable: False
+2024-03-25 20:07:08,741 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using max_entry_position_adjustment: -1
+2024-03-25 20:07:08,741 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using max_open_trades: 100
+2024-03-25 20:07:08,742 - freqtrade.configuration.config_validation - INFO - Validating configuration ...
+2024-03-25 20:07:08,744 - freqtrade.exchange.exchange - INFO - Instance is running with dry_run enabled
+2024-03-25 20:07:08,745 - freqtrade.exchange.exchange - INFO - Using CCXT 4.2.51
+2024-03-25 20:07:08,760 - freqtrade.exchange.exchange - INFO - Using Exchange "Binance"
+2024-03-25 20:07:15,831 - freqtrade.resolvers.exchange_resolver - INFO - Using resolved exchange 'Binance'...
+2024-03-25 20:07:15,844 - freqtrade.commands.trade_commands - ERROR - (sqlite3.OperationalError) disk I/O error
+[SQL: SELECT name FROM sqlite_master WHERE type='table' AND name NOT LIKE 'sqlite~_%' ESCAPE '~' ORDER BY name]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2024-03-25 20:07:15,844 - freqtrade.commands.trade_commands - ERROR - Fatal exception!
+Traceback (most recent call last):
+  File "/home/ftuser/.local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1960, in _exec_single_context
+    self.dialect.do_execute(
+  File "/home/ftuser/.local/lib/python3.11/site-packages/sqlalchemy/engine/default.py", line 924, in do_execute
+    cursor.execute(statement, parameters)
+sqlite3.OperationalError: disk I/O error
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/freqtrade/freqtrade/commands/trade_commands.py", line 24, in start_trading
+    worker = Worker(args)
+             ^^^^^^^^^^^^
+  File "/freqtrade/freqtrade/worker.py", line 37, in __init__
+    self._init(False)
+  File "/freqtrade/freqtrade/worker.py", line 53, in _init
+    self.freqtrade = FreqtradeBot(self._config)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/freqtrade/freqtrade/freqtradebot.py", line 79, in __init__
+    init_db(self.config['db_url'])
+  File "/freqtrade/freqtrade/persistence/models.py", line 82, in init_db
+    previous_tables = inspect(engine).get_table_names()
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ftuser/.local/lib/python3.11/site-packages/sqlalchemy/engine/reflection.py", line 396, in get_table_names
+    return self.dialect.get_table_names(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<string>", line 2, in get_table_names
+  File "/home/ftuser/.local/lib/python3.11/site-packages/sqlalchemy/engine/reflection.py", line 97, in cache
+    ret = fn(self, con, *args, **kw)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ftuser/.local/lib/python3.11/site-packages/sqlalchemy/dialects/sqlite/base.py", line 2118, in get_table_names
+    names = connection.exec_driver_sql(query).scalars().all()
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ftuser/.local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1769, in exec_driver_sql
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ftuser/.local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1839, in _execute_context
+    return self._exec_single_context(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ftuser/.local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1979, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/home/ftuser/.local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 2335, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/home/ftuser/.local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1960, in _exec_single_context
+    self.dialect.do_execute(
+  File "/home/ftuser/.local/lib/python3.11/site-packages/sqlalchemy/engine/default.py", line 924, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) disk I/O error
+[SQL: SELECT name FROM sqlite_master WHERE type='table' AND name NOT LIKE 'sqlite~_%' ESCAPE '~' ORDER BY name]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2024-03-25 20:07:19,524 - freqtrade.loggers - INFO - Verbosity set to 0
+2024-03-25 20:07:19,525 - freqtrade.configuration.configuration - INFO - Runmode set to dry_run.
+2024-03-25 20:07:19,525 - freqtrade.configuration.configuration - INFO - Parameter --db-url detected ...
+2024-03-25 20:07:19,526 - freqtrade.configuration.configuration - INFO - Dry run is enabled
+2024-03-25 20:07:19,526 - freqtrade.configuration.configuration - INFO - Using DB: "sqlite:////freqtrade/user_data/tradesv3.sqlite"
+2024-03-25 20:07:19,527 - freqtrade.configuration.configuration - INFO - Using max_open_trades: 100 ...
+2024-03-25 20:07:19,559 - freqtrade.configuration.configuration - INFO - Using user-data directory: /freqtrade/user_data ...
+2024-03-25 20:07:19,561 - freqtrade.configuration.configuration - INFO - Using data directory: /freqtrade/user_data/data/binance ...
+2024-03-25 20:07:19,563 - freqtrade.exchange.check_exchange - INFO - Checking exchange...
+2024-03-25 20:07:19,571 - freqtrade.exchange.check_exchange - INFO - Exchange "binance" is officially supported by the Freqtrade development team.
+2024-03-25 20:07:19,572 - freqtrade.configuration.configuration - INFO - Using pairlist from configuration.
+2024-03-25 20:07:19,598 - freqtrade.resolvers.iresolver - INFO - Using resolved strategy SampleStrategy from '/freqtrade/user_data/strategies/sample_strategy.py'...
+2024-03-25 20:07:19,599 - freqtrade.strategy.hyper - INFO - Found no parameter file.
+2024-03-25 20:07:19,599 - freqtrade.resolvers.strategy_resolver - INFO - Override strategy 'stake_currency' with value in config file: USDT.
+2024-03-25 20:07:19,600 - freqtrade.resolvers.strategy_resolver - INFO - Override strategy 'stake_amount' with value in config file: unlimited.
+2024-03-25 20:07:19,600 - freqtrade.resolvers.strategy_resolver - INFO - Override strategy 'unfilledtimeout' with value in config file: {'entry': 10, 'exit': 10, 'exit_timeout_count': 0, 'unit': 'minutes'}.
+2024-03-25 20:07:19,601 - freqtrade.resolvers.strategy_resolver - INFO - Override strategy 'max_open_trades' with value in config file: 100.
+2024-03-25 20:07:19,601 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using minimal_roi: {'60': 0.01, '30': 0.02, '0': 0.04}
+2024-03-25 20:07:19,602 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using timeframe: 5m
+2024-03-25 20:07:19,602 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using stoploss: -0.1
+2024-03-25 20:07:19,603 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using trailing_stop: False
+2024-03-25 20:07:19,603 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using trailing_stop_positive_offset: 0.0
+2024-03-25 20:07:19,604 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using trailing_only_offset_is_reached: False
+2024-03-25 20:07:19,604 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using use_custom_stoploss: False
+2024-03-25 20:07:19,605 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using process_only_new_candles: True
+2024-03-25 20:07:19,605 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using order_types: {'entry': 'limit', 'exit': 'limit', 'stoploss': 'market', 'stoploss_on_exchange': False}
+2024-03-25 20:07:19,605 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using order_time_in_force: {'entry': 'GTC', 'exit': 'GTC'}
+2024-03-25 20:07:19,606 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using stake_currency: USDT
+2024-03-25 20:07:19,606 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using stake_amount: unlimited
+2024-03-25 20:07:19,607 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using protections: []
+2024-03-25 20:07:19,607 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using startup_candle_count: 200
+2024-03-25 20:07:19,608 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using unfilledtimeout: {'entry': 10, 'exit': 10, 'exit_timeout_count': 0, 'unit': 'minutes'}
+2024-03-25 20:07:19,608 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using use_exit_signal: True
+2024-03-25 20:07:19,608 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using exit_profit_only: False
+2024-03-25 20:07:19,609 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using ignore_roi_if_entry_signal: False
+2024-03-25 20:07:19,609 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using exit_profit_offset: 0.0
+2024-03-25 20:07:19,610 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using disable_dataframe_checks: False
+2024-03-25 20:07:19,610 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using ignore_buying_expired_candle_after: 0
+2024-03-25 20:07:19,610 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using position_adjustment_enable: False
+2024-03-25 20:07:19,611 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using max_entry_position_adjustment: -1
+2024-03-25 20:07:19,611 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using max_open_trades: 100
+2024-03-25 20:07:19,612 - freqtrade.configuration.config_validation - INFO - Validating configuration ...
+2024-03-25 20:07:19,615 - freqtrade.exchange.exchange - INFO - Instance is running with dry_run enabled
+2024-03-25 20:07:19,616 - freqtrade.exchange.exchange - INFO - Using CCXT 4.2.51
+2024-03-25 20:07:19,635 - freqtrade.exchange.exchange - INFO - Using Exchange "Binance"
+2024-03-25 20:07:25,597 - freqtrade.resolvers.exchange_resolver - INFO - Using resolved exchange 'Binance'...
+2024-03-25 20:07:25,610 - freqtrade.commands.trade_commands - ERROR - (sqlite3.OperationalError) disk I/O error
+[SQL: SELECT name FROM sqlite_master WHERE type='table' AND name NOT LIKE 'sqlite~_%' ESCAPE '~' ORDER BY name]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2024-03-25 20:07:25,610 - freqtrade.commands.trade_commands - ERROR - Fatal exception!
+Traceback (most recent call last):
+  File "/home/ftuser/.local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1960, in _exec_single_context
+    self.dialect.do_execute(
+  File "/home/ftuser/.local/lib/python3.11/site-packages/sqlalchemy/engine/default.py", line 924, in do_execute
+    cursor.execute(statement, parameters)
+sqlite3.OperationalError: disk I/O error
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/freqtrade/freqtrade/commands/trade_commands.py", line 24, in start_trading
+    worker = Worker(args)
+             ^^^^^^^^^^^^
+  File "/freqtrade/freqtrade/worker.py", line 37, in __init__
+    self._init(False)
+  File "/freqtrade/freqtrade/worker.py", line 53, in _init
+    self.freqtrade = FreqtradeBot(self._config)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/freqtrade/freqtrade/freqtradebot.py", line 79, in __init__
+    init_db(self.config['db_url'])
+  File "/freqtrade/freqtrade/persistence/models.py", line 82, in init_db
+    previous_tables = inspect(engine).get_table_names()
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ftuser/.local/lib/python3.11/site-packages/sqlalchemy/engine/reflection.py", line 396, in get_table_names
+    return self.dialect.get_table_names(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<string>", line 2, in get_table_names
+  File "/home/ftuser/.local/lib/python3.11/site-packages/sqlalchemy/engine/reflection.py", line 97, in cache
+    ret = fn(self, con, *args, **kw)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ftuser/.local/lib/python3.11/site-packages/sqlalchemy/dialects/sqlite/base.py", line 2118, in get_table_names
+    names = connection.exec_driver_sql(query).scalars().all()
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ftuser/.local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1769, in exec_driver_sql
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ftuser/.local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1839, in _execute_context
+    return self._exec_single_context(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ftuser/.local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1979, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/home/ftuser/.local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 2335, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/home/ftuser/.local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1960, in _exec_single_context
+    self.dialect.do_execute(
+  File "/home/ftuser/.local/lib/python3.11/site-packages/sqlalchemy/engine/default.py", line 924, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) disk I/O error
+[SQL: SELECT name FROM sqlite_master WHERE type='table' AND name NOT LIKE 'sqlite~_%' ESCAPE '~' ORDER BY name]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2024-03-25 20:07:29,326 - freqtrade.loggers - INFO - Verbosity set to 0
+2024-03-25 20:07:29,326 - freqtrade.configuration.configuration - INFO - Runmode set to dry_run.
+2024-03-25 20:07:29,327 - freqtrade.configuration.configuration - INFO - Parameter --db-url detected ...
+2024-03-25 20:07:29,327 - freqtrade.configuration.configuration - INFO - Dry run is enabled
+2024-03-25 20:07:29,327 - freqtrade.configuration.configuration - INFO - Using DB: "sqlite:////freqtrade/user_data/tradesv3.sqlite"
+2024-03-25 20:07:29,328 - freqtrade.configuration.configuration - INFO - Using max_open_trades: 100 ...
+2024-03-25 20:07:29,359 - freqtrade.configuration.configuration - INFO - Using user-data directory: /freqtrade/user_data ...
+2024-03-25 20:07:29,360 - freqtrade.configuration.configuration - INFO - Using data directory: /freqtrade/user_data/data/binance ...
+2024-03-25 20:07:29,361 - freqtrade.exchange.check_exchange - INFO - Checking exchange...
+2024-03-25 20:07:29,369 - freqtrade.exchange.check_exchange - INFO - Exchange "binance" is officially supported by the Freqtrade development team.
+2024-03-25 20:07:29,370 - freqtrade.configuration.configuration - INFO - Using pairlist from configuration.
+2024-03-25 20:07:29,393 - freqtrade.resolvers.iresolver - INFO - Using resolved strategy SampleStrategy from '/freqtrade/user_data/strategies/sample_strategy.py'...
+2024-03-25 20:07:29,394 - freqtrade.strategy.hyper - INFO - Found no parameter file.
+2024-03-25 20:07:29,395 - freqtrade.resolvers.strategy_resolver - INFO - Override strategy 'stake_currency' with value in config file: USDT.
+2024-03-25 20:07:29,395 - freqtrade.resolvers.strategy_resolver - INFO - Override strategy 'stake_amount' with value in config file: unlimited.
+2024-03-25 20:07:29,396 - freqtrade.resolvers.strategy_resolver - INFO - Override strategy 'unfilledtimeout' with value in config file: {'entry': 10, 'exit': 10, 'exit_timeout_count': 0, 'unit': 'minutes'}.
+2024-03-25 20:07:29,396 - freqtrade.resolvers.strategy_resolver - INFO - Override strategy 'max_open_trades' with value in config file: 100.
+2024-03-25 20:07:29,397 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using minimal_roi: {'60': 0.01, '30': 0.02, '0': 0.04}
+2024-03-25 20:07:29,397 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using timeframe: 5m
+2024-03-25 20:07:29,397 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using stoploss: -0.1
+2024-03-25 20:07:29,398 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using trailing_stop: False
+2024-03-25 20:07:29,398 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using trailing_stop_positive_offset: 0.0
+2024-03-25 20:07:29,398 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using trailing_only_offset_is_reached: False
+2024-03-25 20:07:29,399 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using use_custom_stoploss: False
+2024-03-25 20:07:29,399 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using process_only_new_candles: True
+2024-03-25 20:07:29,399 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using order_types: {'entry': 'limit', 'exit': 'limit', 'stoploss': 'market', 'stoploss_on_exchange': False}
+2024-03-25 20:07:29,400 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using order_time_in_force: {'entry': 'GTC', 'exit': 'GTC'}
+2024-03-25 20:07:29,400 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using stake_currency: USDT
+2024-03-25 20:07:29,400 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using stake_amount: unlimited
+2024-03-25 20:07:29,401 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using protections: []
+2024-03-25 20:07:29,401 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using startup_candle_count: 200
+2024-03-25 20:07:29,401 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using unfilledtimeout: {'entry': 10, 'exit': 10, 'exit_timeout_count': 0, 'unit': 'minutes'}
+2024-03-25 20:07:29,402 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using use_exit_signal: True
+2024-03-25 20:07:29,402 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using exit_profit_only: False
+2024-03-25 20:07:29,402 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using ignore_roi_if_entry_signal: False
+2024-03-25 20:07:29,403 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using exit_profit_offset: 0.0
+2024-03-25 20:07:29,403 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using disable_dataframe_checks: False
+2024-03-25 20:07:29,403 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using ignore_buying_expired_candle_after: 0
+2024-03-25 20:07:29,404 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using position_adjustment_enable: False
+2024-03-25 20:07:29,404 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using max_entry_position_adjustment: -1
+2024-03-25 20:07:29,404 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using max_open_trades: 100
+2024-03-25 20:07:29,405 - freqtrade.configuration.config_validation - INFO - Validating configuration ...
+2024-03-25 20:07:29,408 - freqtrade.exchange.exchange - INFO - Instance is running with dry_run enabled
+2024-03-25 20:07:29,408 - freqtrade.exchange.exchange - INFO - Using CCXT 4.2.51
+2024-03-25 20:07:29,424 - freqtrade.exchange.exchange - INFO - Using Exchange "Binance"
+2024-03-25 20:07:35,380 - freqtrade.resolvers.exchange_resolver - INFO - Using resolved exchange 'Binance'...
+2024-03-25 20:07:35,393 - freqtrade.commands.trade_commands - ERROR - (sqlite3.OperationalError) disk I/O error
+[SQL: SELECT name FROM sqlite_master WHERE type='table' AND name NOT LIKE 'sqlite~_%' ESCAPE '~' ORDER BY name]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2024-03-25 20:07:35,393 - freqtrade.commands.trade_commands - ERROR - Fatal exception!
+Traceback (most recent call last):
+  File "/home/ftuser/.local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1960, in _exec_single_context
+    self.dialect.do_execute(
+  File "/home/ftuser/.local/lib/python3.11/site-packages/sqlalchemy/engine/default.py", line 924, in do_execute
+    cursor.execute(statement, parameters)
+sqlite3.OperationalError: disk I/O error
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/freqtrade/freqtrade/commands/trade_commands.py", line 24, in start_trading
+    worker = Worker(args)
+             ^^^^^^^^^^^^
+  File "/freqtrade/freqtrade/worker.py", line 37, in __init__
+    self._init(False)
+  File "/freqtrade/freqtrade/worker.py", line 53, in _init
+    self.freqtrade = FreqtradeBot(self._config)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/freqtrade/freqtrade/freqtradebot.py", line 79, in __init__
+    init_db(self.config['db_url'])
+  File "/freqtrade/freqtrade/persistence/models.py", line 82, in init_db
+    previous_tables = inspect(engine).get_table_names()
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ftuser/.local/lib/python3.11/site-packages/sqlalchemy/engine/reflection.py", line 396, in get_table_names
+    return self.dialect.get_table_names(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<string>", line 2, in get_table_names
+  File "/home/ftuser/.local/lib/python3.11/site-packages/sqlalchemy/engine/reflection.py", line 97, in cache
+    ret = fn(self, con, *args, **kw)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ftuser/.local/lib/python3.11/site-packages/sqlalchemy/dialects/sqlite/base.py", line 2118, in get_table_names
+    names = connection.exec_driver_sql(query).scalars().all()
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ftuser/.local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1769, in exec_driver_sql
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ftuser/.local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1839, in _execute_context
+    return self._exec_single_context(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ftuser/.local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1979, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/home/ftuser/.local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 2335, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/home/ftuser/.local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1960, in _exec_single_context
+    self.dialect.do_execute(
+  File "/home/ftuser/.local/lib/python3.11/site-packages/sqlalchemy/engine/default.py", line 924, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) disk I/O error
+[SQL: SELECT name FROM sqlite_master WHERE type='table' AND name NOT LIKE 'sqlite~_%' ESCAPE '~' ORDER BY name]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2024-03-25 20:07:38,983 - freqtrade.loggers - INFO - Verbosity set to 0
+2024-03-25 20:07:38,983 - freqtrade.configuration.configuration - INFO - Runmode set to dry_run.
+2024-03-25 20:07:38,984 - freqtrade.configuration.configuration - INFO - Parameter --db-url detected ...
+2024-03-25 20:07:38,984 - freqtrade.configuration.configuration - INFO - Dry run is enabled
+2024-03-25 20:07:38,985 - freqtrade.configuration.configuration - INFO - Using DB: "sqlite:////freqtrade/user_data/tradesv3.sqlite"
+2024-03-25 20:07:38,985 - freqtrade.configuration.configuration - INFO - Using max_open_trades: 100 ...
+2024-03-25 20:07:39,014 - freqtrade.configuration.configuration - INFO - Using user-data directory: /freqtrade/user_data ...
+2024-03-25 20:07:39,016 - freqtrade.configuration.configuration - INFO - Using data directory: /freqtrade/user_data/data/binance ...
+2024-03-25 20:07:39,017 - freqtrade.exchange.check_exchange - INFO - Checking exchange...
+2024-03-25 20:07:39,024 - freqtrade.exchange.check_exchange - INFO - Exchange "binance" is officially supported by the Freqtrade development team.
+2024-03-25 20:07:39,025 - freqtrade.configuration.configuration - INFO - Using pairlist from configuration.
+2024-03-25 20:07:39,050 - freqtrade.resolvers.iresolver - INFO - Using resolved strategy SampleStrategy from '/freqtrade/user_data/strategies/sample_strategy.py'...
+2024-03-25 20:07:39,051 - freqtrade.strategy.hyper - INFO - Found no parameter file.
+2024-03-25 20:07:39,052 - freqtrade.resolvers.strategy_resolver - INFO - Override strategy 'stake_currency' with value in config file: USDT.
+2024-03-25 20:07:39,052 - freqtrade.resolvers.strategy_resolver - INFO - Override strategy 'stake_amount' with value in config file: unlimited.
+2024-03-25 20:07:39,052 - freqtrade.resolvers.strategy_resolver - INFO - Override strategy 'unfilledtimeout' with value in config file: {'entry': 10, 'exit': 10, 'exit_timeout_count': 0, 'unit': 'minutes'}.
+2024-03-25 20:07:39,053 - freqtrade.resolvers.strategy_resolver - INFO - Override strategy 'max_open_trades' with value in config file: 100.
+2024-03-25 20:07:39,053 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using minimal_roi: {'60': 0.01, '30': 0.02, '0': 0.04}
+2024-03-25 20:07:39,054 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using timeframe: 5m
+2024-03-25 20:07:39,054 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using stoploss: -0.1
+2024-03-25 20:07:39,054 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using trailing_stop: False
+2024-03-25 20:07:39,055 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using trailing_stop_positive_offset: 0.0
+2024-03-25 20:07:39,055 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using trailing_only_offset_is_reached: False
+2024-03-25 20:07:39,056 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using use_custom_stoploss: False
+2024-03-25 20:07:39,056 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using process_only_new_candles: True
+2024-03-25 20:07:39,056 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using order_types: {'entry': 'limit', 'exit': 'limit', 'stoploss': 'market', 'stoploss_on_exchange': False}
+2024-03-25 20:07:39,057 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using order_time_in_force: {'entry': 'GTC', 'exit': 'GTC'}
+2024-03-25 20:07:39,057 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using stake_currency: USDT
+2024-03-25 20:07:39,058 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using stake_amount: unlimited
+2024-03-25 20:07:39,058 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using protections: []
+2024-03-25 20:07:39,058 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using startup_candle_count: 200
+2024-03-25 20:07:39,059 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using unfilledtimeout: {'entry': 10, 'exit': 10, 'exit_timeout_count': 0, 'unit': 'minutes'}
+2024-03-25 20:07:39,059 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using use_exit_signal: True
+2024-03-25 20:07:39,060 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using exit_profit_only: False
+2024-03-25 20:07:39,060 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using ignore_roi_if_entry_signal: False
+2024-03-25 20:07:39,060 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using exit_profit_offset: 0.0
+2024-03-25 20:07:39,061 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using disable_dataframe_checks: False
+2024-03-25 20:07:39,061 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using ignore_buying_expired_candle_after: 0
+2024-03-25 20:07:39,062 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using position_adjustment_enable: False
+2024-03-25 20:07:39,062 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using max_entry_position_adjustment: -1
+2024-03-25 20:07:39,062 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using max_open_trades: 100
+2024-03-25 20:07:39,063 - freqtrade.configuration.config_validation - INFO - Validating configuration ...
+2024-03-25 20:07:39,065 - freqtrade.exchange.exchange - INFO - Instance is running with dry_run enabled
+2024-03-25 20:07:39,066 - freqtrade.exchange.exchange - INFO - Using CCXT 4.2.51
+2024-03-25 20:07:39,081 - freqtrade.exchange.exchange - INFO - Using Exchange "Binance"
+2024-03-25 20:07:45,517 - freqtrade.resolvers.exchange_resolver - INFO - Using resolved exchange 'Binance'...
+2024-03-25 20:07:45,529 - freqtrade.commands.trade_commands - ERROR - (sqlite3.OperationalError) disk I/O error
+[SQL: SELECT name FROM sqlite_master WHERE type='table' AND name NOT LIKE 'sqlite~_%' ESCAPE '~' ORDER BY name]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2024-03-25 20:07:45,530 - freqtrade.commands.trade_commands - ERROR - Fatal exception!
+Traceback (most recent call last):
+  File "/home/ftuser/.local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1960, in _exec_single_context
+    self.dialect.do_execute(
+  File "/home/ftuser/.local/lib/python3.11/site-packages/sqlalchemy/engine/default.py", line 924, in do_execute
+    cursor.execute(statement, parameters)
+sqlite3.OperationalError: disk I/O error
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/freqtrade/freqtrade/commands/trade_commands.py", line 24, in start_trading
+    worker = Worker(args)
+             ^^^^^^^^^^^^
+  File "/freqtrade/freqtrade/worker.py", line 37, in __init__
+    self._init(False)
+  File "/freqtrade/freqtrade/worker.py", line 53, in _init
+    self.freqtrade = FreqtradeBot(self._config)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/freqtrade/freqtrade/freqtradebot.py", line 79, in __init__
+    init_db(self.config['db_url'])
+  File "/freqtrade/freqtrade/persistence/models.py", line 82, in init_db
+    previous_tables = inspect(engine).get_table_names()
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ftuser/.local/lib/python3.11/site-packages/sqlalchemy/engine/reflection.py", line 396, in get_table_names
+    return self.dialect.get_table_names(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<string>", line 2, in get_table_names
+  File "/home/ftuser/.local/lib/python3.11/site-packages/sqlalchemy/engine/reflection.py", line 97, in cache
+    ret = fn(self, con, *args, **kw)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ftuser/.local/lib/python3.11/site-packages/sqlalchemy/dialects/sqlite/base.py", line 2118, in get_table_names
+    names = connection.exec_driver_sql(query).scalars().all()
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ftuser/.local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1769, in exec_driver_sql
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ftuser/.local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1839, in _execute_context
+    return self._exec_single_context(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ftuser/.local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1979, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/home/ftuser/.local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 2335, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/home/ftuser/.local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1960, in _exec_single_context
+    self.dialect.do_execute(
+  File "/home/ftuser/.local/lib/python3.11/site-packages/sqlalchemy/engine/default.py", line 924, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) disk I/O error
+[SQL: SELECT name FROM sqlite_master WHERE type='table' AND name NOT LIKE 'sqlite~_%' ESCAPE '~' ORDER BY name]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2024-03-25 20:07:49,549 - freqtrade.loggers - INFO - Verbosity set to 0
+2024-03-25 20:07:49,550 - freqtrade.configuration.configuration - INFO - Runmode set to dry_run.
+2024-03-25 20:07:49,550 - freqtrade.configuration.configuration - INFO - Parameter --db-url detected ...
+2024-03-25 20:07:49,551 - freqtrade.configuration.configuration - INFO - Dry run is enabled
+2024-03-25 20:07:49,551 - freqtrade.configuration.configuration - INFO - Using DB: "sqlite:////freqtrade/user_data/tradesv3.sqlite"
+2024-03-25 20:07:49,552 - freqtrade.configuration.configuration - INFO - Using max_open_trades: 100 ...
+2024-03-25 20:07:49,580 - freqtrade.configuration.configuration - INFO - Using user-data directory: /freqtrade/user_data ...
+2024-03-25 20:07:49,581 - freqtrade.configuration.configuration - INFO - Using data directory: /freqtrade/user_data/data/binance ...
+2024-03-25 20:07:49,582 - freqtrade.exchange.check_exchange - INFO - Checking exchange...
+2024-03-25 20:07:49,590 - freqtrade.exchange.check_exchange - INFO - Exchange "binance" is officially supported by the Freqtrade development team.
+2024-03-25 20:07:49,591 - freqtrade.configuration.configuration - INFO - Using pairlist from configuration.
+2024-03-25 20:07:49,614 - freqtrade.resolvers.iresolver - INFO - Using resolved strategy SampleStrategy from '/freqtrade/user_data/strategies/sample_strategy.py'...
+2024-03-25 20:07:49,615 - freqtrade.strategy.hyper - INFO - Found no parameter file.
+2024-03-25 20:07:49,616 - freqtrade.resolvers.strategy_resolver - INFO - Override strategy 'stake_currency' with value in config file: USDT.
+2024-03-25 20:07:49,616 - freqtrade.resolvers.strategy_resolver - INFO - Override strategy 'stake_amount' with value in config file: unlimited.
+2024-03-25 20:07:49,617 - freqtrade.resolvers.strategy_resolver - INFO - Override strategy 'unfilledtimeout' with value in config file: {'entry': 10, 'exit': 10, 'exit_timeout_count': 0, 'unit': 'minutes'}.
+2024-03-25 20:07:49,617 - freqtrade.resolvers.strategy_resolver - INFO - Override strategy 'max_open_trades' with value in config file: 100.
+2024-03-25 20:07:49,617 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using minimal_roi: {'60': 0.01, '30': 0.02, '0': 0.04}
+2024-03-25 20:07:49,618 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using timeframe: 5m
+2024-03-25 20:07:49,618 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using stoploss: -0.1
+2024-03-25 20:07:49,619 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using trailing_stop: False
+2024-03-25 20:07:49,619 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using trailing_stop_positive_offset: 0.0
+2024-03-25 20:07:49,620 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using trailing_only_offset_is_reached: False
+2024-03-25 20:07:49,620 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using use_custom_stoploss: False
+2024-03-25 20:07:49,620 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using process_only_new_candles: True
+2024-03-25 20:07:49,621 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using order_types: {'entry': 'limit', 'exit': 'limit', 'stoploss': 'market', 'stoploss_on_exchange': False}
+2024-03-25 20:07:49,621 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using order_time_in_force: {'entry': 'GTC', 'exit': 'GTC'}
+2024-03-25 20:07:49,622 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using stake_currency: USDT
+2024-03-25 20:07:49,622 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using stake_amount: unlimited
+2024-03-25 20:07:49,622 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using protections: []
+2024-03-25 20:07:49,623 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using startup_candle_count: 200
+2024-03-25 20:07:49,623 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using unfilledtimeout: {'entry': 10, 'exit': 10, 'exit_timeout_count': 0, 'unit': 'minutes'}
+2024-03-25 20:07:49,623 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using use_exit_signal: True
+2024-03-25 20:07:49,624 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using exit_profit_only: False
+2024-03-25 20:07:49,624 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using ignore_roi_if_entry_signal: False
+2024-03-25 20:07:49,624 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using exit_profit_offset: 0.0
+2024-03-25 20:07:49,631 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using disable_dataframe_checks: False
+2024-03-25 20:07:49,631 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using ignore_buying_expired_candle_after: 0
+2024-03-25 20:07:49,632 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using position_adjustment_enable: False
+2024-03-25 20:07:49,632 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using max_entry_position_adjustment: -1
+2024-03-25 20:07:49,632 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using max_open_trades: 100
+2024-03-25 20:07:49,633 - freqtrade.configuration.config_validation - INFO - Validating configuration ...
+2024-03-25 20:07:49,635 - freqtrade.exchange.exchange - INFO - Instance is running with dry_run enabled
+2024-03-25 20:07:49,636 - freqtrade.exchange.exchange - INFO - Using CCXT 4.2.51
+2024-03-25 20:07:49,651 - freqtrade.exchange.exchange - INFO - Using Exchange "Binance"
+2024-03-25 20:07:56,026 - freqtrade.resolvers.exchange_resolver - INFO - Using resolved exchange 'Binance'...
+2024-03-25 20:07:56,039 - freqtrade.commands.trade_commands - ERROR - (sqlite3.OperationalError) disk I/O error
+[SQL: SELECT name FROM sqlite_master WHERE type='table' AND name NOT LIKE 'sqlite~_%' ESCAPE '~' ORDER BY name]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2024-03-25 20:07:56,039 - freqtrade.commands.trade_commands - ERROR - Fatal exception!
+Traceback (most recent call last):
+  File "/home/ftuser/.local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1960, in _exec_single_context
+    self.dialect.do_execute(
+  File "/home/ftuser/.local/lib/python3.11/site-packages/sqlalchemy/engine/default.py", line 924, in do_execute
+    cursor.execute(statement, parameters)
+sqlite3.OperationalError: disk I/O error
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/freqtrade/freqtrade/commands/trade_commands.py", line 24, in start_trading
+    worker = Worker(args)
+             ^^^^^^^^^^^^
+  File "/freqtrade/freqtrade/worker.py", line 37, in __init__
+    self._init(False)
+  File "/freqtrade/freqtrade/worker.py", line 53, in _init
+    self.freqtrade = FreqtradeBot(self._config)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/freqtrade/freqtrade/freqtradebot.py", line 79, in __init__
+    init_db(self.config['db_url'])
+  File "/freqtrade/freqtrade/persistence/models.py", line 82, in init_db
+    previous_tables = inspect(engine).get_table_names()
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ftuser/.local/lib/python3.11/site-packages/sqlalchemy/engine/reflection.py", line 396, in get_table_names
+    return self.dialect.get_table_names(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<string>", line 2, in get_table_names
+  File "/home/ftuser/.local/lib/python3.11/site-packages/sqlalchemy/engine/reflection.py", line 97, in cache
+    ret = fn(self, con, *args, **kw)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ftuser/.local/lib/python3.11/site-packages/sqlalchemy/dialects/sqlite/base.py", line 2118, in get_table_names
+    names = connection.exec_driver_sql(query).scalars().all()
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ftuser/.local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1769, in exec_driver_sql
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ftuser/.local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1839, in _execute_context
+    return self._exec_single_context(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ftuser/.local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1979, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/home/ftuser/.local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 2335, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/home/ftuser/.local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1960, in _exec_single_context
+    self.dialect.do_execute(
+  File "/home/ftuser/.local/lib/python3.11/site-packages/sqlalchemy/engine/default.py", line 924, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) disk I/O error
+[SQL: SELECT name FROM sqlite_master WHERE type='table' AND name NOT LIKE 'sqlite~_%' ESCAPE '~' ORDER BY name]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2024-03-25 20:08:00,871 - freqtrade.loggers - INFO - Verbosity set to 0
+2024-03-25 20:08:00,872 - freqtrade.configuration.configuration - INFO - Runmode set to dry_run.
+2024-03-25 20:08:00,872 - freqtrade.configuration.configuration - INFO - Parameter --db-url detected ...
+2024-03-25 20:08:00,873 - freqtrade.configuration.configuration - INFO - Dry run is enabled
+2024-03-25 20:08:00,873 - freqtrade.configuration.configuration - INFO - Using DB: "sqlite:////freqtrade/user_data/tradesv3.sqlite"
+2024-03-25 20:08:00,874 - freqtrade.configuration.configuration - INFO - Using max_open_trades: 100 ...
+2024-03-25 20:08:00,903 - freqtrade.configuration.configuration - INFO - Using user-data directory: /freqtrade/user_data ...
+2024-03-25 20:08:00,904 - freqtrade.configuration.configuration - INFO - Using data directory: /freqtrade/user_data/data/binance ...
+2024-03-25 20:08:00,905 - freqtrade.exchange.check_exchange - INFO - Checking exchange...
+2024-03-25 20:08:00,913 - freqtrade.exchange.check_exchange - INFO - Exchange "binance" is officially supported by the Freqtrade development team.
+2024-03-25 20:08:00,914 - freqtrade.configuration.configuration - INFO - Using pairlist from configuration.
+2024-03-25 20:08:00,938 - freqtrade.resolvers.iresolver - INFO - Using resolved strategy SampleStrategy from '/freqtrade/user_data/strategies/sample_strategy.py'...
+2024-03-25 20:08:00,939 - freqtrade.strategy.hyper - INFO - Found no parameter file.
+2024-03-25 20:08:00,940 - freqtrade.resolvers.strategy_resolver - INFO - Override strategy 'stake_currency' with value in config file: USDT.
+2024-03-25 20:08:00,940 - freqtrade.resolvers.strategy_resolver - INFO - Override strategy 'stake_amount' with value in config file: unlimited.
+2024-03-25 20:08:00,941 - freqtrade.resolvers.strategy_resolver - INFO - Override strategy 'unfilledtimeout' with value in config file: {'entry': 10, 'exit': 10, 'exit_timeout_count': 0, 'unit': 'minutes'}.
+2024-03-25 20:08:00,941 - freqtrade.resolvers.strategy_resolver - INFO - Override strategy 'max_open_trades' with value in config file: 100.
+2024-03-25 20:08:00,941 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using minimal_roi: {'60': 0.01, '30': 0.02, '0': 0.04}
+2024-03-25 20:08:00,942 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using timeframe: 5m
+2024-03-25 20:08:00,942 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using stoploss: -0.1
+2024-03-25 20:08:00,943 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using trailing_stop: False
+2024-03-25 20:08:00,943 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using trailing_stop_positive_offset: 0.0
+2024-03-25 20:08:00,944 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using trailing_only_offset_is_reached: False
+2024-03-25 20:08:00,944 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using use_custom_stoploss: False
+2024-03-25 20:08:00,944 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using process_only_new_candles: True
+2024-03-25 20:08:00,945 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using order_types: {'entry': 'limit', 'exit': 'limit', 'stoploss': 'market', 'stoploss_on_exchange': False}
+2024-03-25 20:08:00,945 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using order_time_in_force: {'entry': 'GTC', 'exit': 'GTC'}
+2024-03-25 20:08:00,946 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using stake_currency: USDT
+2024-03-25 20:08:00,946 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using stake_amount: unlimited
+2024-03-25 20:08:00,946 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using protections: []
+2024-03-25 20:08:00,947 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using startup_candle_count: 200
+2024-03-25 20:08:00,947 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using unfilledtimeout: {'entry': 10, 'exit': 10, 'exit_timeout_count': 0, 'unit': 'minutes'}
+2024-03-25 20:08:00,948 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using use_exit_signal: True
+2024-03-25 20:08:00,948 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using exit_profit_only: False
+2024-03-25 20:08:00,948 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using ignore_roi_if_entry_signal: False
+2024-03-25 20:08:00,949 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using exit_profit_offset: 0.0
+2024-03-25 20:08:00,949 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using disable_dataframe_checks: False
+2024-03-25 20:08:00,950 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using ignore_buying_expired_candle_after: 0
+2024-03-25 20:08:00,950 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using position_adjustment_enable: False
+2024-03-25 20:08:00,950 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using max_entry_position_adjustment: -1
+2024-03-25 20:08:00,951 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using max_open_trades: 100
+2024-03-25 20:08:00,951 - freqtrade.configuration.config_validation - INFO - Validating configuration ...
+2024-03-25 20:08:00,954 - freqtrade.exchange.exchange - INFO - Instance is running with dry_run enabled
+2024-03-25 20:08:00,954 - freqtrade.exchange.exchange - INFO - Using CCXT 4.2.51
+2024-03-25 20:08:00,970 - freqtrade.exchange.exchange - INFO - Using Exchange "Binance"
+2024-03-25 20:08:07,368 - freqtrade.resolvers.exchange_resolver - INFO - Using resolved exchange 'Binance'...
+2024-03-25 20:08:07,380 - freqtrade.commands.trade_commands - ERROR - (sqlite3.OperationalError) disk I/O error
+[SQL: SELECT name FROM sqlite_master WHERE type='table' AND name NOT LIKE 'sqlite~_%' ESCAPE '~' ORDER BY name]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2024-03-25 20:08:07,381 - freqtrade.commands.trade_commands - ERROR - Fatal exception!
+Traceback (most recent call last):
+  File "/home/ftuser/.local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1960, in _exec_single_context
+    self.dialect.do_execute(
+  File "/home/ftuser/.local/lib/python3.11/site-packages/sqlalchemy/engine/default.py", line 924, in do_execute
+    cursor.execute(statement, parameters)
+sqlite3.OperationalError: disk I/O error
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/freqtrade/freqtrade/commands/trade_commands.py", line 24, in start_trading
+    worker = Worker(args)
+             ^^^^^^^^^^^^
+  File "/freqtrade/freqtrade/worker.py", line 37, in __init__
+    self._init(False)
+  File "/freqtrade/freqtrade/worker.py", line 53, in _init
+    self.freqtrade = FreqtradeBot(self._config)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/freqtrade/freqtrade/freqtradebot.py", line 79, in __init__
+    init_db(self.config['db_url'])
+  File "/freqtrade/freqtrade/persistence/models.py", line 82, in init_db
+    previous_tables = inspect(engine).get_table_names()
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ftuser/.local/lib/python3.11/site-packages/sqlalchemy/engine/reflection.py", line 396, in get_table_names
+    return self.dialect.get_table_names(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<string>", line 2, in get_table_names
+  File "/home/ftuser/.local/lib/python3.11/site-packages/sqlalchemy/engine/reflection.py", line 97, in cache
+    ret = fn(self, con, *args, **kw)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ftuser/.local/lib/python3.11/site-packages/sqlalchemy/dialects/sqlite/base.py", line 2118, in get_table_names
+    names = connection.exec_driver_sql(query).scalars().all()
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ftuser/.local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1769, in exec_driver_sql
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ftuser/.local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1839, in _execute_context
+    return self._exec_single_context(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ftuser/.local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1979, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/home/ftuser/.local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 2335, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/home/ftuser/.local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1960, in _exec_single_context
+    self.dialect.do_execute(
+  File "/home/ftuser/.local/lib/python3.11/site-packages/sqlalchemy/engine/default.py", line 924, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) disk I/O error
+[SQL: SELECT name FROM sqlite_master WHERE type='table' AND name NOT LIKE 'sqlite~_%' ESCAPE '~' ORDER BY name]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2024-03-25 20:08:13,869 - freqtrade.loggers - INFO - Verbosity set to 0
+2024-03-25 20:08:13,870 - freqtrade.configuration.configuration - INFO - Runmode set to dry_run.
+2024-03-25 20:08:13,870 - freqtrade.configuration.configuration - INFO - Parameter --db-url detected ...
+2024-03-25 20:08:13,871 - freqtrade.configuration.configuration - INFO - Dry run is enabled
+2024-03-25 20:08:13,871 - freqtrade.configuration.configuration - INFO - Using DB: "sqlite:////freqtrade/user_data/tradesv3.sqlite"
+2024-03-25 20:08:13,872 - freqtrade.configuration.configuration - INFO - Using max_open_trades: 100 ...
+2024-03-25 20:08:13,904 - freqtrade.configuration.configuration - INFO - Using user-data directory: /freqtrade/user_data ...
+2024-03-25 20:08:13,906 - freqtrade.configuration.configuration - INFO - Using data directory: /freqtrade/user_data/data/binance ...
+2024-03-25 20:08:13,907 - freqtrade.exchange.check_exchange - INFO - Checking exchange...
+2024-03-25 20:08:13,915 - freqtrade.exchange.check_exchange - INFO - Exchange "binance" is officially supported by the Freqtrade development team.
+2024-03-25 20:08:13,915 - freqtrade.configuration.configuration - INFO - Using pairlist from configuration.
+2024-03-25 20:08:13,941 - freqtrade.resolvers.iresolver - INFO - Using resolved strategy SampleStrategy from '/freqtrade/user_data/strategies/sample_strategy.py'...
+2024-03-25 20:08:13,942 - freqtrade.strategy.hyper - INFO - Found no parameter file.
+2024-03-25 20:08:13,942 - freqtrade.resolvers.strategy_resolver - INFO - Override strategy 'stake_currency' with value in config file: USDT.
+2024-03-25 20:08:13,943 - freqtrade.resolvers.strategy_resolver - INFO - Override strategy 'stake_amount' with value in config file: unlimited.
+2024-03-25 20:08:13,944 - freqtrade.resolvers.strategy_resolver - INFO - Override strategy 'unfilledtimeout' with value in config file: {'entry': 10, 'exit': 10, 'exit_timeout_count': 0, 'unit': 'minutes'}.
+2024-03-25 20:08:13,944 - freqtrade.resolvers.strategy_resolver - INFO - Override strategy 'max_open_trades' with value in config file: 100.
+2024-03-25 20:08:13,944 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using minimal_roi: {'60': 0.01, '30': 0.02, '0': 0.04}
+2024-03-25 20:08:13,945 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using timeframe: 5m
+2024-03-25 20:08:13,945 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using stoploss: -0.1
+2024-03-25 20:08:13,946 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using trailing_stop: False
+2024-03-25 20:08:13,946 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using trailing_stop_positive_offset: 0.0
+2024-03-25 20:08:13,947 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using trailing_only_offset_is_reached: False
+2024-03-25 20:08:13,947 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using use_custom_stoploss: False
+2024-03-25 20:08:13,947 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using process_only_new_candles: True
+2024-03-25 20:08:13,948 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using order_types: {'entry': 'limit', 'exit': 'limit', 'stoploss': 'market', 'stoploss_on_exchange': False}
+2024-03-25 20:08:13,948 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using order_time_in_force: {'entry': 'GTC', 'exit': 'GTC'}
+2024-03-25 20:08:13,949 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using stake_currency: USDT
+2024-03-25 20:08:13,949 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using stake_amount: unlimited
+2024-03-25 20:08:13,950 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using protections: []
+2024-03-25 20:08:13,950 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using startup_candle_count: 200
+2024-03-25 20:08:13,951 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using unfilledtimeout: {'entry': 10, 'exit': 10, 'exit_timeout_count': 0, 'unit': 'minutes'}
+2024-03-25 20:08:13,951 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using use_exit_signal: True
+2024-03-25 20:08:13,951 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using exit_profit_only: False
+2024-03-25 20:08:13,952 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using ignore_roi_if_entry_signal: False
+2024-03-25 20:08:13,952 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using exit_profit_offset: 0.0
+2024-03-25 20:08:13,953 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using disable_dataframe_checks: False
+2024-03-25 20:08:13,953 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using ignore_buying_expired_candle_after: 0
+2024-03-25 20:08:13,953 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using position_adjustment_enable: False
+2024-03-25 20:08:13,954 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using max_entry_position_adjustment: -1
+2024-03-25 20:08:13,954 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using max_open_trades: 100
+2024-03-25 20:08:13,955 - freqtrade.configuration.config_validation - INFO - Validating configuration ...
+2024-03-25 20:08:13,957 - freqtrade.exchange.exchange - INFO - Instance is running with dry_run enabled
+2024-03-25 20:08:13,958 - freqtrade.exchange.exchange - INFO - Using CCXT 4.2.51
+2024-03-25 20:08:13,976 - freqtrade.exchange.exchange - INFO - Using Exchange "Binance"
+2024-03-25 20:08:20,759 - freqtrade.resolvers.exchange_resolver - INFO - Using resolved exchange 'Binance'...
+2024-03-25 20:08:20,777 - freqtrade.commands.trade_commands - ERROR - (sqlite3.OperationalError) disk I/O error
+[SQL: SELECT name FROM sqlite_master WHERE type='table' AND name NOT LIKE 'sqlite~_%' ESCAPE '~' ORDER BY name]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2024-03-25 20:08:20,778 - freqtrade.commands.trade_commands - ERROR - Fatal exception!
+Traceback (most recent call last):
+  File "/home/ftuser/.local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1960, in _exec_single_context
+    self.dialect.do_execute(
+  File "/home/ftuser/.local/lib/python3.11/site-packages/sqlalchemy/engine/default.py", line 924, in do_execute
+    cursor.execute(statement, parameters)
+sqlite3.OperationalError: disk I/O error
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/freqtrade/freqtrade/commands/trade_commands.py", line 24, in start_trading
+    worker = Worker(args)
+             ^^^^^^^^^^^^
+  File "/freqtrade/freqtrade/worker.py", line 37, in __init__
+    self._init(False)
+  File "/freqtrade/freqtrade/worker.py", line 53, in _init
+    self.freqtrade = FreqtradeBot(self._config)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/freqtrade/freqtrade/freqtradebot.py", line 79, in __init__
+    init_db(self.config['db_url'])
+  File "/freqtrade/freqtrade/persistence/models.py", line 82, in init_db
+    previous_tables = inspect(engine).get_table_names()
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ftuser/.local/lib/python3.11/site-packages/sqlalchemy/engine/reflection.py", line 396, in get_table_names
+    return self.dialect.get_table_names(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<string>", line 2, in get_table_names
+  File "/home/ftuser/.local/lib/python3.11/site-packages/sqlalchemy/engine/reflection.py", line 97, in cache
+    ret = fn(self, con, *args, **kw)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ftuser/.local/lib/python3.11/site-packages/sqlalchemy/dialects/sqlite/base.py", line 2118, in get_table_names
+    names = connection.exec_driver_sql(query).scalars().all()
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ftuser/.local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1769, in exec_driver_sql
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ftuser/.local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1839, in _execute_context
+    return self._exec_single_context(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ftuser/.local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1979, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/home/ftuser/.local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 2335, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/home/ftuser/.local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1960, in _exec_single_context
+    self.dialect.do_execute(
+  File "/home/ftuser/.local/lib/python3.11/site-packages/sqlalchemy/engine/default.py", line 924, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) disk I/O error
+[SQL: SELECT name FROM sqlite_master WHERE type='table' AND name NOT LIKE 'sqlite~_%' ESCAPE '~' ORDER BY name]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2024-03-25 20:08:30,451 - freqtrade.loggers - INFO - Verbosity set to 0
+2024-03-25 20:08:30,451 - freqtrade.configuration.configuration - INFO - Runmode set to dry_run.
+2024-03-25 20:08:30,452 - freqtrade.configuration.configuration - INFO - Parameter --db-url detected ...
+2024-03-25 20:08:30,452 - freqtrade.configuration.configuration - INFO - Dry run is enabled
+2024-03-25 20:08:30,453 - freqtrade.configuration.configuration - INFO - Using DB: "sqlite:////freqtrade/user_data/tradesv3.sqlite"
+2024-03-25 20:08:30,453 - freqtrade.configuration.configuration - INFO - Using max_open_trades: 100 ...
+2024-03-25 20:08:30,484 - freqtrade.configuration.configuration - INFO - Using user-data directory: /freqtrade/user_data ...
+2024-03-25 20:08:30,485 - freqtrade.configuration.configuration - INFO - Using data directory: /freqtrade/user_data/data/binance ...
+2024-03-25 20:08:30,486 - freqtrade.exchange.check_exchange - INFO - Checking exchange...
+2024-03-25 20:08:30,494 - freqtrade.exchange.check_exchange - INFO - Exchange "binance" is officially supported by the Freqtrade development team.
+2024-03-25 20:08:30,495 - freqtrade.configuration.configuration - INFO - Using pairlist from configuration.
+2024-03-25 20:08:30,520 - freqtrade.resolvers.iresolver - INFO - Using resolved strategy SampleStrategy from '/freqtrade/user_data/strategies/sample_strategy.py'...
+2024-03-25 20:08:30,521 - freqtrade.strategy.hyper - INFO - Found no parameter file.
+2024-03-25 20:08:30,522 - freqtrade.resolvers.strategy_resolver - INFO - Override strategy 'stake_currency' with value in config file: USDT.
+2024-03-25 20:08:30,522 - freqtrade.resolvers.strategy_resolver - INFO - Override strategy 'stake_amount' with value in config file: unlimited.
+2024-03-25 20:08:30,523 - freqtrade.resolvers.strategy_resolver - INFO - Override strategy 'unfilledtimeout' with value in config file: {'entry': 10, 'exit': 10, 'exit_timeout_count': 0, 'unit': 'minutes'}.
+2024-03-25 20:08:30,523 - freqtrade.resolvers.strategy_resolver - INFO - Override strategy 'max_open_trades' with value in config file: 100.
+2024-03-25 20:08:30,524 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using minimal_roi: {'60': 0.01, '30': 0.02, '0': 0.04}
+2024-03-25 20:08:30,524 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using timeframe: 5m
+2024-03-25 20:08:30,524 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using stoploss: -0.1
+2024-03-25 20:08:30,525 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using trailing_stop: False
+2024-03-25 20:08:30,525 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using trailing_stop_positive_offset: 0.0
+2024-03-25 20:08:30,526 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using trailing_only_offset_is_reached: False
+2024-03-25 20:08:30,526 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using use_custom_stoploss: False
+2024-03-25 20:08:30,527 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using process_only_new_candles: True
+2024-03-25 20:08:30,527 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using order_types: {'entry': 'limit', 'exit': 'limit', 'stoploss': 'market', 'stoploss_on_exchange': False}
+2024-03-25 20:08:30,528 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using order_time_in_force: {'entry': 'GTC', 'exit': 'GTC'}
+2024-03-25 20:08:30,528 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using stake_currency: USDT
+2024-03-25 20:08:30,529 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using stake_amount: unlimited
+2024-03-25 20:08:30,529 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using protections: []
+2024-03-25 20:08:30,529 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using startup_candle_count: 200
+2024-03-25 20:08:30,530 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using unfilledtimeout: {'entry': 10, 'exit': 10, 'exit_timeout_count': 0, 'unit': 'minutes'}
+2024-03-25 20:08:30,530 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using use_exit_signal: True
+2024-03-25 20:08:30,531 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using exit_profit_only: False
+2024-03-25 20:08:30,531 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using ignore_roi_if_entry_signal: False
+2024-03-25 20:08:30,532 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using exit_profit_offset: 0.0
+2024-03-25 20:08:30,532 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using disable_dataframe_checks: False
+2024-03-25 20:08:30,532 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using ignore_buying_expired_candle_after: 0
+2024-03-25 20:08:30,533 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using position_adjustment_enable: False
+2024-03-25 20:08:30,533 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using max_entry_position_adjustment: -1
+2024-03-25 20:08:30,534 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using max_open_trades: 100
+2024-03-25 20:08:30,534 - freqtrade.configuration.config_validation - INFO - Validating configuration ...
+2024-03-25 20:08:30,537 - freqtrade.exchange.exchange - INFO - Instance is running with dry_run enabled
+2024-03-25 20:08:30,538 - freqtrade.exchange.exchange - INFO - Using CCXT 4.2.51
+2024-03-25 20:08:30,554 - freqtrade.exchange.exchange - INFO - Using Exchange "Binance"
+2024-03-25 20:08:33,807 - freqtrade.commands.trade_commands - INFO - SIGINT received, aborting ...
+2024-03-25 20:08:39,224 - freqtrade.loggers - INFO - Verbosity set to 0
+2024-03-25 20:08:39,224 - freqtrade.configuration.configuration - INFO - Runmode set to dry_run.
+2024-03-25 20:08:39,225 - freqtrade.configuration.configuration - INFO - Parameter --db-url detected ...
+2024-03-25 20:08:39,225 - freqtrade.configuration.configuration - INFO - Dry run is enabled
+2024-03-25 20:08:39,226 - freqtrade.configuration.configuration - INFO - Using DB: "sqlite:////freqtrade/user_data/tradesv3.sqlite"
+2024-03-25 20:08:39,226 - freqtrade.configuration.configuration - INFO - Using max_open_trades: 100 ...
+2024-03-25 20:08:39,257 - freqtrade.configuration.configuration - INFO - Using user-data directory: /freqtrade/user_data ...
+2024-03-25 20:08:39,259 - freqtrade.configuration.configuration - INFO - Using data directory: /freqtrade/user_data/data/binance ...
+2024-03-25 20:08:39,260 - freqtrade.exchange.check_exchange - INFO - Checking exchange...
+2024-03-25 20:08:39,269 - freqtrade.exchange.check_exchange - INFO - Exchange "binance" is officially supported by the Freqtrade development team.
+2024-03-25 20:08:39,269 - freqtrade.configuration.configuration - INFO - Using pairlist from configuration.
+2024-03-25 20:08:39,294 - freqtrade.resolvers.iresolver - INFO - Using resolved strategy SampleStrategy from '/freqtrade/user_data/strategies/sample_strategy.py'...
+2024-03-25 20:08:39,295 - freqtrade.strategy.hyper - INFO - Found no parameter file.
+2024-03-25 20:08:39,296 - freqtrade.resolvers.strategy_resolver - INFO - Override strategy 'stake_currency' with value in config file: USDT.
+2024-03-25 20:08:39,296 - freqtrade.resolvers.strategy_resolver - INFO - Override strategy 'stake_amount' with value in config file: unlimited.
+2024-03-25 20:08:39,297 - freqtrade.resolvers.strategy_resolver - INFO - Override strategy 'unfilledtimeout' with value in config file: {'entry': 10, 'exit': 10, 'exit_timeout_count': 0, 'unit': 'minutes'}.
+2024-03-25 20:08:39,297 - freqtrade.resolvers.strategy_resolver - INFO - Override strategy 'max_open_trades' with value in config file: 100.
+2024-03-25 20:08:39,298 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using minimal_roi: {'60': 0.01, '30': 0.02, '0': 0.04}
+2024-03-25 20:08:39,298 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using timeframe: 5m
+2024-03-25 20:08:39,299 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using stoploss: -0.1
+2024-03-25 20:08:39,299 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using trailing_stop: False
+2024-03-25 20:08:39,300 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using trailing_stop_positive_offset: 0.0
+2024-03-25 20:08:39,300 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using trailing_only_offset_is_reached: False
+2024-03-25 20:08:39,301 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using use_custom_stoploss: False
+2024-03-25 20:08:39,301 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using process_only_new_candles: True
+2024-03-25 20:08:39,302 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using order_types: {'entry': 'limit', 'exit': 'limit', 'stoploss': 'market', 'stoploss_on_exchange': False}
+2024-03-25 20:08:39,302 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using order_time_in_force: {'entry': 'GTC', 'exit': 'GTC'}
+2024-03-25 20:08:39,303 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using stake_currency: USDT
+2024-03-25 20:08:39,303 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using stake_amount: unlimited
+2024-03-25 20:08:39,303 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using protections: []
+2024-03-25 20:08:39,304 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using startup_candle_count: 200
+2024-03-25 20:08:39,304 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using unfilledtimeout: {'entry': 10, 'exit': 10, 'exit_timeout_count': 0, 'unit': 'minutes'}
+2024-03-25 20:08:39,305 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using use_exit_signal: True
+2024-03-25 20:08:39,305 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using exit_profit_only: False
+2024-03-25 20:08:39,306 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using ignore_roi_if_entry_signal: False
+2024-03-25 20:08:39,306 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using exit_profit_offset: 0.0
+2024-03-25 20:08:39,306 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using disable_dataframe_checks: False
+2024-03-25 20:08:39,307 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using ignore_buying_expired_candle_after: 0
+2024-03-25 20:08:39,307 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using position_adjustment_enable: False
+2024-03-25 20:08:39,308 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using max_entry_position_adjustment: -1
+2024-03-25 20:08:39,308 - freqtrade.resolvers.strategy_resolver - INFO - Strategy using max_open_trades: 100
+2024-03-25 20:08:39,309 - freqtrade.configuration.config_validation - INFO - Validating configuration ...
+2024-03-25 20:08:39,312 - freqtrade.exchange.exchange - INFO - Instance is running with dry_run enabled
+2024-03-25 20:08:39,312 - freqtrade.exchange.exchange - INFO - Using CCXT 4.2.51
+2024-03-25 20:08:39,328 - freqtrade.exchange.exchange - INFO - Using Exchange "Binance"
+2024-03-25 20:08:46,183 - freqtrade.resolvers.exchange_resolver - INFO - Using resolved exchange 'Binance'...
+2024-03-25 20:08:46,237 - freqtrade.wallets - INFO - Wallets synced.
+2024-03-25 20:08:46,668 - freqtrade.rpc.rpc_manager - INFO - Enabling rpc.telegram ...
+2024-03-25 20:08:46,820 - freqtrade.rpc.rpc_manager - INFO - Enabling rpc.api_server
+2024-03-25 20:08:46,914 - freqtrade.rpc.telegram - INFO - rpc.telegram is listening for following commands: [['status'], ['profit'], ['balance'], ['start'], ['stop'], ['forceexit', 'forcesell', 'fx'], ['forcebuy', 'forcelong'], ['forceshort'], ['reload_trade'], ['trades'], ['delete'], ['cancel_open_order', 'coo'], ['performance'], ['buys', 'entries'], ['exits', 'sells'], ['mix_tags'], ['stats'], ['daily'], ['weekly'], ['monthly'], ['count'], ['locks'], ['delete_locks', 'unlock'], ['reload_conf', 'reload_config'], ['show_conf', 'show_config'], ['stopbuy', 'stopentry'], ['whitelist'], ['blacklist'], ['bl_delete', 'blacklist_delete'], ['logs'], ['edge'], ['health'], ['help'], ['version'], ['marketdir'], ['order']]
+2024-03-25 20:08:47,099 - freqtrade.rpc.api_server.webserver - INFO - Starting HTTP Server at 0.0.0.0:8080
+2024-03-25 20:08:47,100 - freqtrade.rpc.api_server.webserver - INFO - Starting Local Rest Server.
+2024-03-25 20:08:47,108 - uvicorn.error - INFO - Started server process [1]
+2024-03-25 20:08:47,108 - uvicorn.error - INFO - Waiting for application startup.
+2024-03-25 20:08:47,109 - uvicorn.error - INFO - Application startup complete.
+2024-03-25 20:08:47,110 - uvicorn.error - INFO - Uvicorn running on http://0.0.0.0:8080 (Press CTRL+C to quit)
+2024-03-25 20:08:47,122 - freqtrade.resolvers.iresolver - INFO - Using resolved pairlist VolumePairList from '/freqtrade/freqtrade/plugins/pairlist/VolumePairList.py'...
+2024-03-25 20:08:47,170 - telegram.ext.Application - INFO - Application started
+2024-03-25 20:08:48,791 - VolumePairList - INFO - Pair BNB/USDT in your blacklist. Removing it from whitelist...
+2024-03-25 20:08:48,818 - freqtrade.plugins.pairlistmanager - INFO - Whitelist with 20 pairs: ['BTC/USDT', 'ETH/USDT', 'USDC/USDT', 'SOL/USDT', 'FDUSD/USDT', 'DOGE/USDT', 'PEPE/USDT', 'XRP/USDT', 'SHIB/USDT', 'BOME/USDT', 'WIF/USDT', 'FLOKI/USDT', 'AVAX/USDT', 'FTM/USDT', 'NEAR/USDT', 'ICP/USDT', 'BCH/USDT', 'POLYX/USDT', 'ARB/USDT', 'GALA/USDT']
+2024-03-25 20:08:48,819 - freqtrade.strategy.hyper - INFO - No params for buy found, using default values.
+2024-03-25 20:08:48,820 - freqtrade.strategy.hyper - INFO - Strategy Parameter(default): buy_rsi = 30
+2024-03-25 20:08:48,820 - freqtrade.strategy.hyper - INFO - Strategy Parameter(default): exit_short_rsi = 30
+2024-03-25 20:08:48,821 - freqtrade.strategy.hyper - INFO - No params for sell found, using default values.
+2024-03-25 20:08:48,821 - freqtrade.strategy.hyper - INFO - Strategy Parameter(default): sell_rsi = 70
+2024-03-25 20:08:48,822 - freqtrade.strategy.hyper - INFO - Strategy Parameter(default): short_rsi = 70
+2024-03-25 20:08:48,822 - freqtrade.strategy.hyper - INFO - No params for protection found, using default values.
+2024-03-25 20:08:48,823 - freqtrade.plugins.protectionmanager - INFO - No protection Handlers defined.
+2024-03-25 20:08:48,823 - freqtrade.rpc.rpc_manager - INFO - Sending rpc message: {'type': status, 'status': 'running'}
+2024-03-25 20:08:48,824 - freqtrade.worker - INFO - Changing state to: RUNNING
+2024-03-25 20:08:48,835 - freqtrade.rpc.rpc_manager - INFO - Sending rpc message: {'type': warning, 'status': 'Dry run is enabled. All trades are simulated.'}
+2024-03-25 20:08:48,836 - freqtrade.rpc.rpc_manager - INFO - Sending rpc message: {'type': startup, 'status': "*Exchange:* `binance`\n*Stake per trade:* `unlimited USDT`\n*Minimum ROI:* `{'60': 0.01, '30': 0.02, '0': 0.04}`\n*Stoploss:* `-0.1`\n*Position adjustment:* `Off`\n*Timeframe:* `5m`\n*Strategy:* `SampleStrategy`"}
+2024-03-25 20:08:48,838 - freqtrade.rpc.rpc_manager - INFO - Sending rpc message: {'type': startup, 'status': "Searching for USDT pairs to buy and sell based on [{'VolumePairList': 'VolumePairList - top 20 volume pairs.'}]"}
+2024-03-25 20:08:48,849 - freqtrade.persistence.trade_model - INFO - Found open trade: Trade(id=1, pair=FTM/USDT, amount=8.00000000, is_short=False, leverage=1.0, open_rate=1.15730000, open_since=2024-03-25 18:40:07)
+2024-03-25 20:08:48,850 - freqtrade.persistence.trade_model - INFO - Found open trade: Trade(id=2, pair=XRP/USDT, amount=15.00000000, is_short=False, leverage=1.0, open_rate=0.64860000, open_since=2024-03-25 19:20:08)
+2024-03-25 20:08:51,165 - freqtrade.freqtradebot - INFO - Exit for FTM/USDT detected. Reason: roi
+2024-03-25 20:08:51,168 - freqtrade.wallets - INFO - Wallets synced.
+2024-03-25 20:08:51,950 - freqtrade.rpc.rpc_manager - INFO - Sending rpc message: {'type': exit, 'trade_id': 1, 'exchange': 'Binance', 'pair': 'FTM/USDT', 'leverage': 1.0, 'direction': 'Long', 'gain': 'profit', 'limit': 1.1753, 'order_rate': 1.1753, 'order_type': 'limit', 'amount': 8.0, 'open_rate': 1.1573, 'close_rate': 1.1753, 'current_rate': 1.1753, 'profit_amount': 0.1253392, 'profit_ratio': 0.01352437, 'buy_tag': '', 'enter_tag': '', 'exit_reason': 'roi', 'open_date': datetime.datetime(2024, 3, 25, 18, 40, 7, 902177, tzinfo=datetime.timezone.utc), 'close_date': datetime.datetime(2024, 3, 25, 20, 8, 51, 950236, tzinfo=datetime.timezone.utc), 'stake_amount': 9.2584, 'stake_currency': 'USDT', 'base_currency': 'FTM', 'quote_currency': 'USDT', 'fiat_currency': 'USD', 'sub_trade': False, 'cumulative_profit': 0.0, 'final_profit_ratio': None, 'is_final_exit': False}
+2024-03-25 20:08:52,386 - freqtrade.wallets - INFO - Wallets synced.
+2024-03-25 20:08:53,851 - freqtrade.worker - INFO - Bot heartbeat. PID=1, version='2024.2', state='RUNNING'
+2024-03-25 20:08:54,170 - freqtrade.freqtradebot - INFO - Found open order for Trade(id=1, pair=FTM/USDT, amount=8.00000000, is_short=False, leverage=1.0, open_rate=1.15730000, open_since=2024-03-25 18:40:07)
+2024-03-25 20:08:59,173 - freqtrade.freqtradebot - INFO - Found open order for Trade(id=1, pair=FTM/USDT, amount=8.00000000, is_short=False, leverage=1.0, open_rate=1.15730000, open_since=2024-03-25 18:40:07)
+2024-03-25 20:09:04,171 - freqtrade.freqtradebot - INFO - Found open order for Trade(id=1, pair=FTM/USDT, amount=8.00000000, is_short=False, leverage=1.0, open_rate=1.15730000, open_since=2024-03-25 18:40:07)
+2024-03-25 20:09:09,183 - freqtrade.freqtradebot - INFO - Found open order for Trade(id=1, pair=FTM/USDT, amount=8.00000000, is_short=False, leverage=1.0, open_rate=1.15730000, open_since=2024-03-25 18:40:07)
+2024-03-25 20:09:14,171 - freqtrade.freqtradebot - INFO - Found open order for Trade(id=1, pair=FTM/USDT, amount=8.00000000, is_short=False, leverage=1.0, open_rate=1.15730000, open_since=2024-03-25 18:40:07)
+2024-03-25 20:09:19,185 - freqtrade.freqtradebot - INFO - Found open order for Trade(id=1, pair=FTM/USDT, amount=8.00000000, is_short=False, leverage=1.0, open_rate=1.15730000, open_since=2024-03-25 18:40:07)
+2024-03-25 20:09:24,174 - freqtrade.freqtradebot - INFO - Found open order for Trade(id=1, pair=FTM/USDT, amount=8.00000000, is_short=False, leverage=1.0, open_rate=1.15730000, open_since=2024-03-25 18:40:07)
+2024-03-25 20:09:29,173 - freqtrade.freqtradebot - INFO - Found open order for Trade(id=1, pair=FTM/USDT, amount=8.00000000, is_short=False, leverage=1.0, open_rate=1.15730000, open_since=2024-03-25 18:40:07)
+2024-03-25 20:09:34,175 - freqtrade.freqtradebot - INFO - Found open order for Trade(id=1, pair=FTM/USDT, amount=8.00000000, is_short=False, leverage=1.0, open_rate=1.15730000, open_since=2024-03-25 18:40:07)
+2024-03-25 20:09:39,677 - freqtrade.freqtradebot - INFO - Found open order for Trade(id=1, pair=FTM/USDT, amount=8.00000000, is_short=False, leverage=1.0, open_rate=1.15730000, open_since=2024-03-25 18:40:07)
+2024-03-25 20:09:44,173 - freqtrade.freqtradebot - INFO - Found open order for Trade(id=1, pair=FTM/USDT, amount=8.00000000, is_short=False, leverage=1.0, open_rate=1.15730000, open_since=2024-03-25 18:40:07)
+2024-03-25 20:09:49,180 - freqtrade.freqtradebot - INFO - Found open order for Trade(id=1, pair=FTM/USDT, amount=8.00000000, is_short=False, leverage=1.0, open_rate=1.15730000, open_since=2024-03-25 18:40:07)
+2024-03-25 20:09:53,854 - freqtrade.worker - INFO - Bot heartbeat. PID=1, version='2024.2', state='RUNNING'
+2024-03-25 20:09:54,176 - freqtrade.freqtradebot - INFO - Found open order for Trade(id=1, pair=FTM/USDT, amount=8.00000000, is_short=False, leverage=1.0, open_rate=1.15730000, open_since=2024-03-25 18:40:07)
+2024-03-25 20:09:59,178 - freqtrade.freqtradebot - INFO - Found open order for Trade(id=1, pair=FTM/USDT, amount=8.00000000, is_short=False, leverage=1.0, open_rate=1.15730000, open_since=2024-03-25 18:40:07)
+2024-03-25 20:10:03,918 - freqtrade.freqtradebot - INFO - Found open order for Trade(id=1, pair=FTM/USDT, amount=8.00000000, is_short=False, leverage=1.0, open_rate=1.15730000, open_since=2024-03-25 18:40:07)
+2024-03-25 20:10:07,539 - freqtrade.freqtradebot - INFO - Found open order for Trade(id=1, pair=FTM/USDT, amount=8.00000000, is_short=False, leverage=1.0, open_rate=1.15730000, open_since=2024-03-25 18:40:07)
+2024-03-25 20:10:11,319 - freqtrade.freqtradebot - INFO - Found open order for Trade(id=1, pair=FTM/USDT, amount=8.00000000, is_short=False, leverage=1.0, open_rate=1.15730000, open_since=2024-03-25 18:40:07)
+2024-03-25 20:10:16,319 - freqtrade.freqtradebot - INFO - Found open order for Trade(id=1, pair=FTM/USDT, amount=8.00000000, is_short=False, leverage=1.0, open_rate=1.15730000, open_since=2024-03-25 18:40:07)
+2024-03-25 20:10:21,334 - freqtrade.freqtradebot - INFO - Found open order for Trade(id=1, pair=FTM/USDT, amount=8.00000000, is_short=False, leverage=1.0, open_rate=1.15730000, open_since=2024-03-25 18:40:07)
+2024-03-25 20:10:26,315 - freqtrade.freqtradebot - INFO - Found open order for Trade(id=1, pair=FTM/USDT, amount=8.00000000, is_short=False, leverage=1.0, open_rate=1.15730000, open_since=2024-03-25 18:40:07)
+2024-03-25 20:10:31,322 - freqtrade.freqtradebot - INFO - Found open order for Trade(id=1, pair=FTM/USDT, amount=8.00000000, is_short=False, leverage=1.0, open_rate=1.15730000, open_since=2024-03-25 18:40:07)
+2024-03-25 20:10:36,318 - freqtrade.freqtradebot - INFO - Found open order for Trade(id=1, pair=FTM/USDT, amount=8.00000000, is_short=False, leverage=1.0, open_rate=1.15730000, open_since=2024-03-25 18:40:07)
+2024-03-25 20:10:41,809 - freqtrade.freqtradebot - INFO - Found open order for Trade(id=1, pair=FTM/USDT, amount=8.00000000, is_short=False, leverage=1.0, open_rate=1.15730000, open_since=2024-03-25 18:40:07)
+2024-03-25 20:10:46,320 - freqtrade.freqtradebot - INFO - Found open order for Trade(id=1, pair=FTM/USDT, amount=8.00000000, is_short=False, leverage=1.0, open_rate=1.15730000, open_since=2024-03-25 18:40:07)
+2024-03-25 20:10:51,330 - freqtrade.freqtradebot - INFO - Found open order for Trade(id=1, pair=FTM/USDT, amount=8.00000000, is_short=False, leverage=1.0, open_rate=1.15730000, open_since=2024-03-25 18:40:07)
+2024-03-25 20:10:56,001 - freqtrade.worker - INFO - Bot heartbeat. PID=1, version='2024.2', state='RUNNING'
+2024-03-25 20:10:56,323 - freqtrade.freqtradebot - INFO - Found open order for Trade(id=1, pair=FTM/USDT, amount=8.00000000, is_short=False, leverage=1.0, open_rate=1.15730000, open_since=2024-03-25 18:40:07)
+2024-03-25 20:11:01,322 - freqtrade.freqtradebot - INFO - Found open order for Trade(id=1, pair=FTM/USDT, amount=8.00000000, is_short=False, leverage=1.0, open_rate=1.15730000, open_since=2024-03-25 18:40:07)
+2024-03-25 20:11:01,335 - freqtrade.freqtradebot - INFO - Fee for Trade Trade(id=1, pair=FTM/USDT, amount=8.00000000, is_short=False, leverage=1.0, open_rate=1.15730000, open_since=2024-03-25 18:40:07) [sell]: 0.0094024 USDT - rate: 0.001
+2024-03-25 20:11:01,336 - freqtrade.persistence.trade_model - INFO - Updating trade (id=1) ...
+2024-03-25 20:11:01,337 - freqtrade.persistence.trade_model - INFO - LIMIT_SELL has been fulfilled for Trade(id=1, pair=FTM/USDT, amount=8.00000000, is_short=False, leverage=1.0, open_rate=1.15730000, open_since=2024-03-25 18:40:07).
+2024-03-25 20:11:01,338 - freqtrade.persistence.trade_model - INFO - Marking Trade(id=1, pair=FTM/USDT, amount=8.00000000, is_short=False, leverage=1.0, open_rate=1.15730000, open_since=closed) as closed as the trade is fulfilled and found no open orders for it.
+2024-03-25 20:11:01,347 - freqtrade.wallets - INFO - Wallets synced.
+2024-03-25 20:11:01,350 - freqtrade.rpc.rpc_manager - INFO - Sending rpc message: {'type': exit_fill, 'trade_id': 1, 'exchange': 'Binance', 'pair': 'FTM/USDT', 'leverage': 1.0, 'direction': 'Long', 'gain': 'profit', 'limit': 1.1753, 'order_rate': 1.1753, 'order_type': 'limit', 'amount': 8.0, 'open_rate': 1.1573, 'close_rate': 1.1753, 'current_rate': None, 'profit_amount': 0.1253392, 'profit_ratio': 0.01352437, 'buy_tag': '', 'enter_tag': '', 'exit_reason': 'roi', 'open_date': datetime.datetime(2024, 3, 25, 18, 40, 7, 902177, tzinfo=datetime.timezone.utc), 'close_date': datetime.datetime(2024, 3, 25, 20, 11, 1, 322000, tzinfo=datetime.timezone.utc), 'stake_amount': 9.2584, 'stake_currency': 'USDT', 'base_currency': 'FTM', 'quote_currency': 'USDT', 'fiat_currency': 'USD', 'sub_trade': False, 'cumulative_profit': 0.1253392, 'final_profit_ratio': 0.013524365550633589, 'is_final_exit': True}
+2024-03-25 20:11:56,003 - freqtrade.worker - INFO - Bot heartbeat. PID=1, version='2024.2', state='RUNNING'
