@@ -1,3 +1,5 @@
+To fork repo locally use ssh key.
+
 To run, use: 
 ```docker
 docker compose up
