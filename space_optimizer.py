@@ -67,6 +67,7 @@ def crossover_candidates(candidate1, candidate2):
 
 
 def genetic_algorithm(parameters, population_size, generations, loss_function):
+    # TODO: add class
     population = generate_initial_population(parameters, population_size)
     for i in range(generations):
         for j in range(len(population)):
