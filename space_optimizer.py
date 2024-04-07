@@ -1,3 +1,4 @@
+import json
 import os
 import random
 
@@ -24,11 +25,18 @@ def generate_initial_population(parameters, population_size):
 
 def evaluate_candidate(candidate_class, loss_function):
     loss = 0
-    os.system(f"freqtrade hyperopt --strategy {candidate_class} --hyperopt-loss {loss_function} > result.txt")
-    with open("result.txt", "r") as file:
-        for line in file:
-            if "loss" in line:
-                loss = float(line.split(":")[1])
+    os.system(f"docker compose run --rm freqtrade hyperopt --strategy {candidate_class} --hyperopt-loss {loss_function} --spaces all -e 10")
+    with open("/user_data/hyperopt_results/.last_result.json", "r") as file:
+        filename = json.load(file)['latest_hyperopt']
+    with open(f"/user_data/hyperopt_results/{filename}", "r") as file:
+        result = json.load(file)
+        for i in range(len(result) - 1, -1, -1):
+            if result[i]['is_best']:
+                if 'loss' in result[i].keys():
+                    loss = result[i]['loss']
+                else:
+                    raise Exception("Loss not found in hyperopt result")
+                break
     return loss
 
 
