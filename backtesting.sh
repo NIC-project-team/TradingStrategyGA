@@ -15,3 +15,5 @@ docker compose run --rm freqtrade backtesting\
  --timeframe 5m\
  --strategy-list SampleStrategy Diamond PatternRecognition Strategy005 hlhb\
  --export trades
+
+ $SHELL
