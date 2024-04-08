@@ -11,10 +11,12 @@ def generate_initial_population(parameters, population_size):
         for j in range(len(parameters)):
             candidate[parameters[j][0]] = {}
             if parameters[j][1] == 'int':
+                candidate[parameters[j][0]]['type'] = 'int'
                 candidate[parameters[j][0]]['low'] = random.randint(0, 10000)
                 candidate[parameters[j][0]]['high'] = random.randint(0, 100000)
                 candidate[parameters[j][0]]['default'] = random.randint(0, 10000)
             elif parameters[j][1] == 'float':
+                candidate[parameters[j][0]]['type'] = 'float'
                 candidate[parameters[j][0]]['low'] = random.uniform(0, 10000)
                 candidate[parameters[j][0]]['high'] = random.uniform(0, 100000)
                 candidate[parameters[j][0]]['default'] = random.uniform(0, 10000)
