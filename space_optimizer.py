@@ -9,6 +9,7 @@ def generate_initial_population(parameters, population_size):
     for i in range(population_size):
         candidate = {}
         for j in range(len(parameters)):
+            candidate[parameters[j][0]] = {}
             if parameters[j][1] == 'int':
                 candidate[parameters[j][0]]['low'] = random.randint(0, 10000)
                 candidate[parameters[j][0]]['high'] = random.randint(0, 100000)
