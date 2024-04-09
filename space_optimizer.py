@@ -83,3 +83,5 @@ def genetic_algorithm(parameters, population_size, generations, loss_function):
             new_population.append(crossover_candidates(population[j], population[j + 1]))
         population = new_population
     return population[0]
+
+# test commit
