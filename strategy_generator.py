@@ -15,7 +15,7 @@ class Generator:
     def __init__(self):
         self.strategy = None
 
-    def generate(self, strategy: Type[IStrategy], parameters: List[Any]) -> Type[IStrategy]:
+    def generate(self, strategy: Type[IStrategy], parameters: Dict[Any, Dict]) -> Type[IStrategy]:
         class NewStrategy(strategy):
             class HyperOpt:
                 # Define a custom stoploss space.

@@ -2,10 +2,13 @@ import json
 import os
 import random
 
+from strategy_generator import Generator
+
+from user_data.strategies.diamond_strategy import Diamond
+
 
 def generate_initial_population(parameters, population_size):
     population = []
-    # parameters = [['buy_volumeAVG', 'int'], ['buy_rsi', 'float']]
     for i in range(population_size):
         candidate = {}
         for j in range(len(parameters)):
@@ -74,7 +77,7 @@ def genetic_algorithm(parameters, population_size, generations, loss_function):
     population = generate_initial_population(parameters, population_size)
     for i in range(generations):
         for j in range(len(population)):
-            population[j]['loss'] = evaluate_candidate(get_class(population[j]), loss_function)
+            population[j]['loss'] = evaluate_candidate(Generator().generate(Diamond, population[j]), loss_function)
         population = sorted(population, key=lambda x: x['loss'])
         new_population = []
         for j in range(population_size // 2):
@@ -83,3 +86,11 @@ def genetic_algorithm(parameters, population_size, generations, loss_function):
             new_population.append(crossover_candidates(population[j], population[j + 1]))
         population = new_population
     return population[0]
+
+
+if __name__ == "__main__":
+    parameters = [
+        ('buy_volumeAVG', 'int'),
+        ('buy_rsi', 'float')
+    ]
+    print(genetic_algorithm(parameters, 10, 10, 'sharpe'))
