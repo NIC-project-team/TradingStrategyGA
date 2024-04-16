@@ -2,7 +2,7 @@ import json
 import os
 import random
 
-from strategy_generator import Generator
+import strategy_text_generator
 
 from user_data.strategies.diamond_strategy import Diamond
 
@@ -30,21 +30,25 @@ def generate_initial_population(parameters, population_size):
 
 
 def evaluate_candidate(candidate_class, loss_function):
-    loss = 0
     os.system(f"docker compose run --rm freqtrade hyperopt --strategy {candidate_class} --hyperopt-loss {loss_function} --spaces all -e 10")
-    with open("/user_data/hyperopt_results/.last_result.json", "r") as file:
+    with open("user_data/hyperopt_results/.last_result.json", "r") as file:
         filename = json.load(file)['latest_hyperopt']
-    with open(f"/user_data/hyperopt_results/{filename}", "r") as file:
-        result = json.load(file)
-        for i in range(len(result) - 1, -1, -1):
-            if result[i]['is_best']:
-                if 'loss' in result[i].keys():
-                    loss = result[i]['loss']
-                else:
-                    raise Exception("Loss not found in hyperopt result")
-                break
-    return loss
 
+    result = None
+    with open(f"user_data/hyperopt_results/{filename}", "r") as file:
+        for line in file:
+            obj = json.loads(line.strip())
+            if obj.get('is_best', True):
+                result = obj
+
+    if result:
+        if 'loss' in result.keys():
+            return result['loss']
+        else:
+            raise Exception("Loss not found in hyperopt result")
+    else:
+        print("No optimal values found")
+        return float('inf')
 
 def mutate_candidate(candidate):
     mutated_candidate = candidate
@@ -77,7 +81,8 @@ def genetic_algorithm(parameters, population_size, generations, loss_function):
     population = generate_initial_population(parameters, population_size)
     for i in range(generations):
         for j in range(len(population)):
-            population[j]['loss'] = evaluate_candidate(Generator().generate(Diamond, population[j]), loss_function)
+            print(population[j])
+            population[j]['loss'] = evaluate_candidate(strategy_text_generator.generate_text('Diamond', population[j]), loss_function)
         population = sorted(population, key=lambda x: x['loss'])
         new_population = []
         for j in range(population_size // 2):
@@ -93,4 +98,4 @@ if __name__ == "__main__":
         ('buy_volumeAVG', 'int'),
         ('buy_rsi', 'float')
     ]
-    print(genetic_algorithm(parameters, 10, 10, 'sharpe'))
+    print(genetic_algorithm(parameters, 10, 10, 'SharpeHyperOptLoss'))

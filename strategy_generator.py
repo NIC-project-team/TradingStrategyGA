@@ -9,7 +9,6 @@ import pickle
 from user_data.strategies.diamond_strategy import Diamond
 
 
-
 class Generator:
 
     def __init__(self):
