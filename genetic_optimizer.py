@@ -31,36 +31,32 @@ def generate_initial_population(parameters, population_size):
 
 def evaluate_candidate(candidate_class, loss_function):
     os.system(
-        f"docker compose run --rm freqtrade hyperopt --strategy NewDiamond --hyperopt-loss {loss_function} --spaces default -e 10 --timerange 20230101-20240405")
+        f"docker compose run --rm freqtrade backtesting --strategy NewDiamond --timerange 20230101-20240405")
     # wait until file is created
-    while not os.path.exists("user_data/hyperopt_results/.last_result.json"):
+    while not os.path.exists("user_data/backtest_results/.last_result.json"):
         pass
-    with open("user_data/hyperopt_results/.last_result.json", "r") as file:
-        filename = json.load(file)['latest_hyperopt']
-    os.remove("user_data/hyperopt_results/.last_result.json")
+    with open("user_data/backtest_results/.last_result.json", "r") as file:
+        filename = json.load(file)['latest_backtest']
+    os.remove("user_data/backtest_results/.last_result.json")
 
-    result = None
-    with open(f"user_data/hyperopt_results/{filename}", "r") as file:
+    with open(f"user_data/backtest_results/{filename}", "r") as file:
+        profit = None
         for line in file:
             obj = json.loads(line.strip())
-            if obj.get('is_best', True):
-                result = obj
-    os.remove(f"user_data/hyperopt_results/{filename}")
+            profit = obj.get('profit_total')
+    os.remove(f"user_data/backtest_results/{filename}")
 
-    if result:
-        if 'loss' in result.keys():
-            return result['loss']
-        else:
-            raise Exception("Loss not found in hyperopt result")
+    if profit:
+        return profit
     else:
-        print("No optimal values found")
+        print("No profit found in backtest results!")
         return float('inf')
 
 
 def mutate_candidate(candidate):
-    mutated_candidate = candidate
+    mutated_candidate = dict(candidate)
     for key in mutated_candidate.keys():
-        if type(mutated_candidate[key]) == dict:
+        if type(mutated_candidate[key]) is dict:
             if 'low' in mutated_candidate[key].keys():
                 mutated_candidate[key]['low'] = random.randint(0, 10000)
             if 'high' in mutated_candidate[key].keys():
@@ -87,8 +83,8 @@ def genetic_algorithm(parameters, population_size, generations, loss_function):
     # TODO: add class
     population = generate_initial_population(parameters, population_size)
     for i in range(generations):
-        for j in range(len(population)):
-            population[j]['loss'] = evaluate_candidate(strategy_text_generator.generate_text('Diamond', population[j]),
+        for j, candidate in enumerate(population):
+            population[j]['loss'] = evaluate_candidate(strategy_text_generator.generate_text('Diamond', candidate),
                                                        loss_function)
         population = sorted(population, key=lambda x: x['loss'])
         for j in range(len(population)):
@@ -96,7 +92,7 @@ def genetic_algorithm(parameters, population_size, generations, loss_function):
         if i == generations - 1:
             return population[0]
         new_population = []
-        for j in range(population_size // 3):
+        for j in range(population_size // 2):
             new_population.append(population[j])
             new_population.append(mutate_candidate(population[j]))
             new_population.append(crossover_candidates(population[j], population[j + 1]))
@@ -108,4 +104,6 @@ if __name__ == "__main__":
         ('buy_volumeAVG', 'int'),
         ('buy_rsi', 'float')
     ]
-    best_candidate = genetic_algorithm(parameters, 2, 10, 'SharpeHyperOptLoss')
+    best_candidate = genetic_algorithm(parameters, 3, 2, 'SharpeHyperOptLoss')
+    print('Final result:')
+    print(best_candidate)
