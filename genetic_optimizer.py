@@ -43,8 +43,18 @@ def generate_initial_population(parameters, population_size):
     return population
 
 
+def generate_strategy_text_population(strategy_class, population):
+    # for example, generate NewDiamond1, NewDiamond2, NewDiamond3, ... files from Diamond strategy and population values
+    # text file name is new_strategy_name + str(i) + '.py'
+    for i, candidate in enumerate(population):
+        with open(f"user_data/strategies/new_{strategy_class}{i}.py", "w") as file:
+            file.write(strategy_text_generator.generate_text(strategy_class, candidate))
+    return f"user_data/strategies/new_{strategy_class}.py"
+
+
 def evaluate_candidate(candidate_class, loss_function):
     # TODO: multiple backtests on multiple classes per 1 call (for whole population)
+    #
     os.system(
         f"docker compose run --rm freqtrade backtesting --strategy NewDiamond --timerange 20230101-20240405")
     # wait until file is created
@@ -119,13 +129,14 @@ def genetic_algorithm(parameters, population_size, generations, loss_function, s
 
 
 if __name__ == "__main__":
-    # TODO: params as console params
-    # parameters = [
-    #     ('buy_volumeAVG', 'int'),
-    #     ('buy_rsi', 'float')
-    # ]
-    # parameters = generate_random_high_low_values(parameters)
+    # params as parsed from strategy file
+    # parameters = strategy_text_generator.parse_parameters("user_data/strategies/diamond_strategy.py")
+    # best_candidate = genetic_algorithm(parameters, 3, 2, 'SharpeHyperOptLoss')
+    # print('Final result:')
+    # print(best_candidate)
     parameters = strategy_text_generator.parse_parameters("user_data/strategies/diamond_strategy.py")
-    best_candidate = genetic_algorithm(parameters, 3, 2, 'SharpeHyperOptLoss')
-    print('Final result:')
-    print(best_candidate)
+    initial_population = generate_initial_population(parameters, 3)
+    print(initial_population)
+    filename = generate_strategy_text_population("Diamond", initial_population)
+    print(filename)
+

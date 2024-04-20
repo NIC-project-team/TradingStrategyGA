@@ -51,7 +51,6 @@ def generate_text(strategy_class: str, parameters: Dict[Any, Dict], default_spac
         file.write(text)
     return text, filename
 
-
 def generate_random_strategy(parameters: List[Any]) -> Dict[Any, Dict]:
     strategy = {}
     for j in range(len(parameters)):
