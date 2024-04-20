@@ -45,7 +45,7 @@ def generate_text(strategy_class: str, parameters: Dict[Any, Dict], default_spac
                      f"default={values['default']}, space='buy', optimize=True)\n")
         elif values['type'] == 'float':
             text += (f"        {parameter} = DecimalParameter(low={values['low']}, high={values['high']}, "
-                     f"decimals={values['decimals']}, default={values['default']}, space='buy', optimize=True)\n")
+                     f"decimals={values['decimals']}, default={values['default']}, space={values['space']}, optimize=True)\n")
     filename = f"user_data/strategies/new_{file_class_dict[strategy_class]}.py"
     with open(filename, "w") as file:
         file.write(text)
