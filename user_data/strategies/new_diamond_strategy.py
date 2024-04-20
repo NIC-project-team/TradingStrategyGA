@@ -4,5 +4,7 @@ from diamond_strategy import Diamond
 
 
 class NewDiamond(Diamond):
-        buy_volumeAVG = IntParameter(low=735, high=22004, default=5204, space='buy', optimize=True)
-        buy_rsi = DecimalParameter(low=2910.714140620263, high=87550.64916643348, decimals=0, default=7136.8687611503365, space='buy', optimize=True)
+        buy_vertical_push = DecimalParameter(low=0.5, high=1.5, decimals=3, default=3.0, space='buy', optimize=True)
+        buy_horizontal_push = IntParameter(low=0.0, high=10.0, default=0.0, space='buy', optimize=True)
+        sell_vertical_push = DecimalParameter(low=0.5, high=1.5, decimals=3, default=3.0, space='sell', optimize=True)
+        sell_horizontal_push = IntParameter(low=0.0, high=10.0, default=0.0, space='sell', optimize=True)

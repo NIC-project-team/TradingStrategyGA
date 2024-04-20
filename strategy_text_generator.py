@@ -42,10 +42,10 @@ def generate_text(strategy_class: str, parameters: Dict[Any, Dict], default_spac
         values = parameters[parameter]
         if values['type'] == 'int':
             text += (f"        {parameter} = IntParameter(low={values['low']}, high={values['high']}, "
-                     f"default={values['default']}, space='buy', optimize=True)\n")
+                     f"default={values['default']}, space='{values['space']}', optimize=True)\n")
         elif values['type'] == 'float':
             text += (f"        {parameter} = DecimalParameter(low={values['low']}, high={values['high']}, "
-                     f"decimals={values['decimals']}, default={values['default']}, space={values['space']}, optimize=True)\n")
+                     f"decimals={values['decimals']}, default={values['default']}, space='{values['space']}', optimize=True)\n")
     filename = f"user_data/strategies/new_{file_class_dict[strategy_class]}.py"
     with open(filename, "w") as file:
         file.write(text)
@@ -109,4 +109,9 @@ if __name__ == "__main__":
     # print(strategy_params)
     # text, filename = generate_text(strategy_class, strategy_params)
     # print(text)
-    print(parse_parameters('user_data/strategies/diamond_strategy.py'))
+    # print(parse_parameters('user_data/strategies/diamond_strategy.py'))
+    strategy_class = "Diamond"
+    strategy_params = parse_parameters('user_data/strategies/diamond_strategy.py')
+    print(strategy_params)
+    text, filename = generate_text(strategy_class, strategy_params)
+    print(text)
