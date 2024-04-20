@@ -71,7 +71,7 @@ def generate_initial_population(parameters, population_size):
                 candidate[key] = random.randint(parameters[key]['low'], parameters[key]['high'])
             elif parameters[key]['type'] == 'float':
                 candidate[key] = random.uniform(parameters[key]['low'], parameters[key]['high'])
-                candidate[key] = round(candidate[key], parameters[key]['decimals'])
+                candidate[key] = random.randint(0, round(100000 / parameters[key]['high']))
         population.append(candidate)
     return population
 
