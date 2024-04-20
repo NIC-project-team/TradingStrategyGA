@@ -118,11 +118,12 @@ def genetic_algorithm(parameters, population_size, generations, loss_function, s
 
 if __name__ == "__main__":
     # TODO: params as console params
-    parameters = [
-        ('buy_volumeAVG', 'int'),
-        ('buy_rsi', 'float')
-    ]
-    parameters = generate_random_high_low_values(parameters)
+    # parameters = [
+    #     ('buy_volumeAVG', 'int'),
+    #     ('buy_rsi', 'float')
+    # ]
+    # parameters = generate_random_high_low_values(parameters)
+    parameters = strategy_text_generator.parse_parameters("user_data/strategies/diamond_strategy.py")
     best_candidate = genetic_algorithm(parameters, 3, 2, 'SharpeHyperOptLoss')
     print('Final result:')
     print(best_candidate)
