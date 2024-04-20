@@ -48,7 +48,8 @@ def generate_strategy_text_population(strategy_class, population):
     # text file name is new_strategy_name + str(i) + '.py'
     for i, candidate in enumerate(population):
         with open(f"user_data/strategies/new_{strategy_class}{i}.py", "w") as file:
-            file.write(strategy_text_generator.generate_text(strategy_class, candidate))
+            text, filename = strategy_text_generator.generate_text(strategy_class, candidate)
+            file.write(text)
     return f"user_data/strategies/new_{strategy_class}.py"
 
 
