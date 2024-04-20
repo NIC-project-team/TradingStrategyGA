@@ -38,7 +38,7 @@ def generate_initial_population(parameters, population_size):
                 candidate[key]['high'] = parameters[key]['high']
                 candidate[key]['space'] = parameters[key]['space']
                 candidate[key]['default'] = random.uniform(parameters[key]['low'], parameters[key]['high'])
-                candidate[key]['decimals'] = random.randint(0, round(100000 / parameters[key]['high']))
+                candidate[key]['decimals'] = parameters[key]['decimals']
         population.append(candidate)
     return population
 
@@ -140,4 +140,3 @@ if __name__ == "__main__":
     print(initial_population)
     filename = generate_strategy_text_population("Diamond", initial_population)
     print(filename)
-
