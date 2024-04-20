@@ -3,9 +3,11 @@
 import random
 # for now handle all int as IntParameter and float parameters as DecimalParameter
 from typing import Type, List, Any, Dict, Tuple
+
 file_class_dict = {'Diamond': 'diamond_strategy',
                    'Strategy005': '005_strategy',
                    'PatternRecognition': 'pattern_recognition_strategy'}
+
 
 def generate_text(strategy_class: str, parameters: Dict[Any, Dict], default_spaces: bool = False) -> Tuple[str, str]:
     text = f"from typing import Type, List, Any, Dict\n"
@@ -71,6 +73,30 @@ def generate_random_strategy(parameters: List[Any]) -> Dict[Any, Dict]:
     return strategy
 
 
+# function for parsing a list of parameters and their types from a file of a strategy
+def parse_parameters(strategy_file: str) -> Dict[str, Dict]:
+    with open(strategy_file, "r") as file:
+        lines = file.readlines()
+    parameters = {}
+    for line in lines:
+        if "Parameter" in line:
+            if 'from freqtrade.strategy import CategoricalParameter, DecimalParameter, IntParameter, IStrategy' in line:
+                continue
+            if "DecimalParameter" in line or "IntParameter" in line:
+                parameter_vals = line.split("(")[1].split(")")[0]
+                parameter_vals = parameter_vals.split(", ")
+                parameter_name = line.split()[0]
+                parameter_vals = [val.split("=")[-1].replace("'", "").replace(" ", "") for val in parameter_vals]
+                type_param = "int" if "IntParameter" in line else "float"
+                parameters[parameter_name] = {'type': type_param,
+                                              'low': float(parameter_vals[0]),
+                                              'high': float(parameter_vals[1])}
+
+                if type_param == "float":
+                    parameters[parameter_name]['decimals'] = int(parameter_vals[2])
+    return parameters
+
+
 if __name__ == "__main__":
     # generated strategy is in the user_data/strategies/new_patter_recognition_strategy.py
     strategy_class = "PatternRecognition"
@@ -79,3 +105,4 @@ if __name__ == "__main__":
     print(strategy_params)
     text, filename = generate_text(strategy_class, strategy_params)
     print(text)
+    print(parse_parameters('user_data/strategies/diamond_strategy.py'))

@@ -4,5 +4,5 @@ from pattern_recognition_strategy import PatternRecognition
 
 
 class NewPatternRecognition(PatternRecognition):
-        buy_volumeAVG = IntParameter(low=158, high=43995, default=5138, space='buy', optimize=True)
-        buy_rsi = DecimalParameter(low=2929.078414111064, high=69638.49677359418, decimals=1, default=7223.343738201048, space='buy', optimize=True)
+        buy_volumeAVG = IntParameter(low=53, high=69790, default=3917, space='buy', optimize=True)
+        buy_rsi = DecimalParameter(low=228.97748990142853, high=29301.946588378203, decimals=3, default=1168.7378783161307, space='buy', optimize=True)
