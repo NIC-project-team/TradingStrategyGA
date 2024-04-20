@@ -87,24 +87,26 @@ def parse_parameters(strategy_file: str) -> Dict[str, Dict]:
                 parameter_vals = parameter_vals.split(", ")
                 parameter_name = line.split()[0]
                 parameter_vals = [val.split("=")[-1].replace("'", "").replace(" ", "") for val in parameter_vals]
+                print(parameter_vals)
                 type_param = "int" if "IntParameter" in line else "float"
                 parameters[parameter_name] = {'type': type_param,
                                               'low': float(parameter_vals[0]),
                                               'high': float(parameter_vals[1]),
                                               'default': float(parameter_vals[2]),
-                                              'space': parameter_vals[3].replace("'", "")}
+                                              'space': parameter_vals[3]}
 
                 if type_param == "float":
                     parameters[parameter_name]['decimals'] = int(parameter_vals[2])
+                    parameters[parameter_name]['space'] = parameter_vals[4]
     return parameters
 
 
 if __name__ == "__main__":
     # generated strategy is in the user_data/strategies/new_patter_recognition_strategy.py
-    strategy_class = "PatternRecognition"
-    parameter_names = [['buy_volumeAVG', 'int'], ['buy_rsi', 'float']]
-    strategy_params = generate_random_strategy(parameter_names)
-    print(strategy_params)
-    text, filename = generate_text(strategy_class, strategy_params)
-    print(text)
+    # strategy_class = "PatternRecognition"
+    # parameter_names = [['buy_volumeAVG', 'int'], ['buy_rsi', 'float']]
+    # strategy_params = generate_random_strategy(parameter_names)
+    # print(strategy_params)
+    # text, filename = generate_text(strategy_class, strategy_params)
+    # print(text)
     print(parse_parameters('user_data/strategies/diamond_strategy.py'))
