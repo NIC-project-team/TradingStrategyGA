@@ -7,6 +7,13 @@ import strategy_text_generator
 from user_data.strategies.diamond_strategy import Diamond
 
 
+def generate_random_high_low_values(parameters):
+    # generate random high and low values for each parameter
+    for i in range(len(parameters)):
+        parameters[i] = (parameters[i][0], parameters[i][1], random.randint(0, 10000), random.randint(0, 100000))
+    return parameters
+
+
 def generate_initial_population(parameters, population_size):
     # pass low and high values as parameters, then define default as a number from low to high
     # low and high values are inside parameters
@@ -125,6 +132,7 @@ if __name__ == "__main__":
         ('buy_volumeAVG', 'int'),
         ('buy_rsi', 'float')
     ]
+    parameters = generate_random_high_low_values(parameters)
     best_candidate = genetic_algorithm(parameters, 3, 2, 'SharpeHyperOptLoss')
     print('Final result:')
     print(best_candidate)
