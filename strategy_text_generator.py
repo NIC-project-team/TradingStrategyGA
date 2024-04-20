@@ -41,7 +41,7 @@ def generate_text(strategy_class: str, parameters: Dict[Any, Dict], default_spac
     for parameter in parameters:
         values = parameters[parameter]
         if values['type'] == 'int':
-            text += (f"        {parameter} = IntParameter(low={values['low']}, high={values['high']}, "
+            text += (f"        {parameter} = IntParameter(low={int(values['low'])}, high={int(values['high'])}, "
                      f"default={values['default']}, space='{values['space']}', optimize=True)\n")
         elif values['type'] == 'float':
             text += (f"        {parameter} = DecimalParameter(low={values['low']}, high={values['high']}, "
