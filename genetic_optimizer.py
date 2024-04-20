@@ -40,24 +40,38 @@ def generate_random_high_low_values(parameters):
 #     return population
 
 
+# def generate_initial_population(parameters, population_size):
+#     # pass low and high values as parameters, then define default as a number from low to high
+#     # low and high values are inside parameters
+#     population = []
+#     for i in range(population_size):
+#         candidate = {}
+#         for j in range(len(parameters)):
+#             candidate[parameters[j][0]] = {}
+#             if parameters[j][0]['type'] == 'int':
+#                 # candidate[parameters[j][0]]['type'] = 'int'
+#                 candidate[parameters[j][0]]['default'] = random.randint(candidate[parameters[j][0]]['low'],
+#                                                                         candidate[parameters[j][0]]['high'])
+#             elif parameters[j][0]['type'] == 'float':
+#                 # candidate[parameters[j][0]]['type'] = 'float'
+#                 candidate[parameters[j][0]]['default'] = random.uniform(candidate[parameters[j][0]]['low'],
+#                                                                         candidate[parameters[j][0]]['high'])
+#                 candidate[parameters[j][0]]['decimals'] = random.randint(0, round(
+#                     100000 / candidate[parameters[j][0]]['high']))
+#         population.append(candidate)
+#     return population
+
 def generate_initial_population(parameters, population_size):
-    # pass low and high values as parameters, then define default as a number from low to high
-    # low and high values are inside parameters
+    # for each parameter, generate random value between low and high ('default' value)
     population = []
     for i in range(population_size):
         candidate = {}
-        for j in range(len(parameters)):
-            candidate[parameters[j][0]] = {}
-            if parameters[j][0]['type'] == 'int':
-                # candidate[parameters[j][0]]['type'] = 'int'
-                candidate[parameters[j][0]]['default'] = random.randint(candidate[parameters[j][0]]['low'],
-                                                                        candidate[parameters[j][0]]['high'])
-            elif parameters[j][0]['type'] == 'float':
-                # candidate[parameters[j][0]]['type'] = 'float'
-                candidate[parameters[j][0]]['default'] = random.uniform(candidate[parameters[j][0]]['low'],
-                                                                        candidate[parameters[j][0]]['high'])
-                candidate[parameters[j][0]]['decimals'] = random.randint(0, round(
-                    100000 / candidate[parameters[j][0]]['high']))
+        for key in parameters.keys():
+            if parameters[key]['type'] == 'int':
+                candidate[key] = random.randint(parameters[key]['low'], parameters[key]['high'])
+            elif parameters[key]['type'] == 'float':
+                candidate[key] = random.uniform(parameters[key]['low'], parameters[key]['high'])
+                candidate[key] = round(candidate[key], parameters[key]['decimals'])
         population.append(candidate)
     return population
 
