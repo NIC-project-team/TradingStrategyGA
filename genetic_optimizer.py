@@ -8,6 +8,8 @@ from user_data.strategies.diamond_strategy import Diamond
 
 
 def generate_initial_population(parameters, population_size):
+    # pass low and high values as parameters, then define default as a number from low to high
+    # low and high values are inside parameters
     population = []
     for i in range(population_size):
         candidate = {}
@@ -15,14 +17,12 @@ def generate_initial_population(parameters, population_size):
             candidate[parameters[j][0]] = {}
             if parameters[j][1] == 'int':
                 candidate[parameters[j][0]]['type'] = 'int'
-                candidate[parameters[j][0]]['low'] = random.randint(0, 10000)
-                candidate[parameters[j][0]]['high'] = random.randint(0, 100000)
-                candidate[parameters[j][0]]['default'] = random.randint(0, 10000)
+                candidate[parameters[j][0]]['default'] = random.randint(candidate[parameters[j][0]]['low'],
+                                                                        candidate[parameters[j][0]]['high'])
             elif parameters[j][1] == 'float':
                 candidate[parameters[j][0]]['type'] = 'float'
-                candidate[parameters[j][0]]['low'] = random.uniform(0, 10000)
-                candidate[parameters[j][0]]['high'] = random.uniform(0, 100000)
-                candidate[parameters[j][0]]['default'] = random.uniform(0, 10000)
+                candidate[parameters[j][0]]['default'] = random.uniform(candidate[parameters[j][0]]['low'],
+                                                                        candidate[parameters[j][0]]['high'])
                 candidate[parameters[j][0]]['decimals'] = random.randint(0, round(
                     100000 / candidate[parameters[j][0]]['high']))
         population.append(candidate)
@@ -30,6 +30,7 @@ def generate_initial_population(parameters, population_size):
 
 
 def evaluate_candidate(candidate_class, loss_function):
+    # TODO: multiple backtests on multiple classes per 1 call (for whole population)
     os.system(
         f"docker compose run --rm freqtrade backtesting --strategy NewDiamond --timerange 20230101-20240405")
     # wait until file is created
@@ -53,18 +54,37 @@ def evaluate_candidate(candidate_class, loss_function):
         return float('inf')
 
 
+# def mutate_candidate(candidate):
+#     # TODO: pass low and high values as parameters, then define default as a number from low to high
+#     mutated_candidate = dict(candidate)
+#     for key in mutated_candidate.keys():
+#         if type(mutated_candidate[key]) is dict:
+#             if 'low' in mutated_candidate[key].keys():
+#                 mutated_candidate[key]['low'] = random.randint(0, 10000)
+#             if 'high' in mutated_candidate[key].keys():
+#                 mutated_candidate[key]['high'] = random.randint(0, 100000)
+#             if 'default' in mutated_candidate[key].keys():
+#                 mutated_candidate[key]['default'] = random.randint(0, 10000)
+#             if 'decimals' in mutated_candidate[key].keys():
+#                 mutated_candidate[key]['decimals'] = random.randint(0, round(100000 / mutated_candidate[key]['high']))
+#     return mutated_candidate
+
 def mutate_candidate(candidate):
+    # pass low and high values as parameters, then define default as a number from low to high
     mutated_candidate = dict(candidate)
     for key in mutated_candidate.keys():
         if type(mutated_candidate[key]) is dict:
-            if 'low' in mutated_candidate[key].keys():
-                mutated_candidate[key]['low'] = random.randint(0, 10000)
-            if 'high' in mutated_candidate[key].keys():
-                mutated_candidate[key]['high'] = random.randint(0, 100000)
             if 'default' in mutated_candidate[key].keys():
-                mutated_candidate[key]['default'] = random.randint(0, 10000)
+                if mutated_candidate[key]['type'] == 'int':
+                    mutated_candidate[key]['default'] = random.randint(mutated_candidate[key]['low'],
+                                                                       mutated_candidate[key]['high'])
+                elif mutated_candidate[key]['type'] == 'float':
+                    mutated_candidate[key]['default'] = random.uniform(mutated_candidate[key]['low'],
+                                                                       mutated_candidate[key]['high'])
             if 'decimals' in mutated_candidate[key].keys():
-                mutated_candidate[key]['decimals'] = random.randint(0, round(100000 / mutated_candidate[key]['high']))
+                mutated_candidate[key]['decimals'] = random.randint(0, round(
+                    100000 / mutated_candidate[key]['high']))
+
     return mutated_candidate
 
 
@@ -79,12 +99,12 @@ def crossover_candidates(candidate1, candidate2):
     return new_candidate
 
 
-def genetic_algorithm(parameters, population_size, generations, loss_function):
-    # TODO: add class
+def genetic_algorithm(parameters, population_size, generations, loss_function, strategy_class='Diamond'):
+    # add class
     population = generate_initial_population(parameters, population_size)
     for i in range(generations):
         for j, candidate in enumerate(population):
-            population[j]['loss'] = evaluate_candidate(strategy_text_generator.generate_text('Diamond', candidate),
+            population[j]['loss'] = evaluate_candidate(strategy_text_generator.generate_text(strategy_class, candidate),
                                                        loss_function)
         population = sorted(population, key=lambda x: x['loss'])
         for j in range(len(population)):
@@ -100,6 +120,7 @@ def genetic_algorithm(parameters, population_size, generations, loss_function):
 
 
 if __name__ == "__main__":
+    # TODO: params as console params
     parameters = [
         ('buy_volumeAVG', 'int'),
         ('buy_rsi', 'float')
