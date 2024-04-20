@@ -30,11 +30,13 @@ def generate_initial_population(parameters, population_size):
                 candidate[key]['type'] = parameters[key]['type']
                 candidate[key]['low'] = parameters[key]['low']
                 candidate[key]['high'] = parameters[key]['high']
+                candidate[key]['space'] = parameters[key]['space']
                 candidate[key]['default'] = random.randint(parameters[key]['low'], parameters[key]['high'])
             elif parameters[key]['type'] == 'float':
                 candidate[key]['type'] = parameters[key]['type']
                 candidate[key]['low'] = parameters[key]['low']
                 candidate[key]['high'] = parameters[key]['high']
+                candidate[key]['space'] = parameters[key]['space']
                 candidate[key]['default'] = random.uniform(parameters[key]['low'], parameters[key]['high'])
                 candidate[key]['decimals'] = random.randint(0, round(100000 / parameters[key]['high']))
         population.append(candidate)
