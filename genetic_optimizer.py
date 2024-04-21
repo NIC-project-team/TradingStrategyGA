@@ -1,6 +1,7 @@
 import json
 import os
 import random
+import copy
 
 import strategy_text_generator
 
@@ -97,6 +98,7 @@ def evaluate_population(population, classname):
         obj = json.load(file)['strategy_comparison']
         for i in range(len(population)):
             profit = obj[i].get('profit_total')
+            # print(profit)
             # calmar ratio can be calculated as profit / max_drawdown
             max_drawdown = obj[i].get('max_drawdown_abs')
             population[i]['loss'] = profit
@@ -107,7 +109,8 @@ def evaluate_population(population, classname):
 
 def mutate_candidate(candidate):
     # pass low and high values as parameters, then define default as a number from low to high
-    mutated_candidate = dict(candidate)
+    candidate_copy = copy.deepcopy(candidate)
+    mutated_candidate = dict(candidate_copy)
     for key in mutated_candidate.keys():
         if type(mutated_candidate[key]) is dict:
             if 'default' in mutated_candidate[key].keys():
@@ -137,12 +140,17 @@ def crossover_candidates(candidate1, candidate2):
 
 def genetic_algorithm(parameters, population_size, generations, strategy_class='Diamond'):
     # add class
+    # generate initial population
+    # TODO: handle local max with generating new initial population if loss is the same for several generations
+    # TODO: if too much candidates are the same, change them with mutation
+    # TODO: add visualization
+    # TODO: check for other strategies
+
+    populations = []
     population = generate_initial_population(parameters, population_size)
-    population_without_loss = population.copy()
-    for i in range(population_size):
-        # for j, candidate in enumerate(population):
-        #     population[j]['loss'] = evaluate_candidate(strategy_text_generator.generate_text(strategy_class, candidate),
-        #                                                loss_function)
+    population_without_loss = copy.deepcopy(population)
+    # generations
+    for i in range(generations):
         generate_strategy_text_population(strategy_class, population_without_loss)
         population = evaluate_population(population, strategy_class)
         new_population = []
@@ -151,23 +159,43 @@ def genetic_algorithm(parameters, population_size, generations, strategy_class='
             new_population.append(mutate_candidate(population[j]))
             new_population.append(crossover_candidates(population[random.randint(0, population_size - 1)],
                                                        population[random.randint(0, population_size - 1)]))
-        population = new_population
+        population = copy.deepcopy(new_population)
         population = sorted(population, key=lambda x: -x['loss'])
+        # print losses of the population
+        print([candidate['loss'] for candidate in population])
+        print(population[0])
+        print(population[0]['loss'])
+        fixed_population = copy.deepcopy(population)
+        populations.append(fixed_population)
         if i == generations - 1:
+            print("Losses of the populations")
+            for population in populations:
+                print([candidate['loss'] for candidate in population])
+            print("Best candidates of the population")
+            for population in populations:
+                print(population[0])
+            print("Losses of the best candidates")
+            for population in populations:
+                print(population[0]['loss'])
             return population[0]
-        population = population[:int(population_size * 0.8)] + population[-int(population_size * 0.2):]
+        best_population = population[:int(population_size * 0.6)]
+        worst_population = population[-int(population_size * 0.6):]
+        worst_sample = random.sample(worst_population, int(population_size * 0.4))
+        population = best_population + worst_sample
         if len(population) < population_size:
             population.append(population[0])
-        population_without_loss = population.copy()
+        population_without_loss = copy.deepcopy(population)
         for j in range(len(population_without_loss)):
             if 'loss' in population_without_loss[j]:
                 population_without_loss[j].pop('loss')
 
 
 if __name__ == "__main__":
+    # TODO: put functions in classes and add visualization with jupiter notebook
     # params as parsed from strategy file
     parameters = strategy_text_generator.parse_parameters("user_data/strategies/sample_strategy.py")
-    best_candidate = genetic_algorithm(parameters, 20, 5, 'SampleStrategy')
+    # default population_size=20, generations=10
+    best_candidate = genetic_algorithm(parameters, 100, 20, 'SampleStrategy')
     print('Final result:')
     print(best_candidate)
     # parameters = strategy_text_generator.parse_parameters("user_data/strategies/diamond_strategy.py")
