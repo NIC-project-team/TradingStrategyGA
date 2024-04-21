@@ -79,6 +79,18 @@ def evaluate_candidate(candidate_class, loss_function):
         return float('inf')
 
 
+def evaluate_population(population, filename):
+    # evaluate NewDiamond1, NewDiamond2, NewDiamond3, ... using 1 call
+    # docker compose run --rm freqtrade backtesting --strategy NewDiamond0 NewDiamond1 NewDiamond2 --timerange 20230101-20240405
+    names_string = ' '.join([f'NewDiamond{i}' for i in range(len(population))])
+    print(f"docker compose run --rm freqtrade backtesting --strategy-list {names_string} --timerange 20230101-20240405")
+    os.system(
+        f"docker compose run --rm freqtrade backtesting --strategy-list {names_string} --timerange 20230101-20240405")
+    while not os.path.exists("user_data/backtest_results/.last_result.json"):
+        pass
+    with open("user_data/backtest_results/.last_result.json", "r") as file:
+        print(json.load(file))
+
 def mutate_candidate(candidate):
     # pass low and high values as parameters, then define default as a number from low to high
     mutated_candidate = dict(candidate)
@@ -113,16 +125,18 @@ def genetic_algorithm(parameters, population_size, generations, loss_function, s
     # add class
     population = generate_initial_population(parameters, population_size)
     for i in range(generations):
-        for j, candidate in enumerate(population):
-            population[j]['loss'] = evaluate_candidate(strategy_text_generator.generate_text(strategy_class, candidate),
-                                                       loss_function)
+        # for j, candidate in enumerate(population):
+        #     population[j]['loss'] = evaluate_candidate(strategy_text_generator.generate_text(strategy_class, candidate),
+        #                                                loss_function)
+        filename = generate_strategy_text_population(strategy_class, population)
+        population = evaluate_population(population, filename)
         population = sorted(population, key=lambda x: x['loss'])
         for j in range(len(population)):
             population[j].pop('loss')
         if i == generations - 1:
             return population[0]
         new_population = []
-        for j in range(population_size // 2):
+        for j in range(population_size // 3):
             new_population.append(population[j])
             new_population.append(mutate_candidate(population[j]))
             new_population.append(crossover_candidates(population[j], population[j + 1]))
@@ -131,12 +145,12 @@ def genetic_algorithm(parameters, population_size, generations, loss_function, s
 
 if __name__ == "__main__":
     # params as parsed from strategy file
-    # parameters = strategy_text_generator.parse_parameters("user_data/strategies/diamond_strategy.py")
-    # best_candidate = genetic_algorithm(parameters, 3, 2, 'SharpeHyperOptLoss')
-    # print('Final result:')
-    # print(best_candidate)
     parameters = strategy_text_generator.parse_parameters("user_data/strategies/diamond_strategy.py")
-    initial_population = generate_initial_population(parameters, 3)
-    print(initial_population)
-    filename = generate_strategy_text_population("Diamond", initial_population)
-    print(filename)
+    best_candidate = genetic_algorithm(parameters, 3, 2, 'SharpeHyperOptLoss')
+    print('Final result:')
+    print(best_candidate)
+    # parameters = strategy_text_generator.parse_parameters("user_data/strategies/diamond_strategy.py")
+    # initial_population = generate_initial_population(parameters, 3)
+    # print(initial_population)
+    # filename = generate_strategy_text_population("Diamond", initial_population)
+    # print(filename)
