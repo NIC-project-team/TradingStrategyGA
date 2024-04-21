@@ -55,32 +55,6 @@ def generate_strategy_text_population(strategy_class, population):
     return f"user_data/strategies/new_{strategy_class}.py"
 
 
-def evaluate_candidate(candidate_class, loss_function):
-    # TODO: multiple backtests on multiple classes per 1 call (for whole population)
-    #
-    os.system(
-        f"docker compose run --rm freqtrade backtesting --strategy NewDiamond --timerange 20230101-20240405")
-    # wait until file is created
-    while not os.path.exists("user_data/backtest_results/.last_result.json"):
-        pass
-    with open("user_data/backtest_results/.last_result.json", "r") as file:
-        filename = json.load(file)['latest_backtest']
-    os.remove("user_data/backtest_results/.last_result.json")
-
-    with open(f"user_data/backtest_results/{filename}", "r") as file:
-        profit = None
-        for line in file:
-            obj = json.loads(line.strip())
-            profit = obj.get('profit_total')
-    os.remove(f"user_data/backtest_results/{filename}")
-
-    if profit:
-        return profit
-    else:
-        print("No profit found in backtest results!")
-        return float('inf')
-
-
 def evaluate_population(population, classname):
     # evaluate NewDiamond1, NewDiamond2, NewDiamond3, ... using 1 call
     # docker compose run --rm freqtrade backtesting --strategy NewDiamond0 NewDiamond1 NewDiamond2 --timerange 20230101-20240405
@@ -100,7 +74,11 @@ def evaluate_population(population, classname):
             profit = obj[i].get('profit_total')
             # print(profit)
             # calmar ratio can be calculated as profit / max_drawdown
-            max_drawdown = obj[i].get('max_drawdown_abs')
+            # max_drawdown = obj[i].get('max_drawdown_abs')
+            # if float(max_drawdown) != 0:
+            #     population[i]['loss'] = profit / float(max_drawdown)
+            # else:
+            #     population[i]['loss'] = profit
             population[i]['loss'] = profit
     os.remove(f"user_data/backtest_results/{name}")
 
@@ -195,7 +173,7 @@ if __name__ == "__main__":
     # params as parsed from strategy file
     parameters = strategy_text_generator.parse_parameters("user_data/strategies/sample_strategy.py")
     # default population_size=20, generations=10
-    best_candidate = genetic_algorithm(parameters, 100, 20, 'SampleStrategy')
+    best_candidate = genetic_algorithm(parameters, 100, 10, 'SampleStrategy')
     print('Final result:')
     print(best_candidate)
     # parameters = strategy_text_generator.parse_parameters("user_data/strategies/diamond_strategy.py")
