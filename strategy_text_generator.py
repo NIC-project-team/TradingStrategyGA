@@ -9,11 +9,11 @@ file_class_dict = {'Diamond': 'diamond_strategy',
                    'PatternRecognition': 'pattern_recognition_strategy'}
 
 
-def generate_text(strategy_class: str, parameters: Dict[Any, Dict], default_spaces: bool = False) -> Tuple[str, str]:
+def generate_text(strategy_class: str, parameters: Dict[Any, Dict], file_num: int, default_spaces: bool = False) -> Tuple[str, str]:
     text = f"from typing import Type, List, Any, Dict\n"
     text += f"from freqtrade.strategy import CategoricalParameter, DecimalParameter, IntParameter, IStrategy\n"
     text += f"from {file_class_dict[strategy_class]} import {strategy_class}\n\n\n"
-    text += f"class New{strategy_class}({strategy_class}):\n"
+    text += f"class New{strategy_class}{file_num}({strategy_class}):\n"
     # changing default search spaces
     if default_spaces:
         text += f"    class HyperOpt:\n"
@@ -112,5 +112,5 @@ if __name__ == "__main__":
     strategy_class = "Diamond"
     strategy_params = parse_parameters('user_data/strategies/diamond_strategy.py')
     print(strategy_params)
-    text, filename = generate_text(strategy_class, strategy_params)
+    text, filename = generate_text(strategy_class, strategy_params, 0)
     print(text)

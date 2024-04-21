@@ -46,9 +46,10 @@ def generate_initial_population(parameters, population_size):
 def generate_strategy_text_population(strategy_class, population):
     # for example, generate NewDiamond1, NewDiamond2, NewDiamond3, ... files from Diamond strategy and population values
     # text file name is new_strategy_name + str(i) + '.py'
+    # strategy class is NewStrategyName + i
     for i, candidate in enumerate(population):
         with open(f"user_data/strategies/new_{strategy_class}{i}.py", "w") as file:
-            text, filename = strategy_text_generator.generate_text(strategy_class, candidate)
+            text, filename = strategy_text_generator.generate_text(strategy_class, candidate, i)
             file.write(text)
     return f"user_data/strategies/new_{strategy_class}.py"
 
