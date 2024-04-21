@@ -5,20 +5,6 @@ import copy
 
 import strategy_text_generator
 
-from user_data.strategies.diamond_strategy import Diamond
-
-
-def generate_random_high_low_values(parameters):
-    # generate random high and low values for each parameter
-    # TODO: change values to needed fix values
-    new_parameters = {}
-    for i in range(len(parameters)):
-        new_parameters[parameters[i][0]] = {}
-        new_parameters[parameters[i][0]]['type'] = parameters[i][1]
-        new_parameters[parameters[i][0]]['low'] = random.randint(0, 10000)
-        new_parameters[parameters[i][0]]['high'] = random.randint(0, 100000)
-    return new_parameters
-
 
 def generate_initial_population(parameters, population_size):
     # for each parameter, generate random value between low and high ('default' value)
@@ -172,12 +158,7 @@ if __name__ == "__main__":
     # TODO: put functions in classes and add visualization with jupiter notebook
     # params as parsed from strategy file
     parameters = strategy_text_generator.parse_parameters("user_data/strategies/sample_strategy.py")
-    # default population_size=20, generations=10
     best_candidate = genetic_algorithm(parameters, 100, 10, 'SampleStrategy')
     print('Final result:')
     print(best_candidate)
-    # parameters = strategy_text_generator.parse_parameters("user_data/strategies/diamond_strategy.py")
-    # initial_population = generate_initial_population(parameters, 3)
-    # print(initial_population)
-    # filename = generate_strategy_text_population("Diamond", initial_population)
-    # print(filename)
+

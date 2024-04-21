@@ -4,8 +4,6 @@ import random
 
 import strategy_text_generator
 
-from user_data.strategies.diamond_strategy import Diamond
-
 
 def generate_initial_population(parameters, population_size):
     population = []
