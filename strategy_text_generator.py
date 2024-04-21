@@ -5,8 +5,9 @@ import random
 from typing import Type, List, Any, Dict, Tuple
 
 file_class_dict = {'Diamond': 'diamond_strategy',
-                   'Strategy005': '005_strategy',
-                   'PatternRecognition': 'pattern_recognition_strategy'}
+                   'Strategy005': 'strategy_005',
+                   'PatternRecognition': 'pattern_recognition_strategy',
+                   'SampleStrategy': 'sample_strategy'}
 
 
 def generate_text(strategy_class: str, parameters: Dict[Any, Dict], file_num: int, default_spaces: bool = False) -> Tuple[str, str]:
@@ -79,14 +80,15 @@ def parse_parameters(strategy_file: str) -> Dict[str, Dict]:
     parameters = {}
     for line in lines:
         if "Parameter" in line:
-            if 'from freqtrade.strategy import CategoricalParameter, DecimalParameter, IntParameter, IStrategy' in line:
+            if 'from freqtrade.strategy import ' in line:
                 continue
             if "DecimalParameter" in line or "IntParameter" in line:
+                # print(line)
                 parameter_vals = line.split("(")[1].split(")")[0]
                 parameter_vals = parameter_vals.split(", ")
                 parameter_name = line.split()[0]
                 parameter_vals = [val.split("=")[-1].replace("'", "").replace(" ", "") for val in parameter_vals]
-                print(parameter_vals)
+                # print(parameter_vals)
                 type_param = "int" if "IntParameter" in line else "float"
                 parameters[parameter_name] = {'type': type_param,
                                               'low': float(parameter_vals[0]),
@@ -109,8 +111,9 @@ if __name__ == "__main__":
     # text, filename = generate_text(strategy_class, strategy_params)
     # print(text)
     # print(parse_parameters('user_data/strategies/diamond_strategy.py'))
-    strategy_class = "Diamond"
-    strategy_params = parse_parameters('user_data/strategies/diamond_strategy.py')
+    # strategy_class = "Diamond"
+    strategy_class = "SampleStrategy"
+    strategy_params = parse_parameters('user_data/strategies/sample_strategy.py')
     print(strategy_params)
     text, filename = generate_text(strategy_class, strategy_params, 0)
     print(text)

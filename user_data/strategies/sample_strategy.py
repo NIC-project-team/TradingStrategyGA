@@ -7,8 +7,7 @@ import pandas as pd  # noqa
 from pandas import DataFrame
 from typing import Optional, Union
 
-from freqtrade.strategy import (BooleanParameter, CategoricalParameter, DecimalParameter,
-                                IStrategy, IntParameter)
+from freqtrade.strategy import (BooleanParameter, CategoricalParameter, DecimalParameter, IStrategy, IntParameter)
 
 # --------------------------------
 # Add your lib to import here
