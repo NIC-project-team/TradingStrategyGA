@@ -27,6 +27,9 @@ def generate_initial_population(parameters, population_size):
                 candidate[key]['space'] = parameters[key]['space']
                 candidate[key]['default'] = random.uniform(parameters[key]['low'], parameters[key]['high'])
                 candidate[key]['decimals'] = parameters[key]['decimals']
+
+                candidate[key]['default'] = round(candidate[key]['default'],
+                                                  candidate[key]['decimals'])
             elif parameters[key]['type'] == 'categorical':
                 candidate[key]['type'] = parameters[key]['type']
                 candidate[key]['options'] = parameters[key]['options']
@@ -41,11 +44,7 @@ def generate_initial_population(parameters, population_size):
 
 
 def generate_strategy_text_population(strategy_class, population):
-    # for example, generate NewDiamond1, NewDiamond2, NewDiamond3, ... files from Diamond strategy and population values
-    # text file name is new_strategy_name + str(i) + '.py'
-    # strategy class is NewStrategyName + i
     for i, candidate in enumerate(population):
-        # print("candidate", candidate)
         with open(f"user_data/strategies/new_{strategy_class}{i}.py", "w") as file:
             text, filename = strategy_text_generator.generate_text(strategy_class, candidate, i)
             file.write(text)
@@ -53,13 +52,11 @@ def generate_strategy_text_population(strategy_class, population):
 
 
 def evaluate_population(population, classname):
-    # evaluate NewDiamond1, NewDiamond2, NewDiamond3, ... using 1 call
-    # docker compose run --rm freqtrade backtesting --strategy NewDiamond0 NewDiamond1 NewDiamond2 --timerange 20230101-20240405
-    # filename is like NewDiamond.py, extract NewDiamond from it
+    # TODO: pass timeframes correctly
     classname = f'New{classname}'
     names_string = ' '.join([f'{classname}{i}' for i in range(len(population))])
     os.system(
-        f"docker compose run --rm freqtrade backtesting --strategy-list {names_string} --timerange 20230101-20240405 --timeframe 1h")
+        f"docker compose run --rm freqtrade backtesting --strategy-list {names_string} --timerange 20230101-20240405 --timeframe 5m")
     while not os.path.exists("user_data/backtest_results/.last_result.json"):
         pass
     with open("user_data/backtest_results/.last_result.json", "r") as file:
@@ -95,14 +92,13 @@ def mutate_candidate(candidate):
                 elif mutated_candidate[key]['type'] == 'float':
                     mutated_candidate[key]['default'] = random.uniform(mutated_candidate[key]['low'],
                                                                        mutated_candidate[key]['high'])
+                    mutated_candidate[key]['default'] = round(mutated_candidate[key]['default'],
+                                                              mutated_candidate[key]['decimals'])
                 elif mutated_candidate[key]['type'] == 'categorical':
                     mutated_candidate[key]['default'] = random.choice(mutated_candidate[key]['options'])
 
                 elif mutated_candidate[key]['type'] == 'boolean':
                     mutated_candidate[key]['default'] = random.choice([True, False])
-            if 'decimals' in mutated_candidate[key].keys():
-                mutated_candidate[key]['decimals'] = random.randint(0, round(
-                    100000 / mutated_candidate[key]['high']))
 
     return mutated_candidate
 
@@ -166,18 +162,8 @@ def genetic_algorithm(parameters, population_size, generations, strategy_class='
             for population in populations:
                 print(population[0]['loss'])
 
-            # write to report file
-            with open(f"reports/{strategy_class}.txt", "w") as file:
-                file.write("Losses of the populations")
-                for population in populations:
-                    file.write(str([candidate['loss'] for candidate in population]))
-                file.write("Best candidates of the population")
-                for population in populations:
-                    file.write(str(population[0]))
-                file.write("Losses of the best candidates")
-                for population in populations:
-                    file.write(str(population[0]['loss']))
-                file.write(str(final_time))
+            with open(f"reports/{strategy_class}.json", "w") as file:
+                json.dump({'losses': losses, 'best_candidates': best_candidates, 'final_time': final_time}, file)
             return population[0]
         best_population = population[:int(population_size * 0.6)]
         worst_population = population[-int(population_size * 0.6):]
@@ -213,9 +199,7 @@ if __name__ == "__main__":
     # strategy_file = f"user_data/strategies/sample_strategy.py"
     parameters = strategy_text_generator.parse_parameters(strategy_file)
     # print(parameters)
-    best_candidate = genetic_algorithm(parameters, 30, 15, strategy_class)
+    best_candidate = genetic_algorithm(parameters, 50, 10, strategy_class)
     print('Final result:')
     print(best_candidate)
     # delete_new_strategy_files()
-
-
