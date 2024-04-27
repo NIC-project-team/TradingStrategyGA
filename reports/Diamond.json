@@ -1,10 +1,15 @@
 {
   "losses": [
-    0.00156250911,
-    0.00206179239,
-    0.00206179239,
-    0.00248241177,
-    0.00248241177
+    0.00877802722,
+    0.00877802722,
+    0.00877802722,
+    0.00894513903,
+    0.00894513903,
+    0.00894513903,
+    0.00900703032,
+    0.009884749560000001,
+    0.009884749560000001,
+    0.009884749560000001
   ],
   "best_candidates": [
     {
@@ -13,7 +18,7 @@
         "low": 0.5,
         "high": 1.5,
         "space": "buy",
-        "default": 0.8219107056164022,
+        "default": 0.891,
         "decimals": 3
       },
       "buy_horizontal_push": {
@@ -21,7 +26,7 @@
         "low": 0.0,
         "high": 10.0,
         "space": "buy",
-        "default": 4
+        "default": 3
       },
       "buy_fast_key": {
         "type": "categorical",
@@ -32,7 +37,7 @@
           "close",
           "volume"
         ],
-        "default": "high",
+        "default": "volume",
         "space": "buy"
       },
       "buy_slow_key": {
@@ -52,7 +57,7 @@
         "low": 0.5,
         "high": 1.5,
         "space": "sell",
-        "default": 0.5715078070118065,
+        "default": 1.232,
         "decimals": 3
       },
       "sell_horizontal_push": {
@@ -60,7 +65,7 @@
         "low": 0.0,
         "high": 10.0,
         "space": "sell",
-        "default": 4
+        "default": 7
       },
       "sell_fast_key": {
         "type": "categorical",
@@ -83,10 +88,10 @@
           "close",
           "volume"
         ],
-        "default": "high",
+        "default": "close",
         "space": "sell"
       },
-      "loss": 0.00156250911
+      "loss": 0.00832669648
     },
     {
       "buy_vertical_push": {
@@ -94,8 +99,8 @@
         "low": 0.5,
         "high": 1.5,
         "space": "buy",
-        "default": 1.2874884322841993,
-        "decimals": 59016
+        "default": 1.12,
+        "decimals": 3
       },
       "buy_horizontal_push": {
         "type": "int",
@@ -113,7 +118,7 @@
           "close",
           "volume"
         ],
-        "default": "high",
+        "default": "volume",
         "space": "buy"
       },
       "buy_slow_key": {
@@ -133,15 +138,15 @@
         "low": 0.5,
         "high": 1.5,
         "space": "sell",
-        "default": 0.7908317369568243,
-        "decimals": 42058
+        "default": 1.232,
+        "decimals": 3
       },
       "sell_horizontal_push": {
         "type": "int",
         "low": 0.0,
         "high": 10.0,
         "space": "sell",
-        "default": 1
+        "default": 7
       },
       "sell_fast_key": {
         "type": "categorical",
@@ -152,7 +157,7 @@
           "close",
           "volume"
         ],
-        "default": "open",
+        "default": "close",
         "space": "sell"
       },
       "sell_slow_key": {
@@ -164,10 +169,10 @@
           "close",
           "volume"
         ],
-        "default": "low",
+        "default": "close",
         "space": "sell"
       },
-      "loss": 0.00206179239
+      "loss": 0.00877802722
     },
     {
       "buy_vertical_push": {
@@ -175,8 +180,8 @@
         "low": 0.5,
         "high": 1.5,
         "space": "buy",
-        "default": 1.2874884322841993,
-        "decimals": 59016
+        "default": 1.12,
+        "decimals": 3
       },
       "buy_horizontal_push": {
         "type": "int",
@@ -194,7 +199,7 @@
           "close",
           "volume"
         ],
-        "default": "high",
+        "default": "volume",
         "space": "buy"
       },
       "buy_slow_key": {
@@ -214,15 +219,15 @@
         "low": 0.5,
         "high": 1.5,
         "space": "sell",
-        "default": 0.7908317369568243,
-        "decimals": 42058
+        "default": 1.232,
+        "decimals": 3
       },
       "sell_horizontal_push": {
         "type": "int",
         "low": 0.0,
         "high": 10.0,
         "space": "sell",
-        "default": 1
+        "default": 7
       },
       "sell_fast_key": {
         "type": "categorical",
@@ -233,7 +238,7 @@
           "close",
           "volume"
         ],
-        "default": "open",
+        "default": "close",
         "space": "sell"
       },
       "sell_slow_key": {
@@ -245,10 +250,10 @@
           "close",
           "volume"
         ],
-        "default": "low",
+        "default": "close",
         "space": "sell"
       },
-      "loss": 0.00206179239
+      "loss": 0.00877802722
     },
     {
       "buy_vertical_push": {
@@ -256,15 +261,15 @@
         "low": 0.5,
         "high": 1.5,
         "space": "buy",
-        "default": 1.2155196247224072,
-        "decimals": 63491
+        "default": 1.04,
+        "decimals": 3
       },
       "buy_horizontal_push": {
         "type": "int",
         "low": 0.0,
         "high": 10.0,
         "space": "buy",
-        "default": 3
+        "default": 4
       },
       "buy_fast_key": {
         "type": "categorical",
@@ -275,7 +280,88 @@
           "close",
           "volume"
         ],
+        "default": "low",
+        "space": "buy"
+      },
+      "buy_slow_key": {
+        "type": "categorical",
+        "options": [
+          "open",
+          "high",
+          "low",
+          "close",
+          "volume"
+        ],
         "default": "high",
+        "space": "buy"
+      },
+      "sell_vertical_push": {
+        "type": "float",
+        "low": 0.5,
+        "high": 1.5,
+        "space": "sell",
+        "default": 0.887,
+        "decimals": 3
+      },
+      "sell_horizontal_push": {
+        "type": "int",
+        "low": 0.0,
+        "high": 10.0,
+        "space": "sell",
+        "default": 2
+      },
+      "sell_fast_key": {
+        "type": "categorical",
+        "options": [
+          "open",
+          "high",
+          "low",
+          "close",
+          "volume"
+        ],
+        "default": "low",
+        "space": "sell"
+      },
+      "sell_slow_key": {
+        "type": "categorical",
+        "options": [
+          "open",
+          "high",
+          "low",
+          "close",
+          "volume"
+        ],
+        "default": "close",
+        "space": "sell"
+      },
+      "loss": 0.00028556586000000003
+    },
+    {
+      "buy_vertical_push": {
+        "type": "float",
+        "low": 0.5,
+        "high": 1.5,
+        "space": "buy",
+        "default": 1.358,
+        "decimals": 3
+      },
+      "buy_horizontal_push": {
+        "type": "int",
+        "low": 0.0,
+        "high": 10.0,
+        "space": "buy",
+        "default": 1
+      },
+      "buy_fast_key": {
+        "type": "categorical",
+        "options": [
+          "open",
+          "high",
+          "low",
+          "close",
+          "volume"
+        ],
+        "default": "volume",
         "space": "buy"
       },
       "buy_slow_key": {
@@ -295,29 +381,17 @@
         "low": 0.5,
         "high": 1.5,
         "space": "sell",
-        "default": 0.7908317369568243,
-        "decimals": 42058
+        "default": 0.885,
+        "decimals": 3
       },
       "sell_horizontal_push": {
         "type": "int",
         "low": 0.0,
         "high": 10.0,
         "space": "sell",
-        "default": 1
+        "default": 2
       },
       "sell_fast_key": {
-        "type": "categorical",
-        "options": [
-          "open",
-          "high",
-          "low",
-          "close",
-          "volume"
-        ],
-        "default": "open",
-        "space": "sell"
-      },
-      "sell_slow_key": {
         "type": "categorical",
         "options": [
           "open",
@@ -329,7 +403,19 @@
         "default": "low",
         "space": "sell"
       },
-      "loss": 0.00248241177
+      "sell_slow_key": {
+        "type": "categorical",
+        "options": [
+          "open",
+          "high",
+          "low",
+          "close",
+          "volume"
+        ],
+        "default": "close",
+        "space": "sell"
+      },
+      "loss": 0.00894513903
     },
     {
       "buy_vertical_push": {
@@ -337,15 +423,15 @@
         "low": 0.5,
         "high": 1.5,
         "space": "buy",
-        "default": 1.2155196247224072,
-        "decimals": 63491
+        "default": 1.358,
+        "decimals": 3
       },
       "buy_horizontal_push": {
         "type": "int",
         "low": 0.0,
         "high": 10.0,
         "space": "buy",
-        "default": 3
+        "default": 1
       },
       "buy_fast_key": {
         "type": "categorical",
@@ -356,7 +442,7 @@
           "close",
           "volume"
         ],
-        "default": "high",
+        "default": "volume",
         "space": "buy"
       },
       "buy_slow_key": {
@@ -376,29 +462,17 @@
         "low": 0.5,
         "high": 1.5,
         "space": "sell",
-        "default": 0.7908317369568243,
-        "decimals": 42058
+        "default": 0.885,
+        "decimals": 3
       },
       "sell_horizontal_push": {
         "type": "int",
         "low": 0.0,
         "high": 10.0,
         "space": "sell",
-        "default": 1
+        "default": 2
       },
       "sell_fast_key": {
-        "type": "categorical",
-        "options": [
-          "open",
-          "high",
-          "low",
-          "close",
-          "volume"
-        ],
-        "default": "open",
-        "space": "sell"
-      },
-      "sell_slow_key": {
         "type": "categorical",
         "options": [
           "open",
@@ -410,8 +484,344 @@
         "default": "low",
         "space": "sell"
       },
-      "loss": 0.00248241177
+      "sell_slow_key": {
+        "type": "categorical",
+        "options": [
+          "open",
+          "high",
+          "low",
+          "close",
+          "volume"
+        ],
+        "default": "close",
+        "space": "sell"
+      },
+      "loss": 0.00894513903
+    },
+    {
+      "buy_vertical_push": {
+        "type": "float",
+        "low": 0.5,
+        "high": 1.5,
+        "space": "buy",
+        "default": 1.334,
+        "decimals": 3
+      },
+      "buy_horizontal_push": {
+        "type": "int",
+        "low": 0.0,
+        "high": 10.0,
+        "space": "buy",
+        "default": 1
+      },
+      "buy_fast_key": {
+        "type": "categorical",
+        "options": [
+          "open",
+          "high",
+          "low",
+          "close",
+          "volume"
+        ],
+        "default": "volume",
+        "space": "buy"
+      },
+      "buy_slow_key": {
+        "type": "categorical",
+        "options": [
+          "open",
+          "high",
+          "low",
+          "close",
+          "volume"
+        ],
+        "default": "volume",
+        "space": "buy"
+      },
+      "sell_vertical_push": {
+        "type": "float",
+        "low": 0.5,
+        "high": 1.5,
+        "space": "sell",
+        "default": 0.885,
+        "decimals": 3
+      },
+      "sell_horizontal_push": {
+        "type": "int",
+        "low": 0.0,
+        "high": 10.0,
+        "space": "sell",
+        "default": 2
+      },
+      "sell_fast_key": {
+        "type": "categorical",
+        "options": [
+          "open",
+          "high",
+          "low",
+          "close",
+          "volume"
+        ],
+        "default": "low",
+        "space": "sell"
+      },
+      "sell_slow_key": {
+        "type": "categorical",
+        "options": [
+          "open",
+          "high",
+          "low",
+          "close",
+          "volume"
+        ],
+        "default": "close",
+        "space": "sell"
+      },
+      "loss": 0.00900703032
+    },
+    {
+      "buy_vertical_push": {
+        "type": "float",
+        "low": 0.5,
+        "high": 1.5,
+        "space": "buy",
+        "default": 0.891,
+        "decimals": 3
+      },
+      "buy_horizontal_push": {
+        "type": "int",
+        "low": 0.0,
+        "high": 10.0,
+        "space": "buy",
+        "default": 1
+      },
+      "buy_fast_key": {
+        "type": "categorical",
+        "options": [
+          "open",
+          "high",
+          "low",
+          "close",
+          "volume"
+        ],
+        "default": "volume",
+        "space": "buy"
+      },
+      "buy_slow_key": {
+        "type": "categorical",
+        "options": [
+          "open",
+          "high",
+          "low",
+          "close",
+          "volume"
+        ],
+        "default": "volume",
+        "space": "buy"
+      },
+      "sell_vertical_push": {
+        "type": "float",
+        "low": 0.5,
+        "high": 1.5,
+        "space": "sell",
+        "default": 0.885,
+        "decimals": 3
+      },
+      "sell_horizontal_push": {
+        "type": "int",
+        "low": 0.0,
+        "high": 10.0,
+        "space": "sell",
+        "default": 2
+      },
+      "sell_fast_key": {
+        "type": "categorical",
+        "options": [
+          "open",
+          "high",
+          "low",
+          "close",
+          "volume"
+        ],
+        "default": "low",
+        "space": "sell"
+      },
+      "sell_slow_key": {
+        "type": "categorical",
+        "options": [
+          "open",
+          "high",
+          "low",
+          "close",
+          "volume"
+        ],
+        "default": "close",
+        "space": "sell"
+      },
+      "loss": 0.009884749560000001
+    },
+    {
+      "buy_vertical_push": {
+        "type": "float",
+        "low": 0.5,
+        "high": 1.5,
+        "space": "buy",
+        "default": 0.891,
+        "decimals": 3
+      },
+      "buy_horizontal_push": {
+        "type": "int",
+        "low": 0.0,
+        "high": 10.0,
+        "space": "buy",
+        "default": 1
+      },
+      "buy_fast_key": {
+        "type": "categorical",
+        "options": [
+          "open",
+          "high",
+          "low",
+          "close",
+          "volume"
+        ],
+        "default": "volume",
+        "space": "buy"
+      },
+      "buy_slow_key": {
+        "type": "categorical",
+        "options": [
+          "open",
+          "high",
+          "low",
+          "close",
+          "volume"
+        ],
+        "default": "volume",
+        "space": "buy"
+      },
+      "sell_vertical_push": {
+        "type": "float",
+        "low": 0.5,
+        "high": 1.5,
+        "space": "sell",
+        "default": 0.885,
+        "decimals": 3
+      },
+      "sell_horizontal_push": {
+        "type": "int",
+        "low": 0.0,
+        "high": 10.0,
+        "space": "sell",
+        "default": 2
+      },
+      "sell_fast_key": {
+        "type": "categorical",
+        "options": [
+          "open",
+          "high",
+          "low",
+          "close",
+          "volume"
+        ],
+        "default": "low",
+        "space": "sell"
+      },
+      "sell_slow_key": {
+        "type": "categorical",
+        "options": [
+          "open",
+          "high",
+          "low",
+          "close",
+          "volume"
+        ],
+        "default": "close",
+        "space": "sell"
+      },
+      "loss": 0.009884749560000001
+    },
+    {
+      "buy_vertical_push": {
+        "type": "float",
+        "low": 0.5,
+        "high": 1.5,
+        "space": "buy",
+        "default": 0.891,
+        "decimals": 3
+      },
+      "buy_horizontal_push": {
+        "type": "int",
+        "low": 0.0,
+        "high": 10.0,
+        "space": "buy",
+        "default": 1
+      },
+      "buy_fast_key": {
+        "type": "categorical",
+        "options": [
+          "open",
+          "high",
+          "low",
+          "close",
+          "volume"
+        ],
+        "default": "volume",
+        "space": "buy"
+      },
+      "buy_slow_key": {
+        "type": "categorical",
+        "options": [
+          "open",
+          "high",
+          "low",
+          "close",
+          "volume"
+        ],
+        "default": "volume",
+        "space": "buy"
+      },
+      "sell_vertical_push": {
+        "type": "float",
+        "low": 0.5,
+        "high": 1.5,
+        "space": "sell",
+        "default": 0.885,
+        "decimals": 3
+      },
+      "sell_horizontal_push": {
+        "type": "int",
+        "low": 0.0,
+        "high": 10.0,
+        "space": "sell",
+        "default": 2
+      },
+      "sell_fast_key": {
+        "type": "categorical",
+        "options": [
+          "open",
+          "high",
+          "low",
+          "close",
+          "volume"
+        ],
+        "default": "low",
+        "space": "sell"
+      },
+      "sell_slow_key": {
+        "type": "categorical",
+        "options": [
+          "open",
+          "high",
+          "low",
+          "close",
+          "volume"
+        ],
+        "default": "close",
+        "space": "sell"
+      },
+      "loss": 0.009884749560000001
     }
   ],
-  "final_time": 217.8662931919098
+  "final_time": 5071.202813863754
 }

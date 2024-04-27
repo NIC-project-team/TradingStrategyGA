@@ -50,6 +50,8 @@ def generate_text(strategy_class: str, parameters: Dict[Any, Dict], file_num: in
         text += f"            return roi_table\n"
     # adding custom parameters to the strategy
     for parameter in parameters:
+        if parameter == 'loss':
+            continue
         values = parameters[parameter]
         # print(values)
         if values['type'] == 'int':
@@ -182,12 +184,14 @@ def parse_report(folename):
     return losses, best_candidates, final_time
 
 
-def generate_classes_from_report(report_file, strategy_file):
+def generate_classes_from_report(report_file, strategy_class):
     """Generate classes from a report file (best candidates classes)
     """
     _, best_candidates, _ = parse_report(report_file)
     for i, candidate in enumerate(best_candidates):
-        text, filename = generate_text(strategy_file, candidate, i)
+        with open(f"user_data/strategies/new_{strategy_class}{i}.py", "w") as file:
+            text, filename = generate_text(strategy_class, candidate, i)
+            file.write(text)
         print(text)
         print(filename)
 
@@ -198,10 +202,12 @@ if __name__ == "__main__":
     # strategy_file = 'user_data/strategies/strategy_005.py'
     # strategy_class = "Diamond"
     # strategy_file = 'user_data/strategies/diamond_strategy.py'
-    strategy_class = "SampleStrategy"
-    strategy_file = 'user_data/strategies/sample_strategy.py'
-    strategy_params, timeframe = parse_parameters(strategy_file)
-    print(strategy_params)
-    print(timeframe)
-    text, filename = generate_text(strategy_class, strategy_params, 0)
-    print(text)
+    # strategy_class = "SampleStrategy"
+    # strategy_file = 'user_data/strategies/sample_strategy.py'
+    # strategy_params, timeframe = parse_parameters(strategy_file)
+    # print(strategy_params)
+    # print(timeframe)
+    # text, filename = generate_text(strategy_class, strategy_params, 0)
+    # print(text)
+
+    generate_classes_from_report('reports/Diamond.json', 'Diamond')
