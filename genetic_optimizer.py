@@ -51,12 +51,12 @@ def generate_strategy_text_population(strategy_class, population):
     return f"user_data/strategies/new_{strategy_class}.py"
 
 
-def evaluate_population(population, classname):
+def evaluate_population(population, classname, timeframe='1h'):
     # TODO: pass timeframes correctly
     classname = f'New{classname}'
     names_string = ' '.join([f'{classname}{i}' for i in range(len(population))])
     os.system(
-        f"docker compose run --rm freqtrade backtesting --strategy-list {names_string} --timerange 20230101-20240405 --timeframe 5m")
+        f"docker compose run --rm freqtrade backtesting --strategy-list {names_string} --timerange 20230101-20240405 --timeframe {timeframe}")
     while not os.path.exists("user_data/backtest_results/.last_result.json"):
         pass
     with open("user_data/backtest_results/.last_result.json", "r") as file:
@@ -114,7 +114,7 @@ def crossover_candidates(candidate1, candidate2):
     return new_candidate
 
 
-def genetic_algorithm(parameters, population_size, generations, strategy_class='Diamond'):
+def genetic_algorithm(parameters, population_size, generations, strategy_class='Diamond', timeframe='1h'):
     # add class
     # generate initial population
     # TODO: handle local max with generating new initial population if loss is the same for several generations
@@ -132,7 +132,7 @@ def genetic_algorithm(parameters, population_size, generations, strategy_class='
     # generations
     for i in range(generations):
         generate_strategy_text_population(strategy_class, population_without_loss)
-        population = evaluate_population(population, strategy_class)
+        population = evaluate_population(population, strategy_class, timeframe)
         new_population = []
         for j in range(population_size):
             new_population.append(population[j])
@@ -197,9 +197,10 @@ if __name__ == "__main__":
     # strategy_file = f"user_data/strategies/strategy_005.py"
     # strategy_class = 'SampleStrategy'
     # strategy_file = f"user_data/strategies/sample_strategy.py"
-    parameters = strategy_text_generator.parse_parameters(strategy_file)
-    # print(parameters)
-    best_candidate = genetic_algorithm(parameters, 50, 10, strategy_class)
+    parameters, timeframe = strategy_text_generator.parse_parameters(strategy_file)
+    print(parameters)
+    print(timeframe)
+    best_candidate = genetic_algorithm(parameters, 50, 10, strategy_class, timeframe)
     print('Final result:')
     print(best_candidate)
-    # delete_new_strategy_files()
+    delete_new_strategy_files()

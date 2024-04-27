@@ -1,6 +1,7 @@
 # generator accepts a class and returns a text representation of the class
 # that extends the class with custom hyperopt search spaces + search spaces for custom parameters
 import random
+import json
 # for now handle all int as IntParameter and float parameters as DecimalParameter
 from typing import Type, List, Any, Dict, Tuple
 
@@ -11,6 +12,15 @@ file_class_dict = {'Diamond': 'diamond_strategy',
 
 
 def generate_text(strategy_class: str, parameters: Dict[Any, Dict], file_num: int, default_spaces: bool = False) -> Tuple[str, str]:
+    """ Generates a text representation of a strategy class that extends the class with custom hyperopt search spaces
+    and search spaces for custom parameters
+    :param strategy_class: name of the strategy class
+    :param parameters: dictionary of parameters and their values
+    :param file_num: number of the file
+    :param default_spaces: if True, adds default search spaces for stoploss and ROI
+    :return: text representation of the class, filename
+
+    """
     text = f"from typing import Type, List, Any, Dict\n"
     text += f"from freqtrade.strategy import CategoricalParameter, DecimalParameter, IntParameter, IStrategy\n"
     text += f"from {file_class_dict[strategy_class]} import {strategy_class}\n\n\n"
@@ -69,6 +79,8 @@ def generate_text(strategy_class: str, parameters: Dict[Any, Dict], file_num: in
 
 
 def generate_random_strategy(parameters: List[Any]) -> Dict[Any, Dict]:
+    """ Generates a random strategy with random values for the parameters
+    """
     strategy = {}
     for j in range(len(parameters)):
         strategy[parameters[j][0]] = {}
@@ -90,9 +102,8 @@ def generate_random_strategy(parameters: List[Any]) -> Dict[Any, Dict]:
 
 
 def get_parameter(line: str) -> Tuple[str, List[str]]:
+    """ Parse a line of a strategy file and return the parameter name and its values"""
     # if encounter [] in line, it is a categorical parameter, parse the list inside [] as one parameter
-    # sell_trigger = CategoricalParameter(["rsi-macd-minusdi", "sar-fisherRsi"], default=30, space='sell', optimize=True)
-    # parse the list inside [] as one parameter (parameter_vals[0]), add the rest as separate parameters
     if "[" in line:
         parameter_name = line.split()[0]
         parameter_vals_options = line.split("[")[1].split("]")[0]
@@ -113,11 +124,14 @@ def get_parameter(line: str) -> Tuple[str, List[str]]:
         return parameter_name, parameter_vals
 
 
-# function for parsing a list of parameters and their types from a file of a strategy
-def parse_parameters(strategy_file: str) -> Dict[str, Dict]:
+def parse_parameters(strategy_file: str) -> Tuple[Dict[str, Dict], str]:
+    """ Parse a strategy file and return a dictionary of parameters and their values
+
+    """
     with open(strategy_file, "r") as file:
         lines = file.readlines()
     parameters = {}
+    timeframe = '1h'
     for line in lines:
         if "Parameter" in line:
             if 'from freqtrade.strategy import ' in line:
@@ -151,7 +165,31 @@ def parse_parameters(strategy_file: str) -> Dict[str, Dict]:
                 parameters[parameter_name] = {'type': type_param,
                                               'default': parameter_vals[0],
                                               'space': parameter_vals[1]}
-    return parameters
+        if 'timeframe = ' in line:
+            timeframe = line.split('=')[-1].strip().replace("'", "").replace('"', "")
+    return parameters, timeframe
+
+
+def parse_report(folename):
+    """Get losses, best candidates and final time from a report file
+    """
+    with open(folename) as f:
+        data = json.load(f)
+    losses = data['losses']
+    best_candidates = data['best_candidates']
+    # best losses aree first element of losses elements
+    final_time = data['final_time']
+    return losses, best_candidates, final_time
+
+
+def generate_classes_from_report(report_file, strategy_file):
+    """Generate classes from a report file (best candidates classes)
+    """
+    _, best_candidates, _ = parse_report(report_file)
+    for i, candidate in enumerate(best_candidates):
+        text, filename = generate_text(strategy_file, candidate, i)
+        print(text)
+        print(filename)
 
 
 if __name__ == "__main__":
@@ -162,7 +200,8 @@ if __name__ == "__main__":
     # strategy_file = 'user_data/strategies/diamond_strategy.py'
     strategy_class = "SampleStrategy"
     strategy_file = 'user_data/strategies/sample_strategy.py'
-    strategy_params = parse_parameters(strategy_file)
+    strategy_params, timeframe = parse_parameters(strategy_file)
     print(strategy_params)
+    print(timeframe)
     text, filename = generate_text(strategy_class, strategy_params, 0)
     print(text)
