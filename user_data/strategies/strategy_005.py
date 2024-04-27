@@ -71,24 +71,23 @@ class Strategy005(IStrategy):
     sell_rsi = IntParameter(low=1, high=100, default=70, space='sell', optimize=True)
     sell_minusDI = IntParameter(low=1, high=100, default=50, space='sell', optimize=True)
     sell_fishRsiNorma = IntParameter(low=1, high=100, default=50, space='sell', optimize=True)
-    sell_trigger = CategoricalParameter(["rsi-macd-minusdi", "sar-fisherRsi"],
-                                        default=30, space='sell', optimize=True)
+    sell_trigger = CategoricalParameter(['rsi-macd-minusdi', 'sar-fisherRsi'], default=30, space='sell', optimize=True)
 
     # Buy hyperspace params:
-    buy_params = {
-        "buy_fastd": 1,
-        "buy_fishRsiNorma": 5,
-        "buy_rsi": 26,
-        "buy_volumeAVG": 150,
-    }
-
-    # Sell hyperspace params:
-    sell_params = {
-        "sell_fishRsiNorma": 30,
-        "sell_minusDI": 4,
-        "sell_rsi": 74,
-        "sell_trigger": "rsi-macd-minusdi",
-    }
+    # buy_params = {
+    #     "buy_fastd": 1,
+    #     "buy_fishRsiNorma": 5,
+    #     "buy_rsi": 26,
+    #     "buy_volumeAVG": 150,
+    # }
+    #
+    # # Sell hyperspace params:
+    # sell_params = {
+    #     "sell_fishRsiNorma": 30,
+    #     "sell_minusDI": 4,
+    #     "sell_rsi": 74,
+    #     "sell_trigger": "rsi-macd-minusdi",
+    # }
 
     def informative_pairs(self):
         """

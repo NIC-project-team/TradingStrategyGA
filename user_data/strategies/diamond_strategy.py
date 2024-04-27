@@ -51,20 +51,20 @@ class Diamond(IStrategy):
     INTERFACE_VERSION: int = 3
 
     # Buy hyperspace params:
-    buy_params = {
-        "buy_fast_key": "high",
-        "buy_horizontal_push": 7,
-        "buy_slow_key": "volume",
-        "buy_vertical_push": 0.942,
-    }
-
-    # Sell hyperspace params:
-    sell_params = {
-        "sell_fast_key": "high",
-        "sell_horizontal_push": 10,
-        "sell_slow_key": "low",
-        "sell_vertical_push": 1.184,
-    }
+    # buy_params = {
+    #     "buy_fast_key": "high",
+    #     "buy_horizontal_push": 7,
+    #     "buy_slow_key": "volume",
+    #     "buy_vertical_push": 0.942,
+    # }
+    #
+    # # Sell hyperspace params:
+    # sell_params = {
+    #     "sell_fast_key": "high",
+    #     "sell_horizontal_push": 10,
+    #     "sell_slow_key": "low",
+    #     "sell_vertical_push": 1.184,
+    # }
 
     # ROI table:
     minimal_roi = {
@@ -88,24 +88,22 @@ class Diamond(IStrategy):
 
     buy_vertical_push = DecimalParameter(0.5, 1.5, decimals=3, default=1, space='buy')
     buy_horizontal_push = IntParameter(0, 10, default=0, space='buy')
-    buy_fast_key = CategoricalParameter(['open', 'high', 'low', 'close', 'volume',
+    buy_fast_key = CategoricalParameter(['open', 'high', 'low', 'close', 'volume'], default='ma_fast', space='buy')
                                          #  you can not enable this lines befour you
                                          #  populate an indicator for them and set
                                          #  the same key name for it
                                          #  'ma_fast', 'ma_slow', {...}
-                                         ], default='ma_fast', space='buy')
-    buy_slow_key = CategoricalParameter(['open', 'high', 'low', 'close', 'volume',
+    buy_slow_key = CategoricalParameter(['open', 'high', 'low', 'close', 'volume'], default='ma_slow', space='buy')
                                          #  'ma_fast', 'ma_slow', {...}
-                                         ], default='ma_slow', space='buy')
 
     sell_vertical_push = DecimalParameter(0.5, 1.5, decimals=3,  default=1, space='sell')
     sell_horizontal_push = IntParameter(0, 10, default=0, space='sell')
-    sell_fast_key = CategoricalParameter(['open', 'high', 'low', 'close', 'volume',
+    sell_fast_key = CategoricalParameter(['open', 'high', 'low', 'close', 'volume'], default='ma_fast', space='sell')
                                           #  'ma_fast', 'ma_slow', {...}
-                                          ], default='ma_fast', space='sell')
-    sell_slow_key = CategoricalParameter(['open', 'high', 'low', 'close', 'volume',
+
+    sell_slow_key = CategoricalParameter(['open', 'high', 'low', 'close', 'volume'], default='ma_slow', space='sell')
                                           #  'ma_fast', 'ma_slow', {...}
-                                          ], default='ma_slow', space='sell')
+
 
     def populate_indicators(self, dataframe: DataFrame, metadata: dict) -> DataFrame:
         # you can add new indicators and enable them inside

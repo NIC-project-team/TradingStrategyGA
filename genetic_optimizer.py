@@ -2,6 +2,7 @@ import json
 import os
 import random
 import copy
+import time
 
 import strategy_text_generator
 
@@ -26,6 +27,15 @@ def generate_initial_population(parameters, population_size):
                 candidate[key]['space'] = parameters[key]['space']
                 candidate[key]['default'] = random.uniform(parameters[key]['low'], parameters[key]['high'])
                 candidate[key]['decimals'] = parameters[key]['decimals']
+            elif parameters[key]['type'] == 'categorical':
+                candidate[key]['type'] = parameters[key]['type']
+                candidate[key]['options'] = parameters[key]['options']
+                candidate[key]['default'] = random.choice(parameters[key]['options'])
+                candidate[key]['space'] = parameters[key]['space']
+            elif parameters[key]['type'] == 'boolean':
+                candidate[key]['type'] = parameters[key]['type']
+                candidate[key]['default'] = random.choice([True, False])
+                candidate[key]['space'] = parameters[key]['space']
         population.append(candidate)
     return population
 
@@ -35,6 +45,7 @@ def generate_strategy_text_population(strategy_class, population):
     # text file name is new_strategy_name + str(i) + '.py'
     # strategy class is NewStrategyName + i
     for i, candidate in enumerate(population):
+        # print("candidate", candidate)
         with open(f"user_data/strategies/new_{strategy_class}{i}.py", "w") as file:
             text, filename = strategy_text_generator.generate_text(strategy_class, candidate, i)
             file.write(text)
@@ -84,6 +95,11 @@ def mutate_candidate(candidate):
                 elif mutated_candidate[key]['type'] == 'float':
                     mutated_candidate[key]['default'] = random.uniform(mutated_candidate[key]['low'],
                                                                        mutated_candidate[key]['high'])
+                elif mutated_candidate[key]['type'] == 'categorical':
+                    mutated_candidate[key]['default'] = random.choice(mutated_candidate[key]['options'])
+
+                elif mutated_candidate[key]['type'] == 'boolean':
+                    mutated_candidate[key]['default'] = random.choice([True, False])
             if 'decimals' in mutated_candidate[key].keys():
                 mutated_candidate[key]['decimals'] = random.randint(0, round(
                     100000 / mutated_candidate[key]['high']))
@@ -110,7 +126,11 @@ def genetic_algorithm(parameters, population_size, generations, strategy_class='
     # TODO: add visualization
     # TODO: check for other strategies
 
+    t = time.time()
+
     populations = []
+    losses = []
+    best_candidates = []
     population = generate_initial_population(parameters, population_size)
     population_without_loss = copy.deepcopy(population)
     # generations
@@ -129,9 +149,13 @@ def genetic_algorithm(parameters, population_size, generations, strategy_class='
         print([candidate['loss'] for candidate in population])
         print(population[0])
         print(population[0]['loss'])
+        losses.append(population[0]['loss'])
+        best_candidates.append(population[0])
         fixed_population = copy.deepcopy(population)
         populations.append(fixed_population)
         if i == generations - 1:
+            final_time = time.time() - t
+
             print("Losses of the populations")
             for population in populations:
                 print([candidate['loss'] for candidate in population])
@@ -141,6 +165,19 @@ def genetic_algorithm(parameters, population_size, generations, strategy_class='
             print("Losses of the best candidates")
             for population in populations:
                 print(population[0]['loss'])
+
+            # write to report file
+            with open(f"reports/{strategy_class}.txt", "w") as file:
+                file.write("Losses of the populations")
+                for population in populations:
+                    file.write(str([candidate['loss'] for candidate in population]))
+                file.write("Best candidates of the population")
+                for population in populations:
+                    file.write(str(population[0]))
+                file.write("Losses of the best candidates")
+                for population in populations:
+                    file.write(str(population[0]['loss']))
+                file.write(str(final_time))
             return population[0]
         best_population = population[:int(population_size * 0.6)]
         worst_population = population[-int(population_size * 0.6):]
@@ -154,11 +191,31 @@ def genetic_algorithm(parameters, population_size, generations, strategy_class='
                 population_without_loss[j].pop('loss')
 
 
+def delete_new_strategy_files():
+    for file in os.listdir('user_data/strategies'):
+        # remove files starting with new_
+        if file.startswith(f'new_'):
+            os.remove(f'user_data/strategies/{file}')
+    for file in os.listdir('user_data/backtest_results'):
+        # remove files starting with new_
+        if file.startswith(f'new_'):
+            os.remove(f'user_data/backtest_results/{file}')
+
+
 if __name__ == "__main__":
-    # TODO: put functions in classes and add visualization with jupiter notebook
+    # # TODO: put functions in classes and add visualization with jupiter notebook
     # params as parsed from strategy file
-    parameters = strategy_text_generator.parse_parameters("user_data/strategies/sample_strategy.py")
-    best_candidate = genetic_algorithm(parameters, 100, 10, 'SampleStrategy')
+    strategy_class = 'Diamond'
+    strategy_file = f"user_data/strategies/diamond_strategy.py"
+    # strategy_class = 'Strategy005'
+    # strategy_file = f"user_data/strategies/strategy_005.py"
+    # strategy_class = 'SampleStrategy'
+    # strategy_file = f"user_data/strategies/sample_strategy.py"
+    parameters = strategy_text_generator.parse_parameters(strategy_file)
+    # print(parameters)
+    best_candidate = genetic_algorithm(parameters, 30, 15, strategy_class)
     print('Final result:')
     print(best_candidate)
+    # delete_new_strategy_files()
+
 

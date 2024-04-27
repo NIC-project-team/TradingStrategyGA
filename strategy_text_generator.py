@@ -41,16 +41,32 @@ def generate_text(strategy_class: str, parameters: Dict[Any, Dict], file_num: in
     # adding custom parameters to the strategy
     for parameter in parameters:
         values = parameters[parameter]
+        # print(values)
         if values['type'] == 'int':
             text += (f"        {parameter} = IntParameter(low={int(values['low'])}, high={int(values['high'])}, "
                      f"default={values['default']}, space='{values['space']}', optimize=True)\n")
         elif values['type'] == 'float':
             text += (f"        {parameter} = DecimalParameter(low={values['low']}, high={values['high']}, "
                      f"decimals={values['decimals']}, default={values['default']}, space='{values['space']}', optimize=True)\n")
+        elif values['type'] == 'categorical':
+            # if default is a string representing a number, convert it to an int
+            if values['default'].isdigit():
+                text += (
+                    f"        {parameter} = CategoricalParameter({values['options']}, default={values['default']}, "
+                    f"space='{values['space']}', optimize=True)\n")
+            else:
+                text += (
+                    f"        {parameter} = CategoricalParameter({values['options']}, default='{values['default']}', "
+                    f"space='{values['space']}', optimize=True)\n")
+
+        elif values['type'] == 'boolean':
+            text += (f"        {parameter} = BooleanParameter(default={values['default']}, space='{values['space']}', optimize=True)\n")
+    text += f"\n"
     filename = f"user_data/strategies/new_{file_class_dict[strategy_class]}.py"
     with open(filename, "w") as file:
         file.write(text)
     return text, filename
+
 
 def generate_random_strategy(parameters: List[Any]) -> Dict[Any, Dict]:
     strategy = {}
@@ -73,6 +89,30 @@ def generate_random_strategy(parameters: List[Any]) -> Dict[Any, Dict]:
     return strategy
 
 
+def get_parameter(line: str) -> Tuple[str, List[str]]:
+    # if encounter [] in line, it is a categorical parameter, parse the list inside [] as one parameter
+    # sell_trigger = CategoricalParameter(["rsi-macd-minusdi", "sar-fisherRsi"], default=30, space='sell', optimize=True)
+    # parse the list inside [] as one parameter (parameter_vals[0]), add the rest as separate parameters
+    if "[" in line:
+        parameter_name = line.split()[0]
+        parameter_vals_options = line.split("[")[1].split("]")[0]
+        parameter_vals_options = parameter_vals_options.split(", ")
+        parameter_vals_options = [val.split("=")[-1].replace("'", "").replace(" ", "") for val in parameter_vals_options]
+        parameter_vals = [parameter_vals_options]
+        line = line.replace(f'{parameter_vals_options}, ', "")
+        parameter_vals += line.split("(")[1].split(")")[0].split(", ")
+        for i in range(1, 3):
+            if "=" in parameter_vals[i]:
+                parameter_vals[i] = parameter_vals[i].split("=")[-1].replace("'", "").replace(" ", "")
+        return parameter_name, parameter_vals
+    else:
+        parameter_name = line.split()[0]
+        parameter_vals = line.split("(")[1].split(")")[0]
+        parameter_vals = parameter_vals.split(", ")
+        parameter_vals = [val.split("=")[-1].replace("'", "").replace(" ", "") for val in parameter_vals]
+        return parameter_name, parameter_vals
+
+
 # function for parsing a list of parameters and their types from a file of a strategy
 def parse_parameters(strategy_file: str) -> Dict[str, Dict]:
     with open(strategy_file, "r") as file:
@@ -84,10 +124,7 @@ def parse_parameters(strategy_file: str) -> Dict[str, Dict]:
                 continue
             if "DecimalParameter" in line or "IntParameter" in line:
                 # print(line)
-                parameter_vals = line.split("(")[1].split(")")[0]
-                parameter_vals = parameter_vals.split(", ")
-                parameter_name = line.split()[0]
-                parameter_vals = [val.split("=")[-1].replace("'", "").replace(" ", "") for val in parameter_vals]
+                parameter_name, parameter_vals = get_parameter(line)
                 # print(parameter_vals)
                 type_param = "int" if "IntParameter" in line else "float"
                 parameters[parameter_name] = {'type': type_param,
@@ -99,21 +136,33 @@ def parse_parameters(strategy_file: str) -> Dict[str, Dict]:
                 if type_param == "float":
                     parameters[parameter_name]['decimals'] = int(parameter_vals[2])
                     parameters[parameter_name]['space'] = parameter_vals[4]
+            elif "CategoricalParameter" in line:
+                # sell_trigger = CategoricalParameter(["rsi-macd-minusdi", "sar-fisherRsi"], default=30, space='sell', optimize=True)
+                parameter_name, parameter_vals = get_parameter(line)
+                type_param = "categorical"
+                parameters[parameter_name] = {'type': type_param,
+                                                'options': parameter_vals[0],
+                                                'default': parameter_vals[1],
+                                                'space': parameter_vals[2]}
+            elif "BooleanParameter" in line:
+                #  use_stop_protection = BooleanParameter(default=True, space="protection", optimize=True)
+                parameter_name, parameter_vals = get_parameter(line)
+                type_param = "boolean"
+                parameters[parameter_name] = {'type': type_param,
+                                              'default': parameter_vals[0],
+                                              'space': parameter_vals[1]}
     return parameters
 
 
 if __name__ == "__main__":
-    # generated strategy is in the user_data/strategies/new_patter_recognition_strategy.py
-    # strategy_class = "PatternRecognition"
-    # parameter_names = [['buy_volumeAVG', 'int'], ['buy_rsi', 'float']]
-    # strategy_params = generate_random_strategy(parameter_names)
-    # print(strategy_params)
-    # text, filename = generate_text(strategy_class, strategy_params)
-    # print(text)
     # print(parse_parameters('user_data/strategies/diamond_strategy.py'))
+    # strategy_class = "Strategy005"
+    # strategy_file = 'user_data/strategies/strategy_005.py'
     # strategy_class = "Diamond"
+    # strategy_file = 'user_data/strategies/diamond_strategy.py'
     strategy_class = "SampleStrategy"
-    strategy_params = parse_parameters('user_data/strategies/sample_strategy.py')
+    strategy_file = 'user_data/strategies/sample_strategy.py'
+    strategy_params = parse_parameters(strategy_file)
     print(strategy_params)
     text, filename = generate_text(strategy_class, strategy_params, 0)
     print(text)
