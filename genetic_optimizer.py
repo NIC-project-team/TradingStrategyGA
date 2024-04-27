@@ -131,6 +131,7 @@ def genetic_algorithm(parameters, population_size, generations, strategy_class='
     population_without_loss = copy.deepcopy(population)
     # generations
     for i in range(generations):
+        print("Generation", i, time.time() - t)
         generate_strategy_text_population(strategy_class, population_without_loss)
         population = evaluate_population(population, strategy_class, timeframe)
         new_population = []
@@ -191,16 +192,16 @@ def delete_new_strategy_files():
 if __name__ == "__main__":
     # # TODO: put functions in classes and add visualization with jupiter notebook
     # params as parsed from strategy file
-    strategy_class = 'Diamond'
-    strategy_file = f"user_data/strategies/diamond_strategy.py"
+    # strategy_class = 'Diamond'
+    # strategy_file = f"user_data/strategies/diamond_strategy.py"
     # strategy_class = 'Strategy005'
     # strategy_file = f"user_data/strategies/strategy_005.py"
-    # strategy_class = 'SampleStrategy'
-    # strategy_file = f"user_data/strategies/sample_strategy.py"
+    strategy_class = 'SampleStrategy'
+    strategy_file = f"user_data/strategies/sample_strategy.py"
     parameters, timeframe = strategy_text_generator.parse_parameters(strategy_file)
     print(parameters)
     print(timeframe)
-    best_candidate = genetic_algorithm(parameters, 50, 10, strategy_class, timeframe)
+    best_candidate = genetic_algorithm(parameters, 30, 10, strategy_class, timeframe)
     print('Final result:')
     print(best_candidate)
     delete_new_strategy_files()
