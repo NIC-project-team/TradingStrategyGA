@@ -56,7 +56,7 @@ def evaluate_population(population, classname, timeframe='1h'):
     classname = f'New{classname}'
     names_string = ' '.join([f'{classname}{i}' for i in range(len(population))])
     os.system(
-        f"docker compose run --rm freqtrade backtesting --strategy-list {names_string} --timerange 20230101-20240405 --timeframe {timeframe}")
+        f"docker compose run --rm freqtrade backtesting --strategy-list {names_string} --timerange 20240101-20240405 --timeframe {timeframe}")
     while not os.path.exists("user_data/backtest_results/.last_result.json"):
         pass
     with open("user_data/backtest_results/.last_result.json", "r") as file:
