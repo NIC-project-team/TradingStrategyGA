@@ -8,37 +8,29 @@ import strategy_text_generator
 
 
 def generate_initial_population(parameters, population_size):
-    # for each parameter, generate random value between low and high ('default' value)
     population = []
     for i in range(population_size):
         candidate = {}
         for key in parameters.keys():
             candidate[key] = {}
+            candidate[key]['type'] = parameters[key]['type']
+            candidate[key]['space'] = parameters[key]['space']
+
             if parameters[key]['type'] == 'int':
-                candidate[key]['type'] = parameters[key]['type']
                 candidate[key]['low'] = parameters[key]['low']
                 candidate[key]['high'] = parameters[key]['high']
-                candidate[key]['space'] = parameters[key]['space']
                 candidate[key]['default'] = random.randint(parameters[key]['low'], parameters[key]['high'])
             elif parameters[key]['type'] == 'float':
-                candidate[key]['type'] = parameters[key]['type']
                 candidate[key]['low'] = parameters[key]['low']
                 candidate[key]['high'] = parameters[key]['high']
-                candidate[key]['space'] = parameters[key]['space']
                 candidate[key]['default'] = random.uniform(parameters[key]['low'], parameters[key]['high'])
                 candidate[key]['decimals'] = parameters[key]['decimals']
-
-                candidate[key]['default'] = round(candidate[key]['default'],
-                                                  candidate[key]['decimals'])
+                candidate[key]['default'] = round(candidate[key]['default'], candidate[key]['decimals'])
             elif parameters[key]['type'] == 'categorical':
-                candidate[key]['type'] = parameters[key]['type']
                 candidate[key]['options'] = parameters[key]['options']
                 candidate[key]['default'] = random.choice(parameters[key]['options'])
-                candidate[key]['space'] = parameters[key]['space']
             elif parameters[key]['type'] == 'boolean':
-                candidate[key]['type'] = parameters[key]['type']
                 candidate[key]['default'] = random.choice([True, False])
-                candidate[key]['space'] = parameters[key]['space']
         population.append(candidate)
     return population
 
@@ -52,7 +44,6 @@ def generate_strategy_text_population(strategy_class, population):
 
 
 def evaluate_population(population, classname, timeframe='1h'):
-    # TODO: pass timeframes correctly
     classname = f'New{classname}'
     names_string = ' '.join([f'{classname}{i}' for i in range(len(population))])
     os.system(
@@ -115,17 +106,11 @@ def crossover_candidates(candidate1, candidate2):
 
 
 def genetic_algorithm(parameters, population_size, generations, strategy_class='Diamond', timeframe='1h'):
-    # add class
-    # generate initial population
-    # TODO: handle local max with generating new initial population if loss is the same for several generations
-    # TODO: if too much candidates are the same, change them with mutation
-    # TODO: add visualization
-    # TODO: check for other strategies
-
     t = time.time()
 
     populations = []
-    losses = []
+    best_losses = []
+    avg_losses = []
     best_candidates = []
     population = generate_initial_population(parameters, population_size)
     population_without_loss = copy.deepcopy(population)
@@ -134,10 +119,11 @@ def genetic_algorithm(parameters, population_size, generations, strategy_class='
         print("Generation", i, time.time() - t)
         generate_strategy_text_population(strategy_class, population_without_loss)
         population = evaluate_population(population, strategy_class, timeframe)
+        population = sorted(population, key=lambda x: -x['loss'])
         new_population = []
-        for j in range(population_size):
+        for j in range(population_size // 3):
             new_population.append(population[j])
-            new_population.append(mutate_candidate(population[j]))
+            new_population.append(mutate_candidate(population[random.randint(0, population_size - 1)]))
             new_population.append(crossover_candidates(population[random.randint(0, population_size - 1)],
                                                        population[random.randint(0, population_size - 1)]))
         population = copy.deepcopy(new_population)
@@ -145,8 +131,10 @@ def genetic_algorithm(parameters, population_size, generations, strategy_class='
         # print losses of the population
         print([candidate['loss'] for candidate in population])
         print(population[0])
-        print(population[0]['loss'])
-        losses.append(population[0]['loss'])
+        avg_loss = sum([population[i]['loss'] for i in range(len(population))]) / len(population)
+        print(population[0]['loss'], avg_loss)
+        best_losses.append(population[0]['loss'])
+        avg_losses.append(avg_loss)
         best_candidates.append(population[0])
         fixed_population = copy.deepcopy(population)
         populations.append(fixed_population)
@@ -154,17 +142,20 @@ def genetic_algorithm(parameters, population_size, generations, strategy_class='
             final_time = time.time() - t
 
             print("Losses of the populations")
-            for population in populations:
-                print([candidate['loss'] for candidate in population])
+            for pop in populations:
+                print([candidate['loss'] for candidate in pop])
             print("Best candidates of the population")
-            for population in populations:
-                print(population[0])
+            for pop in populations:
+                print(pop[0])
             print("Losses of the best candidates")
-            for population in populations:
-                print(population[0]['loss'])
+            for pop in populations:
+                print(pop[0]['loss'])
+            print("Average losses")
+            for j in range(len(populations)):
+                print(avg_losses[j])
 
             with open(f"reports/{strategy_class}.json", "w") as file:
-                json.dump({'losses': losses, 'best_candidates': best_candidates, 'final_time': final_time}, file)
+                json.dump({'losses': best_losses, 'avg_losses': avg_losses, 'best_candidates': best_candidates, 'final_time': final_time}, file)
             return population[0]
         best_population = population[:int(population_size * 0.6)]
         worst_population = population[-int(population_size * 0.6):]
@@ -190,7 +181,6 @@ def delete_new_strategy_files():
 
 
 if __name__ == "__main__":
-    # # TODO: put functions in classes and add visualization with jupiter notebook
     # params as parsed from strategy file
     # strategy_class = 'Diamond'
     # strategy_file = f"user_data/strategies/diamond_strategy.py"
@@ -201,7 +191,7 @@ if __name__ == "__main__":
     parameters, timeframe = strategy_text_generator.parse_parameters(strategy_file)
     print(parameters)
     print(timeframe)
-    best_candidate = genetic_algorithm(parameters, 30, 10, strategy_class, timeframe)
+    best_candidate = genetic_algorithm(parameters, 30, 20, strategy_class, timeframe)
     print('Final result:')
     print(best_candidate)
     delete_new_strategy_files()

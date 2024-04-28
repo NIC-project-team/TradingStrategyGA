@@ -172,22 +172,22 @@ def parse_parameters(strategy_file: str) -> Tuple[Dict[str, Dict], str]:
     return parameters, timeframe
 
 
-def parse_report(folename):
+def parse_report(filename):
     """Get losses, best candidates and final time from a report file
     """
-    with open(folename) as f:
+    with open(filename) as f:
         data = json.load(f)
     losses = data['losses']
+    avg_losses = data['avg_losses']
     best_candidates = data['best_candidates']
-    # best losses aree first element of losses elements
     final_time = data['final_time']
-    return losses, best_candidates, final_time
+    return losses, avg_losses, best_candidates, final_time
 
 
 def generate_classes_from_report(report_file, strategy_class):
     """Generate classes from a report file (best candidates classes)
     """
-    _, best_candidates, _ = parse_report(report_file)
+    _, _, best_candidates, _ = parse_report(report_file)
     for i, candidate in enumerate(best_candidates):
         with open(f"user_data/strategies/new_{strategy_class}{i}.py", "w") as file:
             text, filename = generate_text(strategy_class, candidate, i)
