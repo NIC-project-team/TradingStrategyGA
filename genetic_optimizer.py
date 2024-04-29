@@ -212,14 +212,6 @@ def genetic_algorithm(parameters, population_size, generations, strategy_class='
 
             return population[0]
 
-        # control population survival
-        best_population = population[:int(population_size * 0.6)]
-        worst_population = population[-int(population_size * 0.6):]
-        worst_sample = random.sample(worst_population, int(population_size * 0.4))
-        population = best_population + worst_sample
-        if len(population) < population_size:
-            population.append(population[0])
-
         # create a population without loss for the population to be evaluated
         population_without_loss = copy.deepcopy(population)
         for j in range(len(population_without_loss)):
