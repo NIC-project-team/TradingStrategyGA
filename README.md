@@ -41,14 +41,17 @@ Then you need to pass name of the strategy and file name to main function in gen
 
 Then, you can run genetic algorithm with:
 ```
-python3 genetic_optimizer.py
+python genetic_optimizer.py
 ```
 
 After that, report will be generated in reports folder. If you want to run backtesting for the best strategy, you can create
-strategy with best parameters using:
+strategies with best parameters for every generation using:
 ```
-python3 strategy_text_generator.py
+python strategy_text_generator.py
 ```
+
+For example, for "Diamond" strategy and 20 generations, you will get 20 strategies in user_data/strategies folder named new_Diamond1, new_Diamond2, ...,
+new_Diamond20. So the best strategy will be new_Diamond20.
 
 ## Backtesting
 

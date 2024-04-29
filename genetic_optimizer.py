@@ -243,8 +243,8 @@ def delete_new_strategy_files():
 
 if __name__ == "__main__":
     # params as parsed from strategy file
-    strategy_class = 'SampleStrategy'
-    strategy_file = f"user_data/strategies/sample_strategy.py"
+    strategy_class = 'Diamond'
+    strategy_file = f"user_data/strategies/diamond_strategy.py"
     parameters, timeframe = strategy_text_generator.parse_parameters(strategy_file)
     print(parameters)
     print(timeframe)
