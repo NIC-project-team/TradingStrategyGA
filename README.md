@@ -1,0 +1,1 @@
+# Trading strategy GA optimizer
