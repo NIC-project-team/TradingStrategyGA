@@ -1,9 +1,21 @@
+## TL;DR
+You need docker desktop to run this project. 
+
+Then start genetic algorithm optimization with:
+```python
+python3 genetic_optimizer.py
+```
+
+## Important to remember
+
 Disclaimer: This is the repository to demonstrate Genetic Algorithm optimization for Freqtrade bot. 
 
 It is not a financial advice. Use it at your own risk and always be cautious with designing your strategies and testing 
 them before using them in real trading.
 
 To fork repo locally use ssh key.
+
+## Usage
 
 To run, use: 
 ```docker
@@ -21,9 +33,11 @@ To run backtesting for all strategies with predefined parameters, use:
 ```
 
 To run genetic algorithm, you need to firstly create strategy to optimize, using parameters as described in freqtrade
-documentation: https://www.freqtrade.io/en/latest/hyperopt/
+documentation: https://www.freqtrade.io/en/latest/hyperopt/ (you can access examples in user_data/strategies folder)
 
 Then you need to pass name of the strategy and file name to main function in genetic_optimizer.py. 
+
+## Genetic Algorithm Optimization
 
 Then, you can run genetic algorithm with:
 ```
@@ -36,15 +50,21 @@ strategy with best parameters using:
 python3 strategy_text_generator.py
 ```
 
+## Backtesting
+
 Then you can run backtesting for this strategy using:
 ```
 docker compose run --rm freqtrade backtesting --strategy <strategy name> --timerange <start-end>
 ```
 
+# Trade dry-run
+
 Tu run dry run for this strategy, use:
 ```
 docker compose run --rm freqtrade trade --strategy <strategy name> --timerange <start-end>
 ```
+
+# Telegram API and web UI
 
 Telegram api and ip address for UI can be changed in config.json file.
 
