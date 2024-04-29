@@ -57,14 +57,14 @@ Then you can run backtesting for this strategy using:
 docker compose run --rm freqtrade backtesting --strategy <strategy name> --timerange <start-end>
 ```
 
-# Trade dry-run
+## Trade dry-run
 
 Tu run dry run for this strategy, use:
 ```
 docker compose run --rm freqtrade trade --strategy <strategy name> --timerange <start-end>
 ```
 
-# Telegram API and web UI
+## Telegram API and web UI
 
 Telegram api and ip address for UI can be changed in config.json file.
 
