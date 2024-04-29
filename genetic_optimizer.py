@@ -8,9 +8,16 @@ import strategy_text_generator
 
 
 def generate_initial_population(parameters, population_size):
+    """
+    Generate initial population
+    :param parameters: dict of parameters to generate (from strategy file)
+    :param population_size: int (number of candidates in the population)
+    :return: list of dicts (population, which is a list of candidates)
+    """
     population = []
     for i in range(population_size):
         candidate = {}
+
         for key in parameters.keys():
             candidate[key] = {}
             candidate[key]['type'] = parameters[key]['type']
@@ -20,39 +27,61 @@ def generate_initial_population(parameters, population_size):
                 candidate[key]['low'] = parameters[key]['low']
                 candidate[key]['high'] = parameters[key]['high']
                 candidate[key]['default'] = random.randint(parameters[key]['low'], parameters[key]['high'])
+
             elif parameters[key]['type'] == 'float':
                 candidate[key]['low'] = parameters[key]['low']
                 candidate[key]['high'] = parameters[key]['high']
                 candidate[key]['default'] = random.uniform(parameters[key]['low'], parameters[key]['high'])
                 candidate[key]['decimals'] = parameters[key]['decimals']
                 candidate[key]['default'] = round(candidate[key]['default'], candidate[key]['decimals'])
+
             elif parameters[key]['type'] == 'categorical':
                 candidate[key]['options'] = parameters[key]['options']
                 candidate[key]['default'] = random.choice(parameters[key]['options'])
+
             elif parameters[key]['type'] == 'boolean':
                 candidate[key]['default'] = random.choice([True, False])
+
         population.append(candidate)
     return population
 
 
 def generate_strategy_text_population(strategy_class, population):
+    """
+    Generate strategy text for each candidate in the population
+    :param strategy_class: str (name of the strategy class)
+    :param population: list of dicts
+    :return: str (path to the generated strategy file)
+    """
     for i, candidate in enumerate(population):
         with open(f"user_data/strategies/new_{strategy_class}{i}.py", "w") as file:
-            text, filename = strategy_text_generator.generate_text(strategy_class, candidate, i)
+            text, _ = strategy_text_generator.generate_text(strategy_class, candidate, i)
             file.write(text)
+
     return f"user_data/strategies/new_{strategy_class}.py"
 
 
-def evaluate_population(population, classname, timeframe='1h'):
+def evaluate_population(population, classname, timeframe='1h', timerange='20240101-20240405'):
+    """
+    Evaluate the population. It will run backtesting for each candidate in the population and calculate the loss. Very
+    time consuming.
+    :param population: list of dicts
+    :param classname: str (name of the strategy class)
+    :param timeframe: str (timeframe for backtesting, e.g. '5m', '1h', '1d')
+    :return: list of dicts (population with loss)
+    """
     classname = f'New{classname}'
     names_string = ' '.join([f'{classname}{i}' for i in range(len(population))])
+
     os.system(
-        f"docker compose run --rm freqtrade backtesting --strategy-list {names_string} --timerange 20240101-20240405 --timeframe {timeframe}")
+        f"docker compose run --rm freqtrade backtesting --strategy-list {names_string} --timerange {timerange} --timeframe {timeframe}")
     while not os.path.exists("user_data/backtest_results/.last_result.json"):
         pass
+
     with open("user_data/backtest_results/.last_result.json", "r") as file:
         name = json.load(file)['latest_backtest']
     os.remove("user_data/backtest_results/.last_result.json")
+
     with open(f"user_data/backtest_results/{name}", "r") as file:
         obj = json.load(file)['strategy_comparison']
         for i in range(len(population)):
@@ -71,20 +100,27 @@ def evaluate_population(population, classname, timeframe='1h'):
 
 
 def mutate_candidate(candidate):
-    # pass low and high values as parameters, then define default as a number from low to high
+    """
+    Mutate a candidate
+    :param candidate: dict
+    :return: dict (new candidate)
+    """
     candidate_copy = copy.deepcopy(candidate)
     mutated_candidate = dict(candidate_copy)
+
     for key in mutated_candidate.keys():
         if type(mutated_candidate[key]) is dict:
             if 'default' in mutated_candidate[key].keys():
                 if mutated_candidate[key]['type'] == 'int':
                     mutated_candidate[key]['default'] = random.randint(mutated_candidate[key]['low'],
                                                                        mutated_candidate[key]['high'])
+
                 elif mutated_candidate[key]['type'] == 'float':
                     mutated_candidate[key]['default'] = random.uniform(mutated_candidate[key]['low'],
                                                                        mutated_candidate[key]['high'])
                     mutated_candidate[key]['default'] = round(mutated_candidate[key]['default'],
                                                               mutated_candidate[key]['decimals'])
+
                 elif mutated_candidate[key]['type'] == 'categorical':
                     mutated_candidate[key]['default'] = random.choice(mutated_candidate[key]['options'])
 
@@ -95,17 +131,31 @@ def mutate_candidate(candidate):
 
 
 def crossover_candidates(candidate1, candidate2):
+    """
+    Crossover two candidates
+    :param candidate1: dict
+    :param candidate2: dict
+    :return: dict (new candidate)
+    """
     crossover_point = random.randint(0, len(candidate1.keys()))
     new_candidate = {}
+
     for i, key in enumerate(candidate1.keys()):
-        if i < crossover_point:
-            new_candidate[key] = candidate1[key]
-        else:
-            new_candidate[key] = candidate2[key]
+        new_candidate[key] = candidate1[key] if i < crossover_point else candidate2[key]
+
     return new_candidate
 
 
 def genetic_algorithm(parameters, population_size, generations, strategy_class='Diamond', timeframe='1h'):
+    """
+    Genetic algorithm to optimize strategy parameters
+    :param parameters: dict of parameters (from strategy file)
+    :param population_size: int (number of candidates in the population)
+    :param generations: int (number of generations)
+    :param strategy_class: str (name of the strategy class)
+    :param timeframe: str (timeframe for backtesting, e.g. '5m', '1h', '1d')
+    :return: dict of parameters and loss of the best candidate
+    """
     t = time.time()
 
     populations = []
@@ -114,7 +164,7 @@ def genetic_algorithm(parameters, population_size, generations, strategy_class='
     best_candidates = []
     population = generate_initial_population(parameters, population_size)
     population_without_loss = copy.deepcopy(population)
-    # generations
+
     for i in range(generations):
         print("Generation", i, time.time() - t)
         generate_strategy_text_population(strategy_class, population_without_loss)
@@ -128,14 +178,17 @@ def genetic_algorithm(parameters, population_size, generations, strategy_class='
                                                        population[random.randint(0, population_size - 1)]))
         population = copy.deepcopy(new_population)
         population = sorted(population, key=lambda x: -x['loss'])
+
         # print losses of the population
-        print([candidate['loss'] for candidate in population])
-        print(population[0])
         avg_loss = sum([population[i]['loss'] for i in range(len(population))]) / len(population)
         print(population[0]['loss'], avg_loss)
+
+        # update report lists
         best_losses.append(population[0]['loss'])
         avg_losses.append(avg_loss)
         best_candidates.append(population[0])
+
+        # save the population to print it at the end
         fixed_population = copy.deepcopy(population)
         populations.append(fixed_population)
         if i == generations - 1:
@@ -156,13 +209,18 @@ def genetic_algorithm(parameters, population_size, generations, strategy_class='
 
             with open(f"reports/{strategy_class}.json", "w") as file:
                 json.dump({'losses': best_losses, 'avg_losses': avg_losses, 'best_candidates': best_candidates, 'final_time': final_time}, file)
+
             return population[0]
+
+        # control population survival
         best_population = population[:int(population_size * 0.6)]
         worst_population = population[-int(population_size * 0.6):]
         worst_sample = random.sample(worst_population, int(population_size * 0.4))
         population = best_population + worst_sample
         if len(population) < population_size:
             population.append(population[0])
+
+        # create a population without loss for the population to be evaluated
         population_without_loss = copy.deepcopy(population)
         for j in range(len(population_without_loss)):
             if 'loss' in population_without_loss[j]:
@@ -170,6 +228,9 @@ def genetic_algorithm(parameters, population_size, generations, strategy_class='
 
 
 def delete_new_strategy_files():
+    """
+    Delete files starting with new_ in user_data/strategies and user_data/backtest_results
+    """
     for file in os.listdir('user_data/strategies'):
         # remove files starting with new_
         if file.startswith(f'new_'):
@@ -182,10 +243,6 @@ def delete_new_strategy_files():
 
 if __name__ == "__main__":
     # params as parsed from strategy file
-    # strategy_class = 'Diamond'
-    # strategy_file = f"user_data/strategies/diamond_strategy.py"
-    # strategy_class = 'Strategy005'
-    # strategy_file = f"user_data/strategies/strategy_005.py"
     strategy_class = 'SampleStrategy'
     strategy_file = f"user_data/strategies/sample_strategy.py"
     parameters, timeframe = strategy_text_generator.parse_parameters(strategy_file)
