@@ -176,6 +176,8 @@ def genetic_algorithm(parameters, population_size, generations, strategy_class='
             new_population.append(mutate_candidate(population[random.randint(0, population_size - 1)]))
             new_population.append(crossover_candidates(population[random.randint(0, population_size - 1)],
                                                        population[random.randint(0, population_size - 1)]))
+        while len(new_population) < population_size:
+            new_population.append(mutate_candidate(population[random.randint(0, population_size - 1)]))
         population = copy.deepcopy(new_population)
         population = sorted(population, key=lambda x: -x['loss'])
 
@@ -240,7 +242,7 @@ if __name__ == "__main__":
     parameters, timeframe = strategy_text_generator.parse_parameters(strategy_file)
     print(parameters)
     print(timeframe)
-    best_candidate = genetic_algorithm(parameters, 30, 20, strategy_class, timeframe)
+    best_candidate = genetic_algorithm(parameters, 20, 15, strategy_class, timeframe)
     print('Final result:')
     print(best_candidate)
     delete_new_strategy_files()
