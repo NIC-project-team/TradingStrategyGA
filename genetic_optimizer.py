@@ -146,7 +146,8 @@ def crossover_candidates(candidate1, candidate2):
     return new_candidate
 
 
-def genetic_algorithm(parameters, population_size, generations, strategy_class='Diamond', timeframe='1h'):
+def genetic_algorithm(parameters, population_size, generations, strategy_class='Diamond', timeframe='1h',
+                      timerange='20240101-20240405'):
     """
     Genetic algorithm to optimize strategy parameters
     :param parameters: dict of parameters (from strategy file)
@@ -168,7 +169,7 @@ def genetic_algorithm(parameters, population_size, generations, strategy_class='
     for i in range(generations):
         print("Generation", i, time.time() - t)
         generate_strategy_text_population(strategy_class, population_without_loss)
-        population = evaluate_population(population, strategy_class, timeframe)
+        population = evaluate_population(population, strategy_class, timeframe, timerange)
         population = sorted(population, key=lambda x: -x['loss'])
         new_population = []
         for j in range(population_size // 3):
@@ -210,7 +211,8 @@ def genetic_algorithm(parameters, population_size, generations, strategy_class='
                 print(avg_losses[j])
 
             with open(f"reports/{strategy_class}.json", "w") as file:
-                json.dump({'losses': best_losses, 'avg_losses': avg_losses, 'best_candidates': best_candidates, 'final_time': final_time}, file)
+                json.dump({'losses': best_losses, 'avg_losses': avg_losses, 'best_candidates': best_candidates,
+                           'final_time': final_time}, file)
 
             return population[0]
 
@@ -242,7 +244,7 @@ if __name__ == "__main__":
     parameters, timeframe = strategy_text_generator.parse_parameters(strategy_file)
     print(parameters)
     print(timeframe)
-    best_candidate = genetic_algorithm(parameters, 20, 15, strategy_class, timeframe)
+    best_candidate = genetic_algorithm(parameters, 20, 10, strategy_class, timeframe)
     print('Final result:')
     print(best_candidate)
     delete_new_strategy_files()
