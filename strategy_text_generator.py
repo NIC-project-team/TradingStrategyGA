@@ -211,4 +211,4 @@ if __name__ == "__main__":
     # text, filename = generate_text(strategy_class, strategy_params, 0)
     # print(text)
 
-    generate_classes_from_report('reports/Diamond.json', 'Diamond')
+    generate_classes_from_report('reports/SampleStrategy.json', 'SampleStrategy')
